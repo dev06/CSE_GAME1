@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa58af4c4348b2d4d853cd79de556b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraMoveSpeed: 15
+  CameraMoveSpeed: 25
   CameraLookSpeed: 5
   CameraLookAngle: 70
   bobAmplitude: 1

@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour {
 	private bool _isMoving;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
+	private int hello;
 	#endregion---/PRIVATE MEMBERS---
 
 	void Start () {
