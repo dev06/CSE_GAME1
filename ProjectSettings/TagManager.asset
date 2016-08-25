@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Health/Fill
+  - Health/Still
+  - Health/Text
   layers:
   - Default
   - TransparentFX

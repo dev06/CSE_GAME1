@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour {
 	private float _lookInput = 0;
 	private float _headBoxX;
 	private float _headBobY;
+	private float _lookHorizontalInput;
+	private float _lookVerticalInput;
 	private float _strafeInput;
 	private float _forwardInput;
 	private bool _isMoving;
@@ -46,6 +48,8 @@ public class CameraController : MonoBehaviour {
 		Move();
 		Look();
 		HeadBob();
+
+
 	}
 
 	void Move()
@@ -64,17 +68,21 @@ public class CameraController : MonoBehaviour {
 		{
 			_forwardInput = (Input.GetKey(KeyCode.W)) ? _forwardInput = 1 : (Input.GetKey(KeyCode.S)) ? _forwardInput = -1 : _forwardInput = 0;
 			_strafeInput = (Input.GetKey(KeyCode.D)) ? _strafeInput = 1 : (Input.GetKey(KeyCode.A)) ? _strafeInput = -1 : _strafeInput = 0;
+			_lookHorizontalInput = Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1);
+			_lookVerticalInput = Input.GetAxis("Mouse Y");
 		} else if (_cf == ControllerProfile.TGFH)
 		{
 			_forwardInput = (Input.GetKey(KeyCode.T)) ? _forwardInput = 1 : (Input.GetKey(KeyCode.G)) ? _forwardInput = -1 : _forwardInput = 0;
 			_strafeInput = (Input.GetKey(KeyCode.H)) ? _strafeInput = 1 : (Input.GetKey(KeyCode.F)) ? _strafeInput = -1 : _strafeInput = 0;
+			_lookHorizontalInput = (Input.GetKey(KeyCode.RightArrow)) ? _lookHorizontalInput = 1 : (Input.GetKey(KeyCode.LeftArrow)) ? _lookHorizontalInput = -1 : _lookHorizontalInput = 0;
+			_lookVerticalInput = (Input.GetKey(KeyCode.UpArrow)) ? _lookVerticalInput = 1 : (Input.GetKey(KeyCode.DownArrow)) ? _lookVerticalInput = -1 : _lookVerticalInput = 0;
 		}
 	}
 
 	void Look()
 	{
-		transform.Rotate(0, Input.GetAxis(Constants.X_LOOK) * CameraLookSpeed, 0);
-		_lookInput -= Input.GetAxis(Constants.Y_LOOK) * CameraLookSpeed;
+		transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
+		_lookInput -= _lookVerticalInput * CameraLookSpeed;
 		_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
 		_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
 	}

@@ -5,13 +5,15 @@ public class GameController : MonoBehaviour {
 
 
 	public ControllerProfile controllerProfile;
-
+	public GameObject Player;
 
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
+
 	private int _index;
 
-	void Start () {
+	void Awake () {
 		controllerProfile = ControllerProfile.WASD;
+		Player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	void Update ()
