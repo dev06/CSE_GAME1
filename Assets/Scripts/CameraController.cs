@@ -18,19 +18,31 @@ public class CameraController : MonoBehaviour {
 	private float _lookInput = 0;
 	private float _headBoxX;
 	private float _headBobY;
+	private float _strafeInput;
+	private float _forwardInput;
 	private bool _isMoving;
+	private GameController _gameSceneManager;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
-	private int hello;
+
 	#endregion---/PRIVATE MEMBERS---
 
-	void Start () {
+	void Start ()
+	{
+		Init();
+	}
+
+	void Init()
+	{
 		_characterController = GetComponent<CharacterController>();
 		_child = transform.FindChild("Main Camera").transform.gameObject;
+		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+		RegisterInput(_gameSceneManager.controllerProfile);
 		Move();
 		Look();
 		HeadBob();
@@ -38,12 +50,25 @@ public class CameraController : MonoBehaviour {
 
 	void Move()
 	{
-		float strafe = Input.GetAxis(Constants.STRAFE) * CameraMoveSpeed;
-		float forward = Input.GetAxis(Constants.FORWARD) * CameraMoveSpeed;
+		float strafe = _strafeInput * CameraMoveSpeed;
+		float forward = _forwardInput * CameraMoveSpeed;
 		_isMoving = strafe != 0 || forward != 0;
 		Vector3 movement = new Vector3(strafe, 0, forward);
 		movement = transform.rotation * movement;
 		_characterController.Move(movement * Time.deltaTime);
+	}
+
+	void RegisterInput(ControllerProfile _cf)
+	{
+		if (_cf == ControllerProfile.WASD)
+		{
+			_forwardInput = (Input.GetKey(KeyCode.W)) ? _forwardInput = 1 : (Input.GetKey(KeyCode.S)) ? _forwardInput = -1 : _forwardInput = 0;
+			_strafeInput = (Input.GetKey(KeyCode.D)) ? _strafeInput = 1 : (Input.GetKey(KeyCode.A)) ? _strafeInput = -1 : _strafeInput = 0;
+		} else if (_cf == ControllerProfile.TGFH)
+		{
+			_forwardInput = (Input.GetKey(KeyCode.T)) ? _forwardInput = 1 : (Input.GetKey(KeyCode.G)) ? _forwardInput = -1 : _forwardInput = 0;
+			_strafeInput = (Input.GetKey(KeyCode.H)) ? _strafeInput = 1 : (Input.GetKey(KeyCode.F)) ? _strafeInput = -1 : _strafeInput = 0;
+		}
 	}
 
 	void Look()
