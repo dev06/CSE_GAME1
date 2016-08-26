@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 
 
 	public ControllerProfile controllerProfile;
+	public bool TogglePlayerMovement;
 	public GameObject Player;
 
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
@@ -13,12 +14,31 @@ public class GameController : MonoBehaviour {
 
 	void Awake () {
 		controllerProfile = ControllerProfile.WASD;
+		TogglePlayerMovement = true;
 		Player = GameObject.FindGameObjectWithTag("Player");
+		EnableGameUI();
 	}
 
 	void Update ()
 	{
 		SwitchControllerProfile();
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			EnableControlConfigUI(!GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled);
+			TogglePlayerMovement = !GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled;
+		}
+	}
+
+	void EnableGameUI()
+	{
+		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
+		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = false;
+	}
+
+	void EnableControlConfigUI(bool value)
+	{
+		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = !value;
+		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = value;
 	}
 
 	void SwitchControllerProfile()
@@ -38,4 +58,5 @@ public enum ControllerProfile
 {
 	WASD,
 	TGFH,
+	CUSTOM,
 }

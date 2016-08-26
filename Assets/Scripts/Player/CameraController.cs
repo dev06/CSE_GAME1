@@ -45,9 +45,12 @@ public class CameraController : MonoBehaviour {
 	void Update ()
 	{
 		RegisterInput(_gameSceneManager.controllerProfile);
-		Move();
-		Look();
-		HeadBob();
+		if (_gameSceneManager.TogglePlayerMovement)
+		{
+			Move();
+			Look();
+			HeadBob();
+		}
 
 
 	}

@@ -6,12 +6,13 @@ public class PlayerController : Mob {
 
 	void Start ()
 	{
-
+		Health = 100;
 	}
 
 	// Update is called once per frame
-	void Update () {
-		GetHealth += 1;
+	void Update ()
+	{
+
 	}
 
 
