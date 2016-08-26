@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 
 
 	public ControllerProfile controllerProfile;
+	public MenuActive menuActive;
 	public bool TogglePlayerMovement;
 	public GameObject Player;
 
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour {
 
 	void Awake () {
 		controllerProfile = ControllerProfile.WASD;
+		menuActive = MenuActive.GAME;
 		TogglePlayerMovement = true;
 		Player = GameObject.FindGameObjectWithTag("Player");
 		EnableGameUI();
@@ -24,13 +26,24 @@ public class GameController : MonoBehaviour {
 		SwitchControllerProfile();
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			EnableControlConfigUI(!GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled);
-			TogglePlayerMovement = !GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled;
+			StopCoroutine("WaitAndDisable");
+			StartCoroutine("WaitAndDisable");
 		}
+	}
+
+	IEnumerator WaitAndDisable()
+	{
+
+		yield return new WaitForSeconds((menuActive == MenuActive.GAME) ? 0f :  .7f);
+		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
+		EnableControlConfigUI(!GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled);
+		TogglePlayerMovement = !GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled;
+
 	}
 
 	void EnableGameUI()
 	{
+
 		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
 		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = false;
 	}
@@ -61,4 +74,10 @@ public enum ControllerProfile
 	WASD,
 	TGFH,
 	CUSTOM,
+}
+
+public enum MenuActive
+{
+	GAME,
+	CONTROL,
 }

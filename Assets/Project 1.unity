@@ -248,13 +248,15 @@ GameObject:
   - 224: {fileID: 136323612}
   - 222: {fileID: 136323614}
   - 114: {fileID: 136323613}
+  - 114: {fileID: 136323616}
+  - 111: {fileID: 136323615}
   m_Layer: 0
   m_Name: ControlConfigBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &136323612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -290,14 +292,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.584}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7df3ac75893473347b4f8958fe41b46f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -311,6 +313,32 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 136323611}
+--- !u!111 &136323615
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 136323611}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0a78c359b596d124ba3dddbba5af95d7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0a78c359b596d124ba3dddbba5af95d7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &136323616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 136323611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d94093f971c4f4483399f8713fad6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &158155961
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +349,7 @@ GameObject:
   - 224: {fileID: 158155962}
   - 222: {fileID: 158155964}
   - 114: {fileID: 158155963}
+  - 114: {fileID: 158155965}
   m_Layer: 0
   m_Name: ProfileTwo
   m_TagString: Untagged
@@ -380,6 +409,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 158155961}
+--- !u!114 &158155965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158155961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e81ed7722bb8424ba5f10a56580f27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
+  RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
+  HoverColor: {r: 0.023529414, g: 0.63529414, b: 0.75294125, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
+  HoverSize: 1.2
+  RestSize: 1
+  controllerProfile: 1
 --- !u!1 &249417298
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +934,7 @@ GameObject:
   - 224: {fileID: 1001604164}
   - 222: {fileID: 1001604166}
   - 114: {fileID: 1001604165}
+  - 114: {fileID: 1001604167}
   m_Layer: 0
   m_Name: ProfileOne
   m_TagString: Untagged
@@ -946,6 +994,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1001604163}
+--- !u!114 &1001604167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1001604163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e81ed7722bb8424ba5f10a56580f27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
+  RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
+  HoverColor: {r: 0.023529414, g: 0.63529414, b: 0.75294125, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
+  HoverSize: 1.2
+  RestSize: 1
+  controllerProfile: 0
 --- !u!1 &1053818867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1096,7 @@ GameObject:
   - 224: {fileID: 1178520335}
   - 222: {fileID: 1178520337}
   - 114: {fileID: 1178520336}
+  - 114: {fileID: 1178520338}
   m_Layer: 0
   m_Name: CustomProfile
   m_TagString: Untagged
@@ -1089,6 +1156,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178520334}
+--- !u!114 &1178520338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1178520334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e81ed7722bb8424ba5f10a56580f27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
+  RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
+  HoverColor: {r: 0.023529414, g: 0.63529414, b: 0.75294125, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
+  HoverSize: 1.2
+  RestSize: 1
+  controllerProfile: 2
 --- !u!1 &1210153264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,6 +1408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerProfile: 0
+  menuActive: 0
+  TogglePlayerMovement: 0
   Player: {fileID: 0}
 --- !u!1 &1482427236
 GameObject:
@@ -1372,7 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.228}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

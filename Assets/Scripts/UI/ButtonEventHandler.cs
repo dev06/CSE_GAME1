@@ -9,10 +9,13 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 	private RectTransform _rectTransform;
 	protected GameController _gameController;
 
+	public Sprite HoverSprite;
+	public Sprite RestSprite;
 	public Color HoverColor;
 	public Color RestColor;
 	public float HoverSize;
 	public float RestSize;
+
 
 	void Start ()
 	{
@@ -42,6 +45,7 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 		if (_image != null)
 		{
 			_image.color = HoverColor;
+			_image.sprite = HoverSprite;
 		}
 
 		if (_rectTransform != null)
@@ -55,6 +59,7 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 		if (_image != null)
 		{
 			_image.color = RestColor;
+			_image.sprite = RestSprite;
 		}
 
 		if (_rectTransform != null)
