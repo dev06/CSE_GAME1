@@ -25,6 +25,7 @@ public class ControllerProfileButton : ButtonEventHandler {
 		}
 	}
 
+
 	public override void OnPointerClick(PointerEventData data)
 	{
 		base.OnPointerClick(data);

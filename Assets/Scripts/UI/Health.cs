@@ -30,7 +30,7 @@ public class Health : MonoBehaviour {
 	void Update ()
 	{
 		_value = _target.GetHealth;
-		_text.text = "" + _value;
+		_text.text = "" + (int)_value;
 		_fill.fillAmount = Mathf.SmoothDamp(_fill.fillAmount, _value / 100.0f, ref _velocity, .3f);
 
 	}

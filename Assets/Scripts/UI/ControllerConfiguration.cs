@@ -21,7 +21,7 @@ public class ControllerConfiguration : MonoBehaviour {
 	void Update ()
 	{
 
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 		{
 			if (_gameController.menuActive == MenuActive.CONTROL)
 			{

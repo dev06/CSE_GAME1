@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
 
-	private Image _image;
+	protected Image _image;
 	private RectTransform _rectTransform;
 	protected GameController _gameController;
+	protected bool hovering;
 
 	public Sprite HoverSprite;
 	public Sprite RestSprite;
@@ -42,6 +43,7 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 
 	public virtual void OnPointerEnter(PointerEventData data)
 	{
+		hovering = true;
 		if (_image != null)
 		{
 			_image.color = HoverColor;
@@ -56,6 +58,7 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 
 	public virtual void OnPointerExit(PointerEventData data)
 	{
+		hovering = false;
 		if (_image != null)
 		{
 			_image.color = RestColor;
@@ -71,6 +74,6 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 
 	public virtual void OnPointerClick(PointerEventData data)
 	{
-		Debug.Log("Clicked");
+
 	}
 }
