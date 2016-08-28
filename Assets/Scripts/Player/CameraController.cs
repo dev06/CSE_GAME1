@@ -94,6 +94,7 @@ public class CameraController : MonoBehaviour {
 				_lookVerticalInput = Input.GetAxis("Mouse Y");
 			}
 		}
+
 	}
 
 	void Look()
@@ -121,4 +122,17 @@ public class CameraController : MonoBehaviour {
 			_targetHeadBob = Vector3.zero;
 		}
 	}
+
+ 
+    
+    void OnCollisionEnter(Collision col)
+    {
+        Debug.Log(col.gameObject.name); 
+    }
+
+
+
+
+
+
 }
