@@ -5,9 +5,11 @@ public class GameController : MonoBehaviour {
 
 
 	public ControllerProfile controllerProfile;
+	public static ButtonID selectedButtonID;
 	public MenuActive menuActive;
 	public KeyCode[] customKey;
 	public bool TogglePlayerMovement;
+	public bool ToggleMouseControl;
 	public GameObject Player;
 
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
@@ -17,7 +19,7 @@ public class GameController : MonoBehaviour {
 	void Awake () {
 		controllerProfile = ControllerProfile.WASD;
 		menuActive = MenuActive.GAME;
-		customKey = new KeyCode[4];
+		customKey = new KeyCode[8];
 		TogglePlayerMovement = true;
 		Player = GameObject.FindGameObjectWithTag("Player");
 		EnableGameUI();
@@ -26,7 +28,6 @@ public class GameController : MonoBehaviour {
 	void Update ()
 	{
 		SwitchControllerProfile();
-
 		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
 		{
 			StopCoroutine("WaitAndDisable");

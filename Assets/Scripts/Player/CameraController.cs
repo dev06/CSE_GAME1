@@ -84,9 +84,15 @@ public class CameraController : MonoBehaviour {
 			KeyCode[] customInput = _gameSceneManager.customKey;
 			_forwardInput = (Input.GetKey(customInput[1])) ? _forwardInput = 1 : (Input.GetKey(customInput[3])) ? _forwardInput = -1 : _forwardInput = 0;
 			_strafeInput = (Input.GetKey(customInput[2])) ? _strafeInput = 1 : (Input.GetKey(customInput[0])) ? _strafeInput = -1 : _strafeInput = 0;
-
-			_lookHorizontalInput = (Input.GetKey(KeyCode.RightArrow)) ? _lookHorizontalInput = 1 : (Input.GetKey(KeyCode.LeftArrow)) ? _lookHorizontalInput = -1 : _lookHorizontalInput = 0;
-			_lookVerticalInput = (Input.GetKey(KeyCode.UpArrow)) ? _lookVerticalInput = 1 : (Input.GetKey(KeyCode.DownArrow)) ? _lookVerticalInput = -1 : _lookVerticalInput = 0;
+			if (_gameSceneManager.ToggleMouseControl == false)
+			{
+				_lookHorizontalInput = (Input.GetKey(customInput[6])) ? _lookHorizontalInput = 1 : (Input.GetKey(customInput[4])) ? _lookHorizontalInput = -1 : _lookHorizontalInput = 0;
+				_lookVerticalInput = (Input.GetKey(customInput[5])) ? _lookVerticalInput = 1 : (Input.GetKey(customInput[7])) ? _lookVerticalInput = -1 : _lookVerticalInput = 0;
+			} else
+			{
+				_lookHorizontalInput = Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1);
+				_lookVerticalInput = Input.GetAxis("Mouse Y");
+			}
 		}
 	}
 

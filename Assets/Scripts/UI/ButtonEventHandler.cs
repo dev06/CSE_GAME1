@@ -9,7 +9,6 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 	private RectTransform _rectTransform;
 	protected GameController _gameController;
 	protected bool hovering;
-
 	public Sprite HoverSprite;
 	public Sprite RestSprite;
 	public Color HoverColor;
@@ -17,6 +16,7 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 	public float HoverSize;
 	public float RestSize;
 
+	public ButtonID buttonID;
 
 	void Start ()
 	{
@@ -69,6 +69,8 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 		{
 			_rectTransform.localScale = new Vector3(RestSize, RestSize, 1);
 		}
+
+		GameController.selectedButtonID = ButtonID.NONE;
 
 	}
 
