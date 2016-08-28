@@ -14,8 +14,11 @@ public class PlayerController : Mob {
 	{
 
 
-
+	} void OnCollisionEnter(Collision collision) {
+		Debug.Log("hy8it");
 	}
+
+
 
 
 }

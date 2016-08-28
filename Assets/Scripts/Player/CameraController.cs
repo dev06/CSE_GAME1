@@ -60,7 +60,7 @@ public class CameraController : MonoBehaviour {
 		float strafe = _strafeInput * CameraMoveSpeed;
 		float forward = _forwardInput * CameraMoveSpeed;
 		_isMoving = strafe != 0 || forward != 0;
-		Vector3 movement = new Vector3(strafe, 0, forward);
+		Vector3 movement = new Vector3(strafe, Physics.gravity.y, forward);
 		movement = transform.rotation * movement;
 		_characterController.Move(movement * Time.deltaTime);
 	}

@@ -204,21 +204,6 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 	}
 
-	bool HasArrowKeys()
-	{
-		for (int i = _gameController.customKey.Length / 2 ; i < _gameController.customKey.Length; i++)
-		{
-			KeyCode currentKey = _gameController.customKey[i];
-			if (currentKey == KeyCode.LeftArrow || currentKey == KeyCode.RightArrow || currentKey == KeyCode.UpArrow || currentKey == KeyCode.DownArrow ) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-
-
-
 
 	void SetActive(bool b)
 	{
