@@ -14,6 +14,11 @@ public class Mob : MonoBehaviour {
 
 	}
 
+
+
+
+
+
 	public float GetHealth
 	{
 		get { return Health; }
