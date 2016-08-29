@@ -68,8 +68,6 @@ public class CameraController : MonoBehaviour {
 		} else {
 			_velocity.z = 0;
 		}
-
-
 		if (Mathf.Abs(strafe) > 0)
 		{
 			_velocity.x = strafe;
@@ -83,6 +81,7 @@ public class CameraController : MonoBehaviour {
 
 		_isMoving = strafe != 0 || forward != 0;
 		_rb.velocity = transform.TransformDirection(_velocity);
+		_rb.AddForce(new Vector3(0, -10, 0));
 	}
 
 	void RegisterInput(ControllerProfile _cf)

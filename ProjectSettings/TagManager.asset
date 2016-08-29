@@ -11,6 +11,7 @@ TagManager:
   - UI/GameCanvas
   - UI/ControlConfigCanvas
   - ActiveProjectiles
+  - Entity/Enemy
   layers:
   - Default
   - TransparentFX

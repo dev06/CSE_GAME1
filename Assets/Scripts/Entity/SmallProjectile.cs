@@ -8,14 +8,14 @@ public class SmallProjectile : Projectile {
 		Init();
 
 		_velocity = 50;
-		_size = Random.Range(.3f, .6f);
+		_size = Random.Range(.1f, .2f);
 		_color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
 		_damage = 10;
 		transform.localScale = new Vector3(_size, _size, _size);
 		GetComponent<MeshRenderer>().materials[0].color = _color;
-		GetComponent<Rigidbody>().velocity =  _gameController.Player.transform.GetChild(0).transform.forward * _velocity;
-		transform.forward = _gameController.Player.transform.GetChild(0).transform.forward;
-
+		GetComponent<Rigidbody>().velocity = forward * _velocity;
+		transform.forward = forward;
+		SetTrailColor();
 
 	}
 

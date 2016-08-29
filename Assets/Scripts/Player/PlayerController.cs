@@ -33,7 +33,7 @@ public class PlayerController : Mob
 	void OnCollisionEnter(Collision col)
 	{
 
-		if (col.gameObject.name == "Bot")
+		if (col.gameObject.tag == "Entity/Enemy")
 		{
 			Health -= 5;
 			_healthRepletionTimerCounter = 0;
