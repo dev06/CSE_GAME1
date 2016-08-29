@@ -64,13 +64,9 @@ public class CustomRotationButton : ButtonEventHandler {
 				_toggleMouseButton.mouseUIImage.enabled = true;
 			} else {
 				RegisterCustomKey(GameController.selectedButtonID);
-
-
-
 				_toggleMouseButton.mouseUIImage.enabled = _toggleMouseButton.isOn;
 			}
 		}
-
 
 		if (_gameController != null)
 		{
