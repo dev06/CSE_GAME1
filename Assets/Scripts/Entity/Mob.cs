@@ -4,7 +4,7 @@ using System.Collections;
 public class Mob : MonoBehaviour {
 
 	protected float Health;
-
+	protected float MaxHealth;
 	void Start () {
 
 	}
@@ -13,10 +13,6 @@ public class Mob : MonoBehaviour {
 	void Update () {
 
 	}
-
-
-
-
 
 
 	public float GetHealth

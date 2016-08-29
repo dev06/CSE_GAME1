@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: WallTexture
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _NORMALMAP
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_Name: BotTexture
+  m_Shader: {fileID: 11, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _NORMALMAP _PARALLAXMAP
+  m_LightmapFlags: 2
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
+          m_Texture: {fileID: 2800000, guid: 4213a934ae730e24591049371366fd37, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -40,7 +40,7 @@ Material:
         first:
           name: _ParallaxMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: a08047ba52b91d24790425116cda833b, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,6 +78,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -93,8 +107,12 @@ Material:
         second: 0.5
       data:
         first:
+          name: PixelSnap
+        second: 0
+      data:
+        first:
           name: _Parallax
-        second: 0.02
+        second: 0.08
       data:
         first:
           name: _ZWrite
@@ -102,7 +120,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -126,7 +144,11 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
+        second: 0.766
+      data:
+        first:
+          name: _Emission
+        second: 3.35
     m_Colors:
       data:
         first:
@@ -135,4 +157,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 1}

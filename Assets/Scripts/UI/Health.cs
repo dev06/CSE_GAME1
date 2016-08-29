@@ -30,8 +30,8 @@ public class Health : MonoBehaviour {
 	void Update ()
 	{
 		_value = _target.GetHealth;
-		_text.text = "" + (int)_value;
+		_text.text = "" + (int)(_fill.fillAmount * 100);
 		_fill.fillAmount = Mathf.SmoothDamp(_fill.fillAmount, _value / 100.0f, ref _velocity, .3f);
-
+		_still.transform.Rotate(new Vector3(0, 0, -Time.deltaTime * 50.0f));
 	}
 }

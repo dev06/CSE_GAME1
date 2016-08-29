@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour {
 	public bool ToggleMouseControl;
 	public GameObject Player;
 
+	private GameObject _largeProjectile;
+
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
 
 	private int _index;
@@ -21,6 +23,7 @@ public class GameController : MonoBehaviour {
 		menuActive = MenuActive.GAME;
 		customKey = new KeyCode[8];
 		TogglePlayerMovement = true;
+		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
 		Player = GameObject.FindGameObjectWithTag("Player");
 		EnableGameUI();
 	}
@@ -28,7 +31,8 @@ public class GameController : MonoBehaviour {
 	void Update ()
 	{
 		SwitchControllerProfile();
-		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+		ShootProjectile();
+		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			StopCoroutine("WaitAndDisable");
 			StartCoroutine("WaitAndDisable");
@@ -71,6 +75,18 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
+
+	void ShootProjectile()
+	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			GameObject _projectile = Instantiate(_largeProjectile, Player.transform.GetChild(0).transform.position, Quaternion.identity) as GameObject;
+			Vector3 _velocity = Player.transform.GetChild(0).transform.forward * 50;
+
+			_projectile.GetComponent<Rigidbody>().velocity = _velocity;
+		}
+	}
+
 }
 
 public enum ControllerProfile

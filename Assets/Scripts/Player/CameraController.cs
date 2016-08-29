@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour {
 	#endregion---/ PUBLIC MEMBERS---
 
 	#region---PRIVATE MEMBERS----
-	private CharacterController _characterController;
 	private GameObject _child;
 	private float _lookInput = 0;
 	private float _headBoxX;
@@ -26,6 +25,8 @@ public class CameraController : MonoBehaviour {
 	private GameController _gameSceneManager;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
+	private Rigidbody _rb;
+	private Vector3 _velocity;
 
 	#endregion---/PRIVATE MEMBERS---
 
@@ -36,7 +37,7 @@ public class CameraController : MonoBehaviour {
 
 	void Init()
 	{
-		_characterController = GetComponent<CharacterController>();
+		_rb = GetComponent<Rigidbody>();
 		_child = transform.FindChild("Main Camera").transform.gameObject;
 		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
@@ -53,16 +54,35 @@ public class CameraController : MonoBehaviour {
 		}
 
 
+
 	}
 
 	void Move()
 	{
 		float strafe = _strafeInput * CameraMoveSpeed;
 		float forward = _forwardInput * CameraMoveSpeed;
+
+		if (Mathf.Abs(forward) > 0)
+		{
+			_velocity.z = forward;
+		} else {
+			_velocity.z = 0;
+		}
+
+
+		if (Mathf.Abs(strafe) > 0)
+		{
+			_velocity.x = strafe;
+		} else {
+			_velocity.x = 0;
+		}
+
+
+
+
+
 		_isMoving = strafe != 0 || forward != 0;
-		Vector3 movement = new Vector3(strafe, Physics.gravity.y, forward);
-		movement = transform.rotation * movement;
-		_characterController.Move(movement * Time.deltaTime);
+		_rb.velocity = transform.TransformDirection(_velocity);
 	}
 
 	void RegisterInput(ControllerProfile _cf)
@@ -116,19 +136,16 @@ public class CameraController : MonoBehaviour {
 			_headBobPos.x = Mathf.Lerp (_headBobPos.x, _targetHeadBob.x, 2.5f * Time.deltaTime);
 			_headBobPos.y = Mathf.Lerp (_headBobPos.y, _targetHeadBob.y, 2.5f * Time.deltaTime);
 			_headBobPos.z = 0;
-			_child.transform.position = transform.position  + transform.TransformDirection(_headBobPos);
+			_child.transform.position = (transform.position + transform.forward / 2 + Vector3.up) + transform.TransformDirection(_headBobPos);
 		} else
 		{
 			_targetHeadBob = Vector3.zero;
 		}
 	}
 
- 
-    
-    void OnCollisionEnter(Collision col)
-    {
-        Debug.Log(col.gameObject.name); 
-    }
+
+
+
 
 
 
