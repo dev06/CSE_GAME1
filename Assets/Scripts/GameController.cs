@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
 	public GameObject Player;
 
 	private GameObject _largeProjectile;
+	private GameObject _smallProjectile;
+	private GameObject _activeProjectile;
 
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
 
@@ -24,18 +26,28 @@ public class GameController : MonoBehaviour {
 		customKey = new KeyCode[8];
 		TogglePlayerMovement = true;
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
+		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
+		_activeProjectile = GameObject.FindWithTag("ActiveProjectiles");
 		Player = GameObject.FindGameObjectWithTag("Player");
+
+
+
+
 		EnableGameUI();
+
 	}
 
 	void Update ()
 	{
+
 		SwitchControllerProfile();
 		ShootProjectile();
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
+
 			StopCoroutine("WaitAndDisable");
 			StartCoroutine("WaitAndDisable");
+
 		}
 	}
 
@@ -82,12 +94,21 @@ public class GameController : MonoBehaviour {
 		{
 			if (Input.GetMouseButtonDown(0))
 			{
-				GameObject _projectile = Instantiate(_largeProjectile, Player.transform.GetChild(0).transform.position, Quaternion.identity) as GameObject;
-				Vector3 _velocity = Player.transform.GetChild(0).transform.forward * 50;
-
-				_projectile.GetComponent<Rigidbody>().velocity = _velocity;
+				int _bulletPos = Random.Range(1, 3);
+				GameObject _l_projectile = Instantiate(_largeProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+				_bulletPos = (_bulletPos == 1) ? 2 : 1;
+				GameObject _s_projectile = Instantiate(_smallProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+				_l_projectile.transform.parent = _activeProjectile.transform;
+				_s_projectile.transform.parent = _activeProjectile.transform;
 			}
 		}
+	}
+
+
+	void LockCursor(bool b)
+	{
+		Cursor.visible = !b;
+		Screen.lockCursor = b;
 	}
 
 }

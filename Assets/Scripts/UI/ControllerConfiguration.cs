@@ -30,6 +30,7 @@ public class ControllerConfiguration : MonoBehaviour {
 				_animation.Play(_animation.clip.name);
 			}
 		}
+
 	}
 
 	void OnDisable()

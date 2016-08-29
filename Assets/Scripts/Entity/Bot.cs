@@ -19,6 +19,7 @@ public class Bot : Mob
 
 	void Update()
 	{
+		CheckIfIsDead();
 		transform.LookAt(_targetTransform);
 		transform.Translate(Vector3.forward * Time.deltaTime * 1.0f);
 	}

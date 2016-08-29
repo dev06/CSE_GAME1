@@ -10,6 +10,7 @@ TagManager:
   - UI
   - UI/GameCanvas
   - UI/ControlConfigCanvas
+  - ActiveProjectiles
   layers:
   - Default
   - TransparentFX
