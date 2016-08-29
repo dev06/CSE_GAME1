@@ -50,10 +50,11 @@ public class CustomRotationButton : ButtonEventHandler {
 
 
 
-		if (_gameController != null && _toggleMouseButton.isOn == false)
+		if (_gameController != null)
 		{
 			if (_gameController.controllerProfile == ControllerProfile.TGFH)
 			{
+				SetActive(true);
 				_imageIcon.enabled = true;
 				_text.enabled = false;
 				ResetArrowKey();
@@ -62,7 +63,7 @@ public class CustomRotationButton : ButtonEventHandler {
 				SetActive(false);
 				_imageIcon.enabled = false;
 				_toggleMouseButton.mouseUIImage.enabled = true;
-			} else {
+			} else if (_gameController.controllerProfile == ControllerProfile.CUSTOM) {
 				RegisterCustomKey(GameController.selectedButtonID);
 				_toggleMouseButton.mouseUIImage.enabled = _toggleMouseButton.isOn;
 			}
@@ -89,7 +90,6 @@ public class CustomRotationButton : ButtonEventHandler {
 					_imageIcon.enabled = false;
 				}
 			}
-
 
 			_toggleMouseButton.SetActive(_gameController.controllerProfile == ControllerProfile.CUSTOM);
 		}

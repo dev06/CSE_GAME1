@@ -78,12 +78,15 @@ public class GameController : MonoBehaviour {
 
 	void ShootProjectile()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (menuActive == MenuActive.GAME)
 		{
-			GameObject _projectile = Instantiate(_largeProjectile, Player.transform.GetChild(0).transform.position, Quaternion.identity) as GameObject;
-			Vector3 _velocity = Player.transform.GetChild(0).transform.forward * 50;
+			if (Input.GetMouseButtonDown(0))
+			{
+				GameObject _projectile = Instantiate(_largeProjectile, Player.transform.GetChild(0).transform.position, Quaternion.identity) as GameObject;
+				Vector3 _velocity = Player.transform.GetChild(0).transform.forward * 50;
 
-			_projectile.GetComponent<Rigidbody>().velocity = _velocity;
+				_projectile.GetComponent<Rigidbody>().velocity = _velocity;
+			}
 		}
 	}
 

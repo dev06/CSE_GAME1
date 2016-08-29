@@ -2499,7 +2499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraMoveSpeed: 5
   CameraLookSpeed: 5
-  CameraLookAngle: 70
+  CameraLookAngle: 60
   bobAmplitude: 1
   bobFrequency: 3
 --- !u!114 &1223268752
