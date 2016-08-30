@@ -39,14 +39,12 @@ public class Bot : Mob
 	private float _velocity;
 	void UpdateHealthQuad()
 	{
-		//_healthQuad.transform.localScale = Vector3.Lerp(_healthQuad.transform.localScale, new Vector3((Health / MaxHealth) , 1, 1), Time.deltaTime * 2.0f);
-		//_heathQuadMaterial.SetColor("_EmissionColor", Color.Lerp(Color.red, Color.green, (Health / MaxHealth)));
 
-		_fillImage.fillAmount = Mathf.SmoothDamp(_fillImage.fillAmount, Health / MaxHealth, ref _velocity, Time.deltaTime * 2.0f);
+		_fillImage.fillAmount = Mathf.SmoothDamp(_fillImage.fillAmount, Health / MaxHealth, ref _velocity, .3f);
 		_fillImage.color = Color.Lerp(Color.red, Color.green, (Health / MaxHealth));
 		_HealthText.color = _fillImage.color;
 		_stillImage.transform.Rotate(new Vector3(0, 0, Time.deltaTime * 50.0f));
-		_HealthText.text = "" + (int)(_fillImage.fillAmount * Health);
+		_HealthText.text = "" + (int)(_fillImage.fillAmount * MaxHealth);
 	}
 
 

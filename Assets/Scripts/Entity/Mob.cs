@@ -18,11 +18,12 @@ public class Mob : MonoBehaviour {
 
 	protected void CheckIfIsDead()
 	{
-		_isDead = GetHealth <= 0;
 		if (_isDead)
 		{
 			Destroy(gameObject);
 		}
+		_isDead = GetHealth <= 0;
+
 	}
 
 	public float GetHealth

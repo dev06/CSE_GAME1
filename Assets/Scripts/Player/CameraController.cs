@@ -59,8 +59,8 @@ public class CameraController : MonoBehaviour {
 
 	void Move()
 	{
-		float strafe = _strafeInput * CameraMoveSpeed;
-		float forward = _forwardInput * CameraMoveSpeed;
+		float strafe = _strafeInput * CameraMoveSpeed * 100;
+		float forward = _forwardInput * CameraMoveSpeed * 100;
 
 		if (Mathf.Abs(forward) > 0)
 		{
@@ -77,11 +77,9 @@ public class CameraController : MonoBehaviour {
 
 
 
-
-
 		_isMoving = strafe != 0 || forward != 0;
-		_rb.velocity = transform.TransformDirection(_velocity);
-		_rb.AddForce(new Vector3(0, -10, 0));
+		//	_rb.velocity = transform.TransformDirection(_velocity);
+		_rb.AddForce(transform.TransformDirection(_velocity) * Time.deltaTime);
 	}
 
 	void RegisterInput(ControllerProfile _cf)

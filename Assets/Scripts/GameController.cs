@@ -39,7 +39,6 @@ public class GameController : MonoBehaviour {
 
 	void Update ()
 	{
-
 		SwitchControllerProfile();
 		ShootProjectile();
 		if (Input.GetKeyDown(KeyCode.Escape))
