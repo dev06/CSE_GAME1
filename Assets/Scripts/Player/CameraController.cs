@@ -27,6 +27,8 @@ public class CameraController : MonoBehaviour {
 	private Vector3 _targetHeadBob = Vector3.zero;
 	private Rigidbody _rb;
 	private Vector3 _velocity;
+	private CharacterController _cc;
+
 
 	#endregion---/PRIVATE MEMBERS---
 
@@ -39,7 +41,9 @@ public class CameraController : MonoBehaviour {
 	{
 		_rb = GetComponent<Rigidbody>();
 		_child = transform.FindChild("Main Camera").transform.gameObject;
+		_cc = GetComponent<CharacterController>();
 		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+
 	}
 
 	// Update is called once per frame
@@ -59,9 +63,10 @@ public class CameraController : MonoBehaviour {
 
 	void Move()
 	{
-		float strafe = _strafeInput * CameraMoveSpeed * 100;
-		float forward = _forwardInput * CameraMoveSpeed * 100;
-
+		float strafe = _strafeInput * CameraMoveSpeed ;
+		float forward = _forwardInput * CameraMoveSpeed ;
+		Vector3 _movement = new Vector3(strafe, -5.0f, forward);
+		_movement = transform.rotation * _movement;
 		if (Mathf.Abs(forward) > 0)
 		{
 			_velocity.z = forward;
@@ -75,11 +80,11 @@ public class CameraController : MonoBehaviour {
 			_velocity.x = 0;
 		}
 
-
-
 		_isMoving = strafe != 0 || forward != 0;
-		//	_rb.velocity = transform.TransformDirection(_velocity);
-		_rb.AddForce(transform.TransformDirection(_velocity) * Time.deltaTime);
+		//_rb.velocity = _movement;
+		_cc.Move(_movement * Time.deltaTime);
+		JitterCamera(10);
+
 	}
 
 	void RegisterInput(ControllerProfile _cf)
@@ -117,6 +122,7 @@ public class CameraController : MonoBehaviour {
 	void Look()
 	{
 		transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
+
 		_lookInput -= _lookVerticalInput * CameraLookSpeed;
 		_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
 		_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
@@ -141,12 +147,9 @@ public class CameraController : MonoBehaviour {
 	}
 
 
-
-
-
-
-
-
-
-
+	void JitterCamera(float intensity)
+	{
+		//Vector3 _jitterVector = new Vector3(Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f)) - intensity / 2.0f , Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f) - intensity / 2.0f , Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f) - intensity / 2.0f)));
+		//Debug.Log(_jitterVector);
+	}
 }
