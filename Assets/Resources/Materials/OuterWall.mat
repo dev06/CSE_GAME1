@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlaneTexture
+  m_Name: OuterWall
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
@@ -20,7 +20,7 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: bfa13475a00efba4fbbd9b439b0825dd, type: 3}
-          m_Scale: {x: 64, y: 64}
+          m_Scale: {x: 80, y: 16}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -55,7 +55,7 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 64, y: 64}
+          m_Scale: {x: 80, y: 16}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -78,13 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SpecGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -100,10 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: PixelSnap
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -113,11 +102,11 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.635
+        second: 0.548
       data:
         first:
           name: _BumpScale
-        second: 1.62
+        second: 1
       data:
         first:
           name: _OcclusionStrength
@@ -137,11 +126,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 1
-      data:
-        first:
-          name: _InvFade
-        second: 1
+        second: 0.897
     m_Colors:
       data:
         first:
@@ -151,11 +136,3 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _SpecColor
-        second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

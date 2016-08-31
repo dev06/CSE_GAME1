@@ -29,10 +29,6 @@ public class GameController : MonoBehaviour {
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
 		_activeProjectile = GameObject.FindWithTag("ActiveProjectiles");
 		Player = GameObject.FindGameObjectWithTag("Player");
-
-
-
-
 		EnableGameUI();
 
 	}
@@ -43,11 +39,12 @@ public class GameController : MonoBehaviour {
 		ShootProjectile();
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-
 			StopCoroutine("WaitAndDisable");
 			StartCoroutine("WaitAndDisable");
-
 		}
+
+		Cursor.lockState = (TogglePlayerMovement == false) ? CursorLockMode.None : CursorLockMode.Locked;
+		Cursor.visible = !TogglePlayerMovement;
 	}
 
 	IEnumerator WaitAndDisable()
