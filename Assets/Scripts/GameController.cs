@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
 		TogglePlayerMovement = true;
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
+
 		_activeProjectile = GameObject.FindWithTag("ActiveProjectiles");
 		Player = GameObject.FindGameObjectWithTag("Player");
 		EnableGameUI();

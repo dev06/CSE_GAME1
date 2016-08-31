@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour {
 	protected float _velocity;
 	protected float _damage;
 	protected ParticleSystem _trail;
+	protected GameObject _effect;
+
 
 
 	void Start ()
@@ -20,6 +22,7 @@ public class Projectile : MonoBehaviour {
 
 	public void Init()
 	{
+		_effect = (GameObject)Resources.Load("Prefabs/Particles/Effect");
 		_gameController = FindObjectOfType(typeof(GameController)) as GameController;
 		_trail =  (transform.GetChild(0).GetComponent<ParticleSystem>()) ? transform.GetChild(0).GetComponent<ParticleSystem>() : null;
 		_maxLife = 3;
@@ -41,13 +44,19 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
+		Debug.Log(col.gameObject.name);
 		if (col.gameObject.tag != "Player")
 		{
 			if (col.gameObject.GetComponent<Mob>() != null)
 			{
 				col.gameObject.GetComponent<Mob>().GetHealth -= _damage;
-				Destroy(gameObject);
+
 			}
+
+			GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
+
+
+			Destroy(gameObject);
 		}
 	}
 }
