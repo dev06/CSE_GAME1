@@ -24,4 +24,5 @@ public class SmallProjectile : Projectile {
 	{
 		Destroy(gameObject, _maxLife);
 	}
+
 }

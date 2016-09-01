@@ -11,6 +11,7 @@ public class Health : MonoBehaviour {
 	private Image _still;
 	private Text _text;
 	private float _velocity;
+	private float _stillVel;
 
 	void Start ()
 	{
@@ -32,6 +33,7 @@ public class Health : MonoBehaviour {
 		_value = _target.GetHealth;
 		_text.text = "" + (int)(_fill.fillAmount * 100);
 		_fill.fillAmount = Mathf.SmoothDamp(_fill.fillAmount, _value / 100.0f, ref _velocity, .3f);
+		_still.fillAmount = Mathf.SmoothDamp(_still.fillAmount, _target.ReturnFloatValue("Counter") /  _target.ReturnFloatValue("Timer"), ref _stillVel, .3f);
 		_fill.color = Color.Lerp(new Color(1, .5f, .5f, .5f), new Color(.5f, 1, .5f, .5f), (_target.GetHealth / 100));
 
 		_still.transform.Rotate(new Vector3(0, 0, -Time.deltaTime * 50.0f));

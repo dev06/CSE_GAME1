@@ -44,18 +44,18 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		Debug.Log(col.gameObject.name);
+
+
 		if (col.gameObject.tag != "Player")
 		{
 			if (col.gameObject.GetComponent<Mob>() != null)
 			{
 				col.gameObject.GetComponent<Mob>().GetHealth -= _damage;
 
+			} else {
+				GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
+
 			}
-
-			GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
-
-
 			Destroy(gameObject);
 		}
 	}

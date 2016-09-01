@@ -8,7 +8,7 @@ public class PlayerController : Mob
 	private float _healthRepletionTimerCounter;
 	void Start()
 	{
-		_healthRepletionTimer = 5;
+		_healthRepletionTimer = 10;
 		MaxHealth = 100;
 		Health = MaxHealth;
 
@@ -21,8 +21,7 @@ public class PlayerController : Mob
 		{
 			if (_healthRepletionTimerCounter > _healthRepletionTimer)
 			{
-
-				Health += 2 * Time.deltaTime;
+				Health += (2.0f * Time.deltaTime);
 			}
 		}
 
@@ -35,9 +34,26 @@ public class PlayerController : Mob
 
 		if (col.gameObject.tag == "Entity/Enemy")
 		{
-			Health -= 5;
+			if (Health > 0) {
+				Health -= 5;
+			}
+			Debug.Log(col.gameObject.name);
 			_healthRepletionTimerCounter = 0;
 		}
+	}
+
+
+
+
+	public float ReturnFloatValue(string value)
+	{
+		switch (value)
+		{
+			case "Timer": return _healthRepletionTimer;
+			case "Counter": return _healthRepletionTimerCounter;
+		}
+
+		return 0;
 	}
 
 

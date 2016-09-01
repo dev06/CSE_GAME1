@@ -32,7 +32,7 @@ GameObject:
   - 54: {fileID: 5419738}
   m_Layer: 0
   m_Name: Bot
-  m_TagString: Entity/Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ GameObject:
   - 95: {fileID: 9588782}
   m_Layer: 0
   m_Name: botArm
-  m_TagString: Untagged
+  m_TagString: Entity/Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

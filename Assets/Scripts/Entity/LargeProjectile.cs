@@ -21,4 +21,7 @@ public class LargeProjectile : Projectile {
 	{
 		Destroy(gameObject, _maxLife);
 	}
+
+
+
 }

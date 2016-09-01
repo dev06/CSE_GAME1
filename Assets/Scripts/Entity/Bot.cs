@@ -20,6 +20,7 @@ public class Bot : Mob
 
 	void Start()
 	{
+		Init();
 		MaxHealth = 500;
 		Health = MaxHealth;
 		_targetTransform = GameObject.FindWithTag("Player").transform;
@@ -30,10 +31,13 @@ public class Bot : Mob
 
 	void Update()
 	{
-		CheckIfIsDead();
-		transform.LookAt(_targetTransform);
-		transform.Translate(Vector3.forward * Time.deltaTime * 1.0f);
-		UpdateHealthQuad();
+		if (_gameController.menuActive == MenuActive.GAME)
+		{
+			CheckIfIsDead();
+			transform.LookAt(_targetTransform);
+			transform.Translate(Vector3.forward * Time.deltaTime * 1.0f);
+			UpdateHealthQuad();
+		}
 	}
 
 	private float _velocity;

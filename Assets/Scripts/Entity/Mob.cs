@@ -6,8 +6,15 @@ public class Mob : MonoBehaviour {
 	protected float Health;
 	protected float MaxHealth;
 	protected bool _isDead;
-	void Start () {
+	protected GameController _gameController;
+	void Start ()
+	{
+		Init();
+	}
 
+	public void Init()
+	{
+		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 	}
 
 
