@@ -4,25 +4,30 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
-
-	protected Image _image;
-	private RectTransform _rectTransform;
-	protected GameController _gameController;
-	protected bool hovering;
+	#region ------ PUBLIC MEMBERS ----
 	public Sprite HoverSprite;
 	public Sprite RestSprite;
 	public Color HoverColor;
 	public Color RestColor;
 	public float HoverSize;
 	public float RestSize;
-
 	public ButtonID buttonID;
+	#endregion ------ /PUBLIC MEMBERS ----
 
+	#region ------ PRIVATE MEMBERS ----
+	protected Image _image;
+	private RectTransform _rectTransform;
+	protected GameController _gameController;
+	protected bool hovering;
+	#endregion ------ /PRIVATE MEMBERS ----
 	void Start ()
 	{
 		Init();
 	}
 
+	/// <summary>
+	/// Init all the component
+	/// </summary>
 	protected void Init()
 	{
 		_image = (GetComponent<Image>() != null) ? GetComponent<Image>() : null;
@@ -40,7 +45,10 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 
 	}
 
-
+	/// <summary>
+	/// Triggered on OnPointerEnter
+	/// </summary>
+	/// <param name="data"></param>
 	public virtual void OnPointerEnter(PointerEventData data)
 	{
 		hovering = true;
@@ -55,7 +63,10 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 			_rectTransform.localScale = new Vector3(HoverSize, HoverSize, 1);
 		}
 	}
-
+	/// <summary>
+	/// Triggered when OnPointer Exit
+	/// </summary>
+	/// <param name="data"></param>
 	public virtual void OnPointerExit(PointerEventData data)
 	{
 		hovering = false;
@@ -73,7 +84,10 @@ public class ButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
 		GameController.selectedButtonID = ButtonID.NONE;
 
 	}
-
+	/// <summary>
+	/// Triggered on OnClick
+	/// </summary>
+	/// <param name="data"></param>
 	public virtual void OnPointerClick(PointerEventData data)
 	{
 

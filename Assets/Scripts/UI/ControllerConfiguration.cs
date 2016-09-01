@@ -33,6 +33,7 @@ public class ControllerConfiguration : MonoBehaviour {
 
 	}
 
+
 	void OnDisable()
 	{
 		_animation[_animation.clip.name].time = 0;

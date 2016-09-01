@@ -13,6 +13,7 @@ public class Bot : Mob
 	private Transform _healthQuadTransform;
 	private Material _heathQuadMaterial;
 
+
 	private Image _fillImage;
 	private Image _stillImage;
 	private Text _HealthText;
@@ -21,7 +22,7 @@ public class Bot : Mob
 	void Start()
 	{
 		Init();
-		MaxHealth = 500;
+		MaxHealth = Constants.BotMaxHealth;
 		Health = MaxHealth;
 		_targetTransform = GameObject.FindWithTag("Player").transform;
 		_fillImage = transform.FindChild("HealthBar").gameObject.transform.FindChild("FillImage").GetComponent<Image>();
@@ -35,7 +36,7 @@ public class Bot : Mob
 		{
 			CheckIfIsDead();
 			transform.LookAt(_targetTransform);
-			transform.Translate(Vector3.forward * Time.deltaTime * 1.0f);
+			transform.Translate(Vector3.forward * Time.deltaTime * Constants.BotMovementSpeed);
 			UpdateHealthQuad();
 		}
 	}

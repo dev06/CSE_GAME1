@@ -35,9 +35,12 @@ public class CameraController : MonoBehaviour {
 	void Start ()
 	{
 		Init();
+		CameraMoveSpeed = Constants.PlayerMovementSpeed;
 	}
-
-	void Init()
+	/// <summary>
+	///	Init all the components.
+	/// </summary>
+	private void Init()
 	{
 		_rb = GetComponent<Rigidbody>();
 		_child = transform.FindChild("Main Camera").transform.gameObject;
@@ -60,8 +63,10 @@ public class CameraController : MonoBehaviour {
 
 
 	}
-
-	void Move()
+	/// <summary>
+	/// Moves the Players
+	/// </summary>
+	private void Move()
 	{
 		float strafe = _strafeInput * CameraMoveSpeed ;
 		float forward = _forwardInput * CameraMoveSpeed ;
@@ -86,8 +91,11 @@ public class CameraController : MonoBehaviour {
 		JitterCamera(10);
 
 	}
-
-	void RegisterInput(ControllerProfile _cf)
+	/// <summary>
+	/// Registers the custom input based on the controller profile
+	/// </summary>
+	/// <param name="_cf"></param>
+	private void RegisterInput(ControllerProfile _cf)
 	{
 		if (_cf == ControllerProfile.WASD)
 		{
@@ -118,8 +126,10 @@ public class CameraController : MonoBehaviour {
 		}
 
 	}
-
-	void Look()
+	/// <summary>
+	///	Manages the rotation for the player
+	/// </summary>
+	private void Look()
 	{
 		transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
 
@@ -127,8 +137,10 @@ public class CameraController : MonoBehaviour {
 		_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
 		_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
 	}
-
-	void HeadBob()
+	/// <summary>
+	///	Bobs the camera
+	/// </summary>
+	private void HeadBob()
 	{
 		if (_isMoving)
 		{
@@ -146,10 +158,13 @@ public class CameraController : MonoBehaviour {
 		}
 	}
 
-
-	void JitterCamera(float intensity)
+	/// <summary>
+	/// Jittes the camera base on the intesnity
+	/// </summary>
+	/// <param name="intensity"></param>
+	private void JitterCamera(float intensity)
 	{
 		//Vector3 _jitterVector = new Vector3(Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f)) - intensity / 2.0f , Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f) - intensity / 2.0f , Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f) - intensity / 2.0f)));
-		//Debug.Log(_jitterVector);
+		//Debug.Log(_jitte	Vector);
 	}
 }

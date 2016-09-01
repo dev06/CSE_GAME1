@@ -6,10 +6,11 @@ public class PlayerController : Mob
 
 	private float _healthRepletionTimer;
 	private float _healthRepletionTimerCounter;
+
 	void Start()
 	{
-		_healthRepletionTimer = 10;
-		MaxHealth = 100;
+		_healthRepletionTimer = Constants.HealthRepletionTimer;
+		MaxHealth = Constants.PlayerMaxHealth;
 		Health = MaxHealth;
 
 	}
@@ -21,7 +22,7 @@ public class PlayerController : Mob
 		{
 			if (_healthRepletionTimerCounter > _healthRepletionTimer)
 			{
-				Health += (2.0f * Time.deltaTime);
+				Health += (Constants.HealthRepletionPoints * Time.deltaTime);
 			}
 		}
 
@@ -29,28 +30,32 @@ public class PlayerController : Mob
 
 	}
 
+
+	/*Summary
+		Triggers the OnCollisionEnter
+	*/
 	void OnCollisionEnter(Collision col)
 	{
 
 		if (col.gameObject.tag == "Entity/Enemy")
 		{
 			if (Health > 0) {
-				Health -= 5;
+				Health -= Constants.BotInitalDamage;
 			}
 			Debug.Log(col.gameObject.name);
 			_healthRepletionTimerCounter = 0;
 		}
 	}
 
-
-
-
+	/*Summary
+		Returns a float value base on a parameter
+	*/
 	public float ReturnFloatValue(string value)
 	{
 		switch (value)
 		{
-			case "Timer": return _healthRepletionTimer;
-			case "Counter": return _healthRepletionTimerCounter;
+		case "Timer": return _healthRepletionTimer;
+		case "Counter": return _healthRepletionTimerCounter;
 		}
 
 		return 0;

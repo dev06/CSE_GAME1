@@ -10,7 +10,7 @@ public class SmallProjectile : Projectile {
 		_velocity = 50;
 		_size = Random.Range(.1f, .2f);
 		_color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
-		_damage = 10;
+		_damage = Constants.SmallProjectileDamage;
 		transform.localScale = new Vector3(_size, _size, _size);
 		GetComponent<MeshRenderer>().materials[0].color = _color;
 		GetComponent<Rigidbody>().velocity = forward * _velocity;

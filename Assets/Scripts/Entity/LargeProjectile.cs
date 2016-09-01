@@ -9,7 +9,7 @@ public class LargeProjectile : Projectile {
 		_velocity = 30;
 		_size = Random.Range(.2f, .4f);
 		_color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
-		_damage = 20;
+		_damage = Constants.LargeProjectileDamage;
 		transform.localScale = new Vector3(_size, _size, _size);
 		GetComponent<MeshRenderer>().materials[0].color = _color;
 		GetComponent<Rigidbody>().velocity = forward * _velocity;

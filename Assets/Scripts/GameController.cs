@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 
+	#region ----------- PUBLIC MEMBERS----------
 	public ControllerProfile controllerProfile;
 	public static ButtonID selectedButtonID;
 	public MenuActive menuActive;
@@ -11,14 +12,17 @@ public class GameController : MonoBehaviour {
 	public bool TogglePlayerMovement;
 	public bool ToggleMouseControl;
 	public GameObject Player;
+	#endregion ----------- /PUBLIC MEMBERS----------
 
+
+	#region------PRIVATE MEMBERS------------
 	private GameObject _largeProjectile;
 	private GameObject _smallProjectile;
 	private GameObject _activeProjectile;
-
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
-
 	private int _index;
+	#endregion------/PRIVATE MEMBERS------------
+
 
 	void Awake () {
 		controllerProfile = ControllerProfile.WASD;
@@ -48,6 +52,10 @@ public class GameController : MonoBehaviour {
 		Cursor.visible = !TogglePlayerMovement;
 	}
 
+	/*Summary
+		Triggers the toggle for control configuration
+
+	*/
 	IEnumerator WaitAndDisable()
 	{
 
@@ -57,14 +65,18 @@ public class GameController : MonoBehaviour {
 		TogglePlayerMovement = !GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled;
 
 	}
-
+	/*Summary
+		Enables the game UI
+	*/
 	void EnableGameUI()
 	{
 
 		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
 		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = false;
 	}
-
+	/*Summary
+		Enables the Control config UI
+	*/
 	void EnableControlConfigUI(bool value)
 	{
 		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = !value;
@@ -72,7 +84,9 @@ public class GameController : MonoBehaviour {
 		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").transform.FindChild("AlphaBackGround").transform.FindChild("ControlConfigBackground").gameObject.SetActive(value);
 
 	}
-
+	/*Summary
+		Switches the controller profiles
+	*/
 	void SwitchControllerProfile()
 	{
 		if (Input.GetKey(KeyCode.LeftControl))
@@ -84,7 +98,9 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-
+	/*summary
+		Shoots the player projectile
+	*/
 	void ShootProjectile()
 	{
 		if (menuActive == MenuActive.GAME)
@@ -104,7 +120,9 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
+	/*summary
+		Locks the cursor base on a bool
+	*/
 	void LockCursor(bool b)
 	{
 		Cursor.visible = !b;
