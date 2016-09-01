@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 
 		_activeProjectile = GameObject.FindWithTag("ActiveProjectiles");
 		Player = GameObject.FindGameObjectWithTag("Player");
-		//EnableGameUI();
+		EnableGameUI();
 
 	}
 
@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour {
 	{
 
 		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
-		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = false;
+		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
 	}
 	/*Summary
 		Enables the Control config UI
@@ -103,21 +103,20 @@ public class GameController : MonoBehaviour {
 	*/
 	void ShootProjectile()
 	{
-		if (menuActive == MenuActive.GAME)
-		{
-			if (Input.GetMouseButtonDown(0))
-			{
-				int _bulletPos = Random.Range(1, 3);
-				GameObject _l_projectile = Instantiate(_largeProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-				_l_projectile.GetComponent<Projectile>().forward = Player.transform.GetChild(0).transform.forward;
-				_bulletPos = (_bulletPos == 1) ? 2 : 1;
-				GameObject _s_projectile = Instantiate(_smallProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-				_s_projectile.GetComponent<Projectile>().forward = Player.transform.GetChild(0).transform.forward;
 
-				_l_projectile.transform.parent = _activeProjectile.transform;
-				_s_projectile.transform.parent = _activeProjectile.transform;
-			}
+		if (Input.GetMouseButtonDown(1))
+		{
+			int _bulletPos = Random.Range(1, 3);
+			GameObject _l_projectile = Instantiate(_largeProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			_l_projectile.GetComponent<Projectile>().forward = Player.transform.GetChild(0).transform.forward;
+			_bulletPos = (_bulletPos == 1) ? 2 : 1;
+			GameObject _s_projectile = Instantiate(_smallProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			_s_projectile.GetComponent<Projectile>().forward = Player.transform.GetChild(0).transform.forward;
+
+			_l_projectile.transform.parent = _activeProjectile.transform;
+			_s_projectile.transform.parent = _activeProjectile.transform;
 		}
+
 	}
 
 	/*summary

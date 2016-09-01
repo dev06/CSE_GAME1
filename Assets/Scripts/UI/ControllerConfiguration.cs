@@ -18,10 +18,10 @@ public class ControllerConfiguration : MonoBehaviour {
 	void Start ()
 	{
 		_gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-		_currentSelectionTranform = transform.FindChild("CurrentProfileSelection").transform;
-		_profileOneTransform = transform.FindChild("cs_transform_1").transform;
-		_profileTwoTransform = transform.FindChild("cs_transform_2").transform;
-		_customTransform = transform.FindChild("cs_transform_3").transform;
+		_currentSelectionTranform =  transform.FindChild("ProfileContainer").transform.FindChild("CurrentProfileSelection").transform;
+		_profileOneTransform = transform.FindChild("ProfileContainer").transform.FindChild("cs_transform_1").transform;
+		_profileTwoTransform = transform.FindChild("ProfileContainer").transform.FindChild("cs_transform_2").transform;
+		_customTransform = transform.FindChild("ProfileContainer").transform.FindChild("cs_transform_3").transform;
 
 
 	}
