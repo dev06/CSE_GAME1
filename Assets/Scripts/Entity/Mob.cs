@@ -31,7 +31,18 @@ public class Mob : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		_isDead = GetHealth <= 0;
+	}
 
+	/// <summary>
+	/// Does damage to the entity based on the damage
+	/// </summary>
+	/// <param name="damage"></param>
+	protected void DoDamage(float damage)
+	{
+		if (Health > 0)
+		{
+			Health -= damage;
+		}
 	}
 	/// <summary>
 	/// Gets and Set Health

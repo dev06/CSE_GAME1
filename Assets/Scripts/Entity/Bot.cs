@@ -54,6 +54,13 @@ public class Bot : Mob
 
 
 
+	public void CallThis()
+	{
+		Debug.Log("Called this");
+	}
+
+
+
 
 
 }

@@ -42,7 +42,8 @@ public class PlayerController : Mob
 			if (Health > 0) {
 				Health -= Constants.BotInitalDamage;
 			}
-			Debug.Log(col.gameObject.name);
+
+			col.gameObject.SendMessage("CallThis");
 			_healthRepletionTimerCounter = 0;
 		}
 	}

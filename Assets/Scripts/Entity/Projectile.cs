@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour {
 		{
 			if (col.gameObject.GetComponent<Mob>() != null)
 			{
-				col.gameObject.GetComponent<Mob>().GetHealth -= _damage;
+				col.gameObject.SendMessage("DoDamage", _damage);
 
 			} else {
 				GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;

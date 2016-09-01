@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 
 		_activeProjectile = GameObject.FindWithTag("ActiveProjectiles");
 		Player = GameObject.FindGameObjectWithTag("Player");
-		EnableGameUI();
+		//EnableGameUI();
 
 	}
 
@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour {
 			StartCoroutine("WaitAndDisable");
 		}
 
-		Cursor.lockState = (TogglePlayerMovement == false) ? CursorLockMode.None : CursorLockMode.Locked;
-		Cursor.visible = !TogglePlayerMovement;
+		//Cursor.lockState = (TogglePlayerMovement == false) ? CursorLockMode.None : CursorLockMode.Locked;
+		//Cursor.visible = !TogglePlayerMovement;
 	}
 
 	/*Summary
@@ -61,8 +61,8 @@ public class GameController : MonoBehaviour {
 
 		yield return new WaitForSeconds((menuActive == MenuActive.GAME) ? 0f :  .7f);
 		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
-		EnableControlConfigUI(!GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled);
-		TogglePlayerMovement = !GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled;
+		//EnableControlConfigUI(!GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled);
+		//TogglePlayerMovement = !GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled;
 
 	}
 	/*Summary
