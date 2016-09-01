@@ -29,7 +29,7 @@ public class ControllerProfileButton : ButtonEventHandler {
 	public override void OnPointerClick(PointerEventData data)
 	{
 		base.OnPointerClick(data);
-		_gameController.controllerProfile = this.controllerProfile;
+		_gameController.controllerProfile = this.controllerProfile  ;
 	}
 
 
