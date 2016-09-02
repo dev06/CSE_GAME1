@@ -9,6 +9,7 @@ public class ControllerProfileButton : ButtonEventHandler {
 	private float _speed = 75.0f;
 	void Start () {
 		Init();
+		transform.GetChild(0).GetComponent<Text>().color = RestColor;
 	}
 
 	// Update is called once per frame
@@ -28,8 +29,11 @@ public class ControllerProfileButton : ButtonEventHandler {
 
 	public override void OnPointerClick(PointerEventData data)
 	{
-		base.OnPointerClick(data);
-		_gameController.controllerProfile = this.controllerProfile  ;
+		if (data.button ==  PointerEventData.InputButton.Left)
+		{
+			base.OnPointerClick(data);
+			_gameController.controllerProfile = this.controllerProfile ;
+		}
 	}
 
 

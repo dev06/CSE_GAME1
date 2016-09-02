@@ -13,6 +13,8 @@ TagManager:
   - ActiveProjectiles
   - Entity/Enemy
   - Environment
+  - ContainerControl/Container
+  - New Tag
   layers:
   - Default
   - TransparentFX

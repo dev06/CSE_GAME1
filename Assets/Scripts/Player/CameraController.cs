@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour {
 	#endregion---/ PUBLIC MEMBERS---
 
 	#region---PRIVATE MEMBERS----
-	private GameObject _child;
 	private float _lookInput = 0;
 	private float _headBoxX;
 	private float _headBobY;
@@ -22,12 +21,13 @@ public class CameraController : MonoBehaviour {
 	private float _strafeInput;
 	private float _forwardInput;
 	private bool _isMoving;
-	private GameController _gameSceneManager;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
+	private CharacterController _cc;
 	private Rigidbody _rb;
 	private Vector3 _velocity;
-	private CharacterController _cc;
+	private GameObject _child;
+	private GameController _gameSceneManager;
 
 
 	#endregion---/PRIVATE MEMBERS---

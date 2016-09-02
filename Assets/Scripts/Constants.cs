@@ -27,4 +27,8 @@ public class Constants  {
 	public const float HealthRepletionTimer = 10.0f;  //units in seconds.
 	public const float HealthRepletionPoints = 2.0f;  // Repletes x points every second.
 
+
+	//UI
+	public const float HideControlUITimer = 2.0f;
+
 }

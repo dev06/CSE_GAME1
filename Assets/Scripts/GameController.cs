@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
 
 
 	void Awake () {
+		SetCursorTexture((Texture2D)Resources.Load("UI/cursor"));
 		controllerProfile = ControllerProfile.WASD;
 		menuActive = MenuActive.GAME;
 		customKey = new KeyCode[8];
@@ -126,6 +127,12 @@ public class GameController : MonoBehaviour {
 	{
 		Cursor.visible = !b;
 		Screen.lockCursor = b;
+	}
+
+
+	private void SetCursorTexture(Texture2D _texture)
+	{
+		Cursor.SetCursor(_texture, new Vector2(0, 0), CursorMode.Auto);
 	}
 
 }

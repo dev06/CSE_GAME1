@@ -12,7 +12,10 @@ public class ControllerConfiguration : MonoBehaviour {
 	void OnEnable()
 	{
 		_animation = GetComponent<Animation>();
-		_animation.Play(_animation.clip.name);
+		if (_animation.clip != null)
+		{
+			_animation.Play(_animation.clip.name);
+		}
 	}
 
 	void Start ()
@@ -58,7 +61,10 @@ public class ControllerConfiguration : MonoBehaviour {
 
 	void OnDisable()
 	{
-		_animation[_animation.clip.name].time = 0;
-		_animation[_animation.clip.name].speed = 1;
+		if (_animation.clip != null)
+		{
+			_animation[_animation.clip.name].time = 0;
+			_animation[_animation.clip.name].speed = 1;
+		}
 	}
 }

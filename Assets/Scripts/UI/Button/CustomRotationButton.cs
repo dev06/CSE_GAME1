@@ -16,6 +16,8 @@ public class CustomRotationButton : ButtonEventHandler {
 		Init();
 		_text = transform.GetChild(0).GetComponent<Text>();
 		_imageIcon = transform.GetChild(1).GetComponent<Image>();
+		_imageIcon.color = RestColor;
+		_text.color = RestColor;
 		_toggleMouseButton = transform.parent.transform.parent.transform.FindChild("ToggleMouseControl").GetComponent<ToggleMouseButton>();
 	}
 
@@ -219,15 +221,20 @@ public class CustomRotationButton : ButtonEventHandler {
 
 	public override void OnPointerExit(PointerEventData data)
 	{
+
+
 		if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
 		{
 			base.OnPointerExit(data);
 			//selectedButtonID = buttonID;
 		}
+
 	}
 
 
+	public override void OnPointerClick(PointerEventData data)
+	{
 
-
+	}
 
 }

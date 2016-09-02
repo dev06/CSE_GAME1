@@ -13,6 +13,8 @@ public class CustomKeyButton : ButtonEventHandler {
 		Init();
 		_text = transform.GetChild(0).GetComponent<Text>();
 		_imageIcon = transform.GetChild(1).GetComponent<Image>();
+		_imageIcon.color = RestColor;
+		_text.color = RestColor;
 
 	}
 
@@ -224,13 +226,16 @@ public class CustomKeyButton : ButtonEventHandler {
 
 	public override void OnPointerClick(PointerEventData data)
 	{
-		base.OnPointerClick(data);
-		if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
+
+		if (data.button == PointerEventData.InputButton.Left)
 		{
+			base.OnPointerClick(data);
+			if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
+			{
 
-			GameController.selectedButtonID = buttonID;
+				GameController.selectedButtonID = buttonID;
+			}
 		}
-
 	}
 }
 
