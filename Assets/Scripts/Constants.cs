@@ -27,6 +27,7 @@ public class Constants  {
 
 	//Projectile Members
 	public const float PlayerMovementSpeed = 5.0f;
+	public const float PlayerSprintSpeed = 8.0f;
 	public const float LargeProjectileDamage = 20.0f;
 
 	//HEALTH MECH

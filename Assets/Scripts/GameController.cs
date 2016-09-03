@@ -8,11 +8,18 @@ public class GameController : MonoBehaviour {
 	public ControllerProfile controllerProfile;
 	public static ButtonID selectedButtonID;
 	public MenuActive menuActive;
+	[HideInInspector]
 	public KeyCode[] customKey;
+	[HideInInspector]
 	public bool TogglePlayerMovement;
+	[HideInInspector]
 	public bool ToggleMouseControl;
+	public bool SpawnEnemy;
+	[HideInInspector]
 	public GameObject Player;
+	[HideInInspector]
 	public int botCounter;
+	[HideInInspector]
 	public GameObject activeEntities;
 	#endregion ----------- /PUBLIC MEMBERS----------
 
@@ -60,10 +67,8 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator WaitAndDisable()
 	{
-
 		yield return new WaitForSeconds((menuActive == MenuActive.GAME) ? 0f :  .7f);
 		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
-
 	}
 
 	void EnableGameUI()
@@ -97,12 +102,15 @@ public class GameController : MonoBehaviour {
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-			int _bulletPos = Random.Range(1, 3);
-			GameObject _l_projectile = Instantiate(_largeProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-			_l_projectile.GetComponent<Projectile>().forward = Player.transform.GetChild(0).transform.forward;
-			_bulletPos = (_bulletPos == 1) ? 2 : 1;
-			GameObject _s_projectile = Instantiate(_smallProjectile, Player.transform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-			_s_projectile.GetComponent<Projectile>().forward = Player.transform.GetChild(0).transform.forward;
+			Transform _camTransform = Camera.main.transform;
+			int _bulletPos = Random.Range(_camTransform.childCount - 1, _camTransform.childCount - 3);
+
+
+			GameObject _l_projectile = Instantiate(_largeProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			_l_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
+			_bulletPos = (_bulletPos == _camTransform.childCount - 1) ? _camTransform.childCount - 2 : _camTransform.childCount - 1;
+			GameObject _s_projectile = Instantiate(_smallProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			_s_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
 
 			_l_projectile.transform.parent = activeEntities.transform;
 			_s_projectile.transform.parent = activeEntities.transform;
@@ -124,21 +132,24 @@ public class GameController : MonoBehaviour {
 
 	private void SpawnBots(int startingDelay, int rate)
 	{
-		if (botCounter < Constants.MaxBotAtTime)
+		if (SpawnEnemy)
 		{
-			if (Time.time > startingDelay)
+			if (botCounter < Constants.MaxBotAtTime)
 			{
-				_botSpawnCounter += Time.deltaTime;
-
-				if (_botSpawnCounter > rate )
+				if (Time.time > startingDelay)
 				{
-					float _spawnX = Player.transform.position.x + Random.Range(-20.0f, 20.0f);
-					float _spawnY = 4;
-					float _spawnZ = Player.transform.position.z + Random.Range(-20.0f, 20.0f);
-					GameObject clone = Instantiate(_bot, new Vector3(_spawnX, _spawnY, _spawnZ), Quaternion.identity) as GameObject;
-					clone.transform.parent = activeEntities.transform;
-					botCounter++;
-					_botSpawnCounter = 0;
+					_botSpawnCounter += Time.deltaTime;
+
+					if (_botSpawnCounter > rate )
+					{
+						float _spawnX = Player.transform.position.x + Random.Range(-20.0f, 20.0f);
+						float _spawnY = 4;
+						float _spawnZ = Player.transform.position.z + Random.Range(-20.0f, 20.0f);
+						GameObject clone = Instantiate(_bot, new Vector3(_spawnX, _spawnY, _spawnZ), Quaternion.identity) as GameObject;
+						clone.transform.parent = activeEntities.transform;
+						botCounter++;
+						_botSpawnCounter = 0;
+					}
 				}
 			}
 		}

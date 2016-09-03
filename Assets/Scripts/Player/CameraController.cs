@@ -27,6 +27,11 @@ public class CameraController : MonoBehaviour {
 	private Rigidbody _rb;
 	private Vector3 _velocity;
 	private GameObject _child;
+	private GameObject _bulletLeft;
+	private GameObject _bulletRight;
+	private GameObject _dummyLeft;
+	private GameObject _dummyRight;
+	private GameObject[] _weaponBarrels;
 	private GameController _gameSceneManager;
 
 
@@ -46,6 +51,11 @@ public class CameraController : MonoBehaviour {
 		_child = transform.FindChild("Main Camera").transform.gameObject;
 		_cc = GetComponent<CharacterController>();
 		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		_dummyLeft = _child.transform.FindChild("DummyLeft").gameObject;
+		_dummyRight = _child.transform.FindChild("DummyRight").gameObject;
+
+		GameObject[] _weaponBarrels_local = { transform.FindChild("barrel (1)").gameObject, transform.FindChild("barrel").gameObject };
+		_weaponBarrels = _weaponBarrels_local;
 
 	}
 
@@ -59,9 +69,6 @@ public class CameraController : MonoBehaviour {
 			Look();
 			HeadBob();
 		}
-
-
-
 	}
 	/// <summary>
 	/// Moves the Players
@@ -156,6 +163,18 @@ public class CameraController : MonoBehaviour {
 		{
 			_targetHeadBob = Vector3.zero;
 		}
+
+		AdjustBarrels(_headBobPos);
+	}
+
+
+	private void AdjustBarrels(Vector3 _headBobPos)
+	{
+		_weaponBarrels[0].transform.position = (_dummyLeft.transform.position + _dummyLeft.transform.forward / 2) + transform.TransformDirection(_headBobPos);
+		_weaponBarrels[0].transform.rotation = _dummyLeft.transform.rotation;
+		_weaponBarrels[1].transform.position = (_dummyRight.transform.position + _dummyRight.transform.forward / 2) + transform.TransformDirection(_headBobPos);
+		_weaponBarrels[1].transform.rotation = _dummyRight.transform.rotation;
+
 	}
 
 	/// <summary>

@@ -81,6 +81,28 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: ToggleMouseControl
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 0.12, z: 1}
+        inSlope: {x: 2.4000006, y: 0, z: 0}
+        outSlope: {x: 2.4000006, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.083333336
+        value: {x: 1.2, y: 0.12, z: 1}
+        inSlope: {x: -6, y: 0, z: 0}
+        outSlope: {x: -6, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.16666667
+        value: {x: 0, y: 0.12, z: 1}
+        inSlope: {x: -14.400001, y: 0, z: 0}
+        outSlope: {x: -14.400001, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: PanelSlider
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -1135,6 +1157,81 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalScale.z
     path: ToggleMouseControl
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 2.4000006
+        outSlope: 2.4000006
+        tangentMode: 10
+      - time: 0.083333336
+        value: 1.2
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: 0.16666667
+        value: 0
+        inSlope: -14.400001
+        outSlope: -14.400001
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: PanelSlider
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.12
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.083333336
+        value: 0.12
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: 0.12
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: PanelSlider
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: PanelSlider
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
