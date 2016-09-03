@@ -32,13 +32,18 @@ public class Bot : Mob
 
 	void Update()
 	{
-		if (_gameController.menuActive == MenuActive.GAME)
+		if (_isDead)
 		{
-			CheckIfIsDead();
-			transform.LookAt(_targetTransform);
-			transform.Translate(Vector3.forward * Time.deltaTime * Constants.BotMovementSpeed);
-			UpdateHealthQuad();
+			_gameController.botCounter--;
 		}
+		CheckIfIsDead();
+
+
+
+		transform.LookAt(_targetTransform);
+		transform.Translate(Vector3.forward * Time.deltaTime * Constants.BotMovementSpeed);
+		UpdateHealthQuad();
+
 	}
 
 	private float _velocity;
@@ -56,7 +61,7 @@ public class Bot : Mob
 
 	public void CallThis()
 	{
-		Debug.Log("Called this");
+
 	}
 
 

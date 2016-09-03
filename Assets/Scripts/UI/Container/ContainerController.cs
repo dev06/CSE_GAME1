@@ -9,8 +9,10 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 	protected bool _childrenActive;
 	public ContainerController.Role role;
 	private Animation _animation;
-	private bool _canPlayAnim;
+	private bool _initAnim;
+	private static bool _canPlayAnim;
 	private static GameObject[] _container;
+
 	void Start ()
 	{
 		Init();
@@ -35,18 +37,21 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 				if (_animation != null)
 				{
 
-					PlayAnimation(-1);
+					if (_canPlayAnim == false)
+					{
+						PlayAnimation(-1);
+						_canPlayAnim = true;
+
+					}
 
 				}
-				if (_childrenActive == true)
-				{
-					//SetChildrenActive(false);
 
-				}
 			} else
 			{
 				_hideTimerCounter += Time.deltaTime / _container.Length;
 			}
+
+			//Debug.Log(_hideTimerCounter);
 		}
 	}
 
@@ -68,30 +73,30 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 	{
 		_showUI = true;
 		_hideTimerCounter = 0;
-		if (_animation != null)
-		{
-			_animation[_animation.clip.name].time =  0;
-		}
+
+
 		if (_canPlayAnim)
+		{
 			PlayAnimation(1);
+			_canPlayAnim = false;
+		}
 	}
 
 
 	private void PlayAnimation(int direction)
 	{
-
-		_animation[_animation.clip.name].speed = direction;
-		_animation.Play(_animation.clip.name);
+		for (int i = 0; i < _container.Length; i++)
+		{
+			Animation _anim = _container[i].GetComponent<Animation>();
+			_anim[_anim.clip.name].time =  (direction > 0) ? 0 : _anim[_anim.clip.name].length;
+			_anim[_anim.clip.name].speed = direction;
+			_anim.Play(_anim.clip.name);
+		}
 	}
 
 	public virtual void OnPointerExit(PointerEventData data)
 	{
-		if (_animation != null)
-		{
-			_animation[_animation.clip.name].time =  _animation[_animation.clip.name].length;
-		}
 		_showUI = false;
-		_canPlayAnim = true;
 	}
 
 

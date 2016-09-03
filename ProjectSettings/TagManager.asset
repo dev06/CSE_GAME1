@@ -14,7 +14,7 @@ TagManager:
   - Entity/Enemy
   - Environment
   - ContainerControl/Container
-  - New Tag
+  - ActiveEntities
   layers:
   - Default
   - TransparentFX

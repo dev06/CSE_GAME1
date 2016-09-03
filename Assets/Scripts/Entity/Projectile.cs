@@ -54,6 +54,7 @@ public class Projectile : MonoBehaviour {
 
 			} else {
 				GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
+				effect_clone.transform.parent = _gameController.activeEntities.transform;
 
 			}
 			Destroy(gameObject);

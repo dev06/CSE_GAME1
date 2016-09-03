@@ -9,9 +9,15 @@ public class Constants  {
 	public const string X_LOOK = "Mouse X";
 	public const string Y_LOOK = "Mouse Y";
 
+	//Game mech
+	public const int StartBotSpawningDelay = 0; //bots will spawn after x seconds (starting)
+	public const int BotSpawnDelay = 3; //spawn bots every x secs
+	public const int MaxBotAtTime = 4;
+
+
 	//Enemy Members
 	public const float BotMaxHealth = 500.0f;
-	public const float BotMovementSpeed = 5.0f;
+	public const float BotMovementSpeed = 4.5f;
 	public const float BotInitalDamage = 5.0f;
 
 	//Player/Camera members
@@ -29,6 +35,6 @@ public class Constants  {
 
 
 	//UI
-	public const float HideControlUITimer = 2.0f;
+	public const float HideControlUITimer = 5.0f;
 
 }
