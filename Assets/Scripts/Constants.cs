@@ -11,8 +11,8 @@ public class Constants  {
 
 	//Game mech
 	public const int StartBotSpawningDelay = 0; //bots will spawn after x seconds (starting)
-	public const int BotSpawnDelay = 3; //spawn bots every x secs
-	public const int MaxBotAtTime = 4;
+	public const int BotSpawnDelay = 2; //spawn bots every x secs
+	public const int MaxBotAtTime = 2;
 
 
 	//Enemy Members

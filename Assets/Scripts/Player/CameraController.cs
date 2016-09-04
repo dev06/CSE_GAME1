@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour {
 	private float _lookVerticalInput;
 	private float _strafeInput;
 	private float _forwardInput;
+	private float _recoil;
+	private float _recoilVel;
 	private bool _isMoving;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
@@ -62,13 +64,19 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		RegisterInput(_gameSceneManager.controllerProfile);
-		if (_gameSceneManager.TogglePlayerMovement)
+		if (_gameSceneManager.menuActive == MenuActive.GAME)
 		{
-			Move();
-			Look();
-			HeadBob();
+			RegisterInput(_gameSceneManager.controllerProfile);
+
+			if (_gameSceneManager.TogglePlayerMovement)
+			{
+				Move();
+				Look();
+				HeadBob();
+				_recoil = Mathf.SmoothDamp(_recoil, 0, ref _recoilVel, .1f);
+			}
 		}
+
 	}
 	/// <summary>
 	/// Moves the Players
@@ -158,7 +166,7 @@ public class CameraController : MonoBehaviour {
 			_headBobPos.x = Mathf.Lerp (_headBobPos.x, _targetHeadBob.x, 2.5f * Time.deltaTime);
 			_headBobPos.y = Mathf.Lerp (_headBobPos.y, _targetHeadBob.y, 2.5f * Time.deltaTime);
 			_headBobPos.z = 0;
-			_child.transform.position = (transform.position + transform.forward / 2 + Vector3.up) + transform.TransformDirection(_headBobPos);
+			_child.transform.position = (transform.position + Vector3.up) + transform.TransformDirection(_headBobPos);
 		} else
 		{
 			_targetHeadBob = Vector3.zero;
@@ -170,11 +178,16 @@ public class CameraController : MonoBehaviour {
 
 	private void AdjustBarrels(Vector3 _headBobPos)
 	{
-		_weaponBarrels[0].transform.position = (_dummyLeft.transform.position + _dummyLeft.transform.forward / 2) + transform.TransformDirection(_headBobPos);
-		_weaponBarrels[0].transform.rotation = _dummyLeft.transform.rotation;
-		_weaponBarrels[1].transform.position = (_dummyRight.transform.position + _dummyRight.transform.forward / 2) + transform.TransformDirection(_headBobPos);
-		_weaponBarrels[1].transform.rotation = _dummyRight.transform.rotation;
+		_weaponBarrels[0].transform.position = (_dummyLeft.transform.position + _dummyLeft.transform.forward / 2 + (transform.forward * (_recoil / 20.0f))) + transform.TransformDirection(_headBobPos) ;
+		_weaponBarrels[0].transform.rotation = _dummyLeft.transform.rotation * Quaternion.Euler(new Vector3(_recoil, 0, 0));
+		_weaponBarrels[1].transform.position = (_dummyRight.transform.position + _dummyRight.transform.forward / 2 + (transform.forward * (_recoil / 20.0f))) + transform.TransformDirection(_headBobPos);
+		_weaponBarrels[1].transform.rotation = _dummyRight.transform.rotation * Quaternion.Euler(new Vector3(_recoil, 0, 0));
 
+	}
+
+	public void Recoil()
+	{
+		_recoil = -10;
 	}
 
 	/// <summary>

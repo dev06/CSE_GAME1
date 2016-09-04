@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class CustomKeyButton : ButtonEventHandler {
+public class CustomKeyButton : ButtonEventHandler
+{
 
 	// Use this for initialization
 	private float _speed = 75.0f;
@@ -240,17 +241,4 @@ public class CustomKeyButton : ButtonEventHandler {
 }
 
 
-public enum ButtonID
-{
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN,
 
-	ROT_LEFT,
-	ROT_RIGHT,
-	ROT_UP,
-	ROT_DOWN,
-
-	NONE,
-}

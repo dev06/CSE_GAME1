@@ -15,12 +15,15 @@ public class GameController : MonoBehaviour {
 	[HideInInspector]
 	public bool ToggleMouseControl;
 	public bool SpawnEnemy;
+	public bool KeepSpawning;
 	[HideInInspector]
 	public GameObject Player;
 	[HideInInspector]
 	public int botCounter;
 	[HideInInspector]
 	public GameObject activeEntities;
+	[HideInInspector]
+	public float TotalEnemiesSpawned;
 	#endregion ----------- /PUBLIC MEMBERS----------
 
 
@@ -37,7 +40,7 @@ public class GameController : MonoBehaviour {
 	void Awake () {
 		SetCursorTexture((Texture2D)Resources.Load("UI/cursor"));
 		controllerProfile = ControllerProfile.WASD;
-		menuActive = MenuActive.GAME;
+		menuActive = MenuActive.MENU;
 		customKey = new KeyCode[8];
 		TogglePlayerMovement = true;
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
@@ -45,21 +48,19 @@ public class GameController : MonoBehaviour {
 		_bot = (GameObject)Resources.Load("Prefabs/Bot");
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
-		EnableGameUI();
+		EnableGameUI(false);
 	}
 
 
 	void Update ()
 	{
 
-
 		SwitchControllerProfile();
 		ShootProjectile();
-		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay);
+		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			StopCoroutine("WaitAndDisable");
-			StartCoroutine("WaitAndDisable");
+
 			Application.Quit();
 		}
 	}
@@ -71,11 +72,13 @@ public class GameController : MonoBehaviour {
 		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
 	}
 
-	void EnableGameUI()
+	public void EnableGameUI(bool b)
 	{
 
-		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
-		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
+		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = b;
+		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = b;
+		GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = !b;
+		menuActive = (b) ? MenuActive.GAME : MenuActive.MENU;
 	}
 
 	void EnableControlConfigUI(bool value)
@@ -114,6 +117,8 @@ public class GameController : MonoBehaviour {
 
 			_l_projectile.transform.parent = activeEntities.transform;
 			_s_projectile.transform.parent = activeEntities.transform;
+
+			Player.GetComponent<CameraController>().Recoil();
 		}
 	}
 
@@ -130,25 +135,52 @@ public class GameController : MonoBehaviour {
 		Cursor.SetCursor(_texture, new Vector2(0, 0), CursorMode.Auto);
 	}
 
-	private void SpawnBots(int startingDelay, int rate)
+	private void SpawnBots(int startingDelay, int rate, bool keepSpawning)
 	{
-		if (SpawnEnemy)
+		if (menuActive == MenuActive.GAME)
 		{
-			if (botCounter < Constants.MaxBotAtTime)
+			if (SpawnEnemy)
 			{
-				if (Time.time > startingDelay)
+				if (keepSpawning)
 				{
-					_botSpawnCounter += Time.deltaTime;
-
-					if (_botSpawnCounter > rate )
+					if (botCounter < Constants.MaxBotAtTime)
 					{
-						float _spawnX = Player.transform.position.x + Random.Range(-20.0f, 20.0f);
-						float _spawnY = 4;
-						float _spawnZ = Player.transform.position.z + Random.Range(-20.0f, 20.0f);
-						GameObject clone = Instantiate(_bot, new Vector3(_spawnX, _spawnY, _spawnZ), Quaternion.identity) as GameObject;
-						clone.transform.parent = activeEntities.transform;
-						botCounter++;
-						_botSpawnCounter = 0;
+						if (Time.time > startingDelay)
+						{
+							_botSpawnCounter += Time.deltaTime;
+
+							if (_botSpawnCounter > rate )
+							{
+								float _spawnX = Player.transform.position.x + Random.Range(-20.0f, 20.0f);
+								float _spawnY = 4;
+								float _spawnZ = Player.transform.position.z + Random.Range(-20.0f, 20.0f);
+								GameObject clone = Instantiate(_bot, new Vector3(_spawnX, _spawnY, _spawnZ), Quaternion.identity) as GameObject;
+								clone.transform.parent = activeEntities.transform;
+								botCounter++;
+								_botSpawnCounter = 0;
+							}
+						}
+					}
+				} else
+				{
+					if (TotalEnemiesSpawned < Constants.MaxBotAtTime)
+					{
+						if (Time.time > startingDelay)
+						{
+							_botSpawnCounter += Time.deltaTime;
+
+							if (_botSpawnCounter > rate )
+							{
+								float _spawnX = Player.transform.position.x + Random.Range(-20.0f, 20.0f);
+								float _spawnY = 4;
+								float _spawnZ = Player.transform.position.z + Random.Range(-20.0f, 20.0f);
+								GameObject clone = Instantiate(_bot, new Vector3(_spawnX, _spawnY, _spawnZ), Quaternion.identity) as GameObject;
+								clone.transform.parent = activeEntities.transform;
+								botCounter++;
+								TotalEnemiesSpawned++;
+								_botSpawnCounter = 0;
+							}
+						}
 					}
 				}
 			}
@@ -165,6 +197,27 @@ public enum ControllerProfile
 
 public enum MenuActive
 {
+	MENU,
 	GAME,
 	CONTROL,
 }
+
+public enum ButtonID
+{
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+
+	ROT_LEFT,
+	ROT_RIGHT,
+	ROT_UP,
+	ROT_DOWN,
+
+	PLAY,
+	CREDIT,
+	QUIT,
+
+	NONE,
+}
+

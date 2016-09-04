@@ -12,6 +12,7 @@ public class Bot : Mob
 	private GameObject _healthQuad;
 	private Transform _healthQuadTransform;
 	private Material _heathQuadMaterial;
+	private float _velocity;
 
 
 	private Image _fillImage;
@@ -37,16 +38,21 @@ public class Bot : Mob
 			_gameController.botCounter--;
 		}
 		CheckIfIsDead();
-
-
-
+		CheckIfOutsideBounds();
 		transform.LookAt(_targetTransform);
 		transform.Translate(Vector3.forward * Time.deltaTime * Constants.BotMovementSpeed);
 		UpdateHealthQuad();
-
 	}
 
-	private float _velocity;
+	void CheckIfOutsideBounds()
+	{
+		if (transform.position.y < -100)
+		{
+			Destroy(gameObject);
+			_gameController.botCounter--;
+		}
+	}
+
 	void UpdateHealthQuad()
 	{
 
@@ -56,16 +62,4 @@ public class Bot : Mob
 		_stillImage.transform.Rotate(new Vector3(0, 0, Time.deltaTime * 50.0f));
 		_HealthText.text = "" + (int)(_fillImage.fillAmount * MaxHealth);
 	}
-
-
-
-	public void CallThis()
-	{
-
-	}
-
-
-
-
-
 }

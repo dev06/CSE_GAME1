@@ -30,6 +30,8 @@ public class Mob : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+
+
 		_isDead = GetHealth <= 0;
 	}
 

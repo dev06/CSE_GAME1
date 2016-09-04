@@ -15,6 +15,7 @@ TagManager:
   - Environment
   - ContainerControl/Container
   - ActiveEntities
+  - UI/MenuCanvas
   layers:
   - Default
   - TransparentFX

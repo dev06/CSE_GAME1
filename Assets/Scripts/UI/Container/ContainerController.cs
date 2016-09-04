@@ -97,6 +97,7 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 	public virtual void OnPointerExit(PointerEventData data)
 	{
 		_showUI = false;
+
 	}
 
 

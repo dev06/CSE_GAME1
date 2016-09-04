@@ -34,6 +34,22 @@ public class PlayerController : Mob
 	/*Summary
 		Triggers the OnCollisionEnter
 	*/
+	// void OnControllerColliderHit(ControllerColliderHit col)
+	// {
+
+	// 	if (col.gameObject.tag == "Entity/Enemy")
+	// 	{
+	// 		Debug.Log("hit");
+	// 		if (Health > 0) {
+	// 			Health -= Constants.BotInitalDamage;
+	// 		}
+
+
+	// 		_healthRepletionTimerCounter = 0;
+	// 	}
+	// }
+
+
 	void OnCollisionEnter(Collision col)
 	{
 
@@ -43,11 +59,10 @@ public class PlayerController : Mob
 				Health -= Constants.BotInitalDamage;
 			}
 
-			col.gameObject.SendMessage("CallThis");
+
 			_healthRepletionTimerCounter = 0;
 		}
 	}
-
 	/*Summary
 		Returns a float value base on a parameter
 	*/
@@ -55,8 +70,8 @@ public class PlayerController : Mob
 	{
 		switch (value)
 		{
-		case "Timer": return _healthRepletionTimer;
-		case "Counter": return _healthRepletionTimerCounter;
+			case "Timer": return _healthRepletionTimer;
+			case "Counter": return _healthRepletionTimerCounter;
 		}
 
 		return 0;
