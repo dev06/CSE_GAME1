@@ -27,12 +27,14 @@ public class MenuButton : ButtonEventHandler {
 
 		if (_animation[_animation.clip.name].speed == -1)
 		{
-			if (_animation.IsPlaying(_animation.clip.name) == false) {
-				_gameController.EnableGameUI(true);
+			if (_animation.IsPlaying(_animation.clip.name) == false)
+			{
+				if (_gameController.menuActive == MenuActive.MENU)
+				{
+					_gameController.EnableGameUI(true);
+				}
 			}
-
 		}
-
 	}
 
 	public override void OnPointerEnter(PointerEventData data)
