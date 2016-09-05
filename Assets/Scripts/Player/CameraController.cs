@@ -43,6 +43,7 @@ public class CameraController : MonoBehaviour {
 	{
 		Init();
 		CameraMoveSpeed = Constants.PlayerMovementSpeed;
+
 	}
 	/// <summary>
 	///	Init all the components.
@@ -112,6 +113,7 @@ public class CameraController : MonoBehaviour {
 	/// <param name="_cf"></param>
 	private void RegisterInput(ControllerProfile _cf)
 	{
+
 		if (_cf == ControllerProfile.WASD)
 		{
 			_forwardInput = (Input.GetKey(KeyCode.W)) ? _forwardInput = 1 : (Input.GetKey(KeyCode.S)) ? _forwardInput = -1 : _forwardInput = 0;
@@ -141,6 +143,9 @@ public class CameraController : MonoBehaviour {
 		}
 
 	}
+
+
+
 	/// <summary>
 	///	Manages the rotation for the player
 	/// </summary>
