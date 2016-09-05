@@ -337,12 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d94093f971c4f4483399f8713fad6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 0}
-  _gameController: {fileID: 0}
-  _currentSelectionTranform: {fileID: 0}
-  _profileOneTransform: {fileID: 0}
-  _profileTwoTransform: {fileID: 0}
-  _customTransform: {fileID: 0}
 --- !u!1 &147230785
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,26 +451,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 3
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 75
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
 --- !u!1 &158155961
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,25 +539,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0.023529414
-    g: 0.63529414
-    b: 0.75294125
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0.023529414, g: 0.63529414, b: 0.75294125, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 0
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
   controllerProfile: 1
-  _speed: 75
 --- !u!1 &166848621
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,21 +765,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
-  _image: {fileID: 0}
-  _outLineImage: {fileID: 0}
-  _gameController: {fileID: 0}
   ActiveSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  ActiveColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  ActiveColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   mouseUIImage: {fileID: 0}
 --- !u!1 &201748009
 GameObject:
@@ -899,26 +854,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 1
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 75
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
 --- !u!1001 &208733795
 Prefab:
   m_ObjectHideFlags: 0
@@ -1550,11 +1490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e8ddf2f574bbf46b0ca608a725aa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameController: {fileID: 0}
-  _childrenActive: 0
   role: 0
-  _animation: {fileID: 0}
-  _initAnim: 0
 --- !u!114 &423326874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,25 +2020,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 10
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _animation: {fileID: 0}
 --- !u!1 &705294112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,28 +2524,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 7
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
-  _toggleMouseButton: {fileID: 0}
-  keyMapped: 0
 --- !u!114 &783019579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,25 +2645,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 8
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _animation: {fileID: 0}
 --- !u!1 &859558190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,7 +2767,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 864066288}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2940,28 +2831,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 5
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
-  _toggleMouseButton: {fileID: 0}
-  keyMapped: 0
 --- !u!114 &866284751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3080,11 +2954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e8ddf2f574bbf46b0ca608a725aa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameController: {fileID: 0}
-  _childrenActive: 0
   role: 1
-  _animation: {fileID: 0}
-  _initAnim: 0
 --- !u!111 &896743710
 Animation:
   m_ObjectHideFlags: 0
@@ -3385,25 +3255,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0.023529414
-    g: 0.63529414
-    b: 0.75294125
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0.023529414, g: 0.63529414, b: 0.75294125, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 0
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
   controllerProfile: 0
-  _speed: 75
 --- !u!1 &1016128384
 GameObject:
   m_ObjectHideFlags: 0
@@ -4070,25 +3927,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0.023529414
-    g: 0.63529414
-    b: 0.75294125
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0.023529414, g: 0.63529414, b: 0.75294125, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 0
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
   controllerProfile: 2
-  _speed: 75
 --- !u!1 &1191891740 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: af510265b403dbd4d9dc00bd758ea24f, type: 3}
@@ -4277,28 +4121,6 @@ MonoBehaviour:
   CameraLookAngle: 60
   bobAmplitude: 1
   bobFrequency: 3
-  _lookInput: 0
-  _headBoxX: 0
-  _headBobY: 0
-  _lookHorizontalInput: 0
-  _lookVerticalInput: 0
-  _strafeInput: 0
-  _forwardInput: 0
-  _recoil: 0
-  _recoilVel: 0
-  _isMoving: 0
-  _headBobPos: {x: 0, y: 0, z: 0}
-  _targetHeadBob: {x: 0, y: 0, z: 0}
-  _cc: {fileID: 0}
-  _rb: {fileID: 0}
-  _velocity: {x: 0, y: 0, z: 0}
-  _child: {fileID: 0}
-  _bulletLeft: {fileID: 0}
-  _bulletRight: {fileID: 0}
-  _dummyLeft: {fileID: 0}
-  _dummyRight: {fileID: 0}
-  _weaponBarrels: []
-  _gameSceneManager: {fileID: 0}
 --- !u!54 &1223268751
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4325,12 +4147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5c826a3c184c146add4dfa40e6b0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
-  MaxHealth: 0
-  _isDead: 0
-  _gameController: {fileID: 0}
-  _healthRepletionTimer: 0
-  _healthRepletionTimerCounter: 0
 --- !u!143 &1223268753
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4500,26 +4316,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 0
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 75
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
 --- !u!1 &1265159147
 GameObject:
   m_ObjectHideFlags: 0
@@ -4864,28 +4665,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 4
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
-  _toggleMouseButton: {fileID: 0}
-  keyMapped: 0
 --- !u!114 &1331624572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4970,28 +4754,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 6
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
-  _toggleMouseButton: {fileID: 0}
-  keyMapped: 0
 --- !u!114 &1337140488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,11 +4825,11 @@ RectTransform:
   - {fileID: 732784824}
   m_Father: {fileID: 864066289}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 1}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414269341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5163,12 +4930,6 @@ MonoBehaviour:
   botCounter: 0
   activeEntities: {fileID: 0}
   TotalEnemiesSpawned: 0
-  _largeProjectile: {fileID: 0}
-  _smallProjectile: {fileID: 0}
-  _bot: {fileID: 0}
-  _botSpawnCounter: 0
-  ControllerProfileList: 0000000001000000
-  _index: 0
 --- !u!1 &1468503885
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,26 +5014,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 2
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 75
-  _text: {fileID: 0}
-  _imageIcon: {fileID: 0}
 --- !u!1 &1482427236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,25 +5191,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverSprite: {fileID: 21300000, guid: 2ce3983c148159b43a8b5168fea90878, type: 3}
   RestSprite: {fileID: 21300000, guid: d30650d01ad489d4e9035d9932bb9a7f, type: 3}
-  HoverColor:
-    r: 0
-    g: 0.39607847
-    b: 0.47450984
-    a: 1
-  RestColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  HoverColor: {r: 0, g: 0.39607847, b: 0.47450984, a: 1}
+  RestColor: {r: 1, g: 1, b: 1, a: 1}
   HoverSize: 1.2
   RestSize: 1
   buttonID: 9
-  _image: {fileID: 0}
-  _rectTransform: {fileID: 0}
-  _gameController: {fileID: 0}
-  hovering: 0
-  _speed: 50
-  _animation: {fileID: 0}
 --- !u!1 &1542204464
 GameObject:
   m_ObjectHideFlags: 0
