@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
 	private GameObject _smallProjectile;
 	private GameObject _bot;
 	private float _botSpawnCounter;
+	private GameObject _smoke;
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
 	private int _index;
 	#endregion------/PRIVATE MEMBERS------------
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour {
 		TogglePlayerMovement = true;
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
+		_smoke = (GameObject)Resources.Load("Prefabs/Particles/Smoke");
 		_bot = (GameObject)Resources.Load("Prefabs/Bot");
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
@@ -111,13 +113,20 @@ public class GameController : MonoBehaviour {
 			GameObject _l_projectile = Instantiate(_largeProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
 			_l_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
 			_bulletPos = (_bulletPos == _camTransform.childCount - 1) ? _camTransform.childCount - 2 : _camTransform.childCount - 1;
+			GameObject _smokeLarge = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+
+
 			GameObject _s_projectile = Instantiate(_smallProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
 			_s_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
-
 			_l_projectile.transform.parent = activeEntities.transform;
 			_s_projectile.transform.parent = activeEntities.transform;
 
+			GameObject _smokeSmall = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+
 			Player.GetComponent<CameraController>().Recoil();
+			_smokeLarge.transform.parent = activeEntities.transform;
+			_smokeSmall.transform.parent = activeEntities.transform;
+
 		}
 	}
 
