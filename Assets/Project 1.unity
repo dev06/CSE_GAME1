@@ -4924,7 +4924,7 @@ MonoBehaviour:
   customKey: 
   TogglePlayerMovement: 0
   ToggleMouseControl: 0
-  SpawnEnemy: 0
+  SpawnEnemy: 1
   KeepSpawning: 0
   Player: {fileID: 0}
   botCounter: 0
@@ -5661,7 +5661,7 @@ RectTransform:
   m_GameObject: {fileID: 1766097698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0.01, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1151921106}

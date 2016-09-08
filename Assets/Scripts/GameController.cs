@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour {
 		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			EnableGameUI(false);
+			Application.Quit();
 		}
 	}
 
