@@ -16,6 +16,7 @@ TagManager:
   - ContainerControl/Container
   - ActiveEntities
   - UI/MenuCanvas
+  - UI/RetryCanvas
   layers:
   - Default
   - TransparentFX

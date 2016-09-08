@@ -226,6 +226,11 @@ public enum ButtonID
 	CREDIT,
 	QUIT,
 
+
+	RETRY,
+	MENU,
+
+
 	NONE,
 }
 
