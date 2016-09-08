@@ -4,6 +4,7 @@ using System.Collections;
 public class Effect : MonoBehaviour {
 
 	// Use this for initialization
+	public float life;
 	void Start () {
 
 	}
@@ -11,6 +12,6 @@ public class Effect : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		Destroy(gameObject, .5f);
+		Destroy(gameObject, life);
 	}
 }
