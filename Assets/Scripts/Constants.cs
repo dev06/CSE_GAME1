@@ -16,7 +16,7 @@ public class Constants  {
 
 
 	//Enemy Members
-	public const float BotMaxHealth = 500.0f;
+	public const float BotMaxHealth = 100.0f;
 	public const float BotMovementSpeed = 4.5f;
 	public const float BotInitalDamage = 5.0f;
 

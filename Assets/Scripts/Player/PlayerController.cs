@@ -9,6 +9,7 @@ public class PlayerController : Mob
 
 	void Start()
 	{
+		Init();
 		_healthRepletionTimer = Constants.HealthRepletionTimer;
 		MaxHealth = Constants.PlayerMaxHealth;
 		Health = MaxHealth;
@@ -28,26 +29,19 @@ public class PlayerController : Mob
 
 		_healthRepletionTimerCounter += Time.deltaTime;
 
+
+		if (_gameController.menuActive == MenuActive.GAME)
+		{
+			if (Health <= 0)
+			{
+				GameObject.Find("RetryCanvas").GetComponent<Animation>().Play(GameObject.Find("RetryCanvas").GetComponent<Animation>().clip.name);
+				_gameController.EnableMenu(MenuActive.RETRY);
+			}
+		}
+
 	}
 
 
-	/*Summary
-		Triggers the OnCollisionEnter
-	*/
-	// void OnControllerColliderHit(ControllerColliderHit col)
-	// {
-
-	// 	if (col.gameObject.tag == "Entity/Enemy")
-	// 	{
-	// 		Debug.Log("hit");
-	// 		if (Health > 0) {
-	// 			Health -= Constants.BotInitalDamage;
-	// 		}
-
-
-	// 		_healthRepletionTimerCounter = 0;
-	// 	}
-	// }
 
 
 	void OnCollisionEnter(Collision col)

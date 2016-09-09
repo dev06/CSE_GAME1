@@ -31,7 +31,7 @@ public class MenuButton : ButtonEventHandler {
 			{
 				if (_gameController.menuActive == MenuActive.MENU)
 				{
-					_gameController.EnableGameUI(true);
+					_gameController.EnableMenu(MenuActive.GAME);
 				}
 			}
 		}

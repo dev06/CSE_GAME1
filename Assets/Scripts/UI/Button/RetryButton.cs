@@ -16,8 +16,23 @@ public class RetryButton : ButtonEventHandler {
 		{
 			transform.Rotate(new Vector3(0, 0, -Time.deltaTime * _speed));
 			transform.GetChild(0).transform.Rotate(new Vector3(0, 0, Time.deltaTime * _speed));
-			//transform.GetChild(1).transform.Rotate(new Vector3(0, 0, Time.deltaTime * _speed));
+		}
+	}
 
+
+	public override void OnPointerClick(PointerEventData data)
+	{
+		base.OnPointerClick(data);
+
+		if (buttonID == ButtonID.RETRY)
+		{
+			_gameController.Reset();
+		}
+
+
+		if (buttonID == ButtonID.QUIT)
+		{
+			Application.Quit();
 		}
 	}
 }

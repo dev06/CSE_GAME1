@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
 
@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour {
 	private GameObject _smoke;
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
 	private int _index;
+	private Image _blankImage;
 	#endregion------/PRIVATE MEMBERS------------
 
 
@@ -48,18 +49,20 @@ public class GameController : MonoBehaviour {
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
 		_smoke = (GameObject)Resources.Load("Prefabs/Particles/Smoke");
 		_bot = (GameObject)Resources.Load("Prefabs/Bot");
+		_blankImage = GameObject.FindWithTag("UI/GameCanvas").transform.FindChild("Blank").GetComponent<Image>();
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
-		EnableGameUI(false);
+		EnableMenu(MenuActive.MENU);
+
 	}
 
 
 	void Update ()
 	{
 
-		SwitchControllerProfile();
 		ShootProjectile();
 		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
+		DecreaseGameCanvasBlankAlpha();
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			Application.Quit();
@@ -73,13 +76,43 @@ public class GameController : MonoBehaviour {
 		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
 	}
 
-	public void EnableGameUI(bool b)
+	public void EnableMenu(MenuActive _menu)
 	{
 
-		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = b;
-		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = b;
-		GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = !b;
-		menuActive = (b) ? MenuActive.GAME : MenuActive.MENU;
+		switch (_menu)
+		{
+			case MenuActive.GAME:
+				ActivateUICanvas(false, "GameCanvas");
+				GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
+				GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
+				menuActive = MenuActive.GAME;
+				break;
+			case MenuActive.MENU:
+				GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
+				ActivateUICanvas(false, "MenuCanvas");
+				menuActive = MenuActive.MENU;
+				break;
+			case MenuActive.RETRY:
+				GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
+				ActivateUICanvas(false, "RetryCanvas");
+				menuActive = MenuActive.RETRY;
+				break;
+		}
+
+
+	}
+
+
+	void ActivateUICanvas(bool b, string _exception)
+	{
+		int length = GameObject.FindWithTag("UI").transform.childCount;
+		for (int i = 0; i < length; i++)
+		{
+			if (GameObject.FindWithTag("UI").transform.GetChild(i).name != _exception)
+			{
+				GameObject.FindWithTag("UI").transform.GetChild(i).GetComponent<Canvas>().enabled = b;
+			}
+		}
 	}
 
 	void EnableControlConfigUI(bool value)
@@ -90,17 +123,7 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	void SwitchControllerProfile()
-	{
-		if (Input.GetKey(KeyCode.LeftControl))
-		{
-			if (Input.GetKeyDown(KeyCode.Q))
-			{
-				_index = (_index < ControllerProfileList.Length - 1) ? _index + 1 : 0;
-				controllerProfile = ControllerProfileList[_index];
-			}
-		}
-	}
+
 
 	void ShootProjectile()
 	{
@@ -135,6 +158,14 @@ public class GameController : MonoBehaviour {
 	{
 		Cursor.visible = !b;
 		Screen.lockCursor = b;
+	}
+
+	private void DecreaseGameCanvasBlankAlpha()
+	{
+		if (menuActive == MenuActive.GAME)
+		{
+			_blankImage.color = new Color(0, 0, 0 , _blankImage.color.a - Time.deltaTime);
+		}
 	}
 
 
@@ -194,6 +225,12 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
+
+
+	public void Reset()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene("Project 1");
+	}
 }
 
 public enum ControllerProfile
@@ -208,6 +245,7 @@ public enum MenuActive
 	MENU,
 	GAME,
 	CONTROL,
+	RETRY,
 }
 
 public enum ButtonID
