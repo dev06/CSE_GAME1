@@ -28,7 +28,7 @@ public class GameOverText : MonoBehaviour {
 			if (_execute == false)
 			{
 
-				InvokeRepeating("WriteText", 1.0f, writeSpeed);
+				InvokeRepeating("WriteText", 1.0f, writeSpeeda);
 				_execute = true;
 			}
 		}
