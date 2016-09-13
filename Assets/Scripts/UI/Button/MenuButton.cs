@@ -42,13 +42,16 @@ public class MenuButton : ButtonEventHandler {
 
 		base.OnPointerEnter(data);
 
-
-		if (buttonID == ButtonID.CREDIT)
+		if (_animation.IsPlaying(_animation.clip.name) == false)
 		{
-			_animation["MenuBackGround"].time = 0;
-			_animation["MenuBackGround"].speed = 1;
-			_animation.Play("MenuBackGround");
+			if (buttonID == ButtonID.CREDIT)
+			{
+				_animation["MenuBackGround"].time = 0;
+				_animation["MenuBackGround"].speed = 1;
+				_animation.Play("MenuBackGround");
+			}
 		}
+
 
 
 	}
