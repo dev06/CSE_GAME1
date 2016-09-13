@@ -1,23 +1,23 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 public class Bot : Mob
 {
 
-	// Use this for initialization
-
-
+	#region----PRIVATE MEMBERS-----
 	private Transform _targetTransform;
 	private GameObject _healthQuad;
 	private Transform _healthQuadTransform;
 	private Material _heathQuadMaterial;
 	private float _velocity;
-
-
 	private Image _fillImage;
 	private Image _stillImage;
 	private Text _HealthText;
+	#endregion----/PRIVATE MEMBERS-----
 
 
 	void Start()
@@ -43,8 +43,10 @@ public class Bot : Mob
 		transform.Translate(Vector3.forward * Time.deltaTime * Constants.BotMovementSpeed);
 		UpdateHealthQuad();
 	}
-
-	void CheckIfOutsideBounds()
+	/// <summary>
+	///	Checks to see if the bot is below -100 if so then it destroys the bot
+	/// </summary>
+	private void CheckIfOutsideBounds()
 	{
 		if (transform.position.y < -100)
 		{
@@ -52,8 +54,10 @@ public class Bot : Mob
 			_gameController.botCounter--;
 		}
 	}
-
-	void UpdateHealthQuad()
+	/// <summary>
+	/// updates the health for the bot
+	/// </summary>
+	private void UpdateHealthQuad()
 	{
 
 		_fillImage.fillAmount = Mathf.SmoothDamp(_fillImage.fillAmount, Health / MaxHealth, ref _velocity, .3f);

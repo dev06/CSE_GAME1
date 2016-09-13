@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿//Devan Patel 
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 public class GameController : MonoBehaviour {
@@ -70,12 +73,20 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	IEnumerator WaitAndDisable()
+	/// <summary>
+	/// Waits and then disables the active menu
+	/// </summary>
+
+	private IEnumerator WaitAndDisable()
 	{
 		yield return new WaitForSeconds((menuActive == MenuActive.GAME) ? 0f :  .7f);
 		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
 	}
 
+	/// <summary>
+	/// Enables a given menu
+	/// </summary>
+	/// <param name="_menu"></param>
 	public void EnableMenu(MenuActive _menu)
 	{
 
@@ -102,8 +113,12 @@ public class GameController : MonoBehaviour {
 
 	}
 
-
-	void ActivateUICanvas(bool b, string _exception)
+	/// <summary>
+	/// Sets all the canvases but the expection active
+	/// </summary>
+	/// <param name="b"></param>
+	/// <param name="_exception"></param>
+	private void ActivateUICanvas(bool b, string _exception)
 	{
 		int length = GameObject.FindWithTag("UI").transform.childCount;
 		for (int i = 0; i < length; i++)
@@ -115,17 +130,22 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	void EnableControlConfigUI(bool value)
+	/// <summary>
+	/// Enables the Control configuration.
+	/// </summary>
+	/// <param name="value"></param>
+	private void EnableControlConfigUI(bool value)
 	{
 		GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = !value;
 		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = value;
 		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").transform.FindChild("AlphaBackGround").transform.FindChild("ControlConfigBackground").gameObject.SetActive(value);
-
 	}
 
 
-
-	void ShootProjectile()
+	/// <summary>
+	/// Shoots the projectile
+	/// </summary>
+	private void ShootProjectile()
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
@@ -153,13 +173,9 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
-	void LockCursor(bool b)
-	{
-		Cursor.visible = !b;
-		Screen.lockCursor = b;
-	}
-
+	/// <summary>
+	/// Lowers the beginning alpha
+	/// </summary>
 	private void DecreaseGameCanvasBlankAlpha()
 	{
 		if (menuActive == MenuActive.GAME)
@@ -168,12 +184,21 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
+	/// <summary>
+	/// Sets the cursor texture
+	/// </summary>
+	/// <param name="_texture"></param>
 	private void SetCursorTexture(Texture2D _texture)
 	{
 		Cursor.SetCursor(_texture, new Vector2(0, 0), CursorMode.Auto);
 	}
 
+	/// <summary>
+	/// Spawns the bots based on the starting delay, rate and bool for keep spawning or not
+	/// </summary>
+	/// <param name="startingDelay"></param>
+	/// <param name="rate"></param>
+	/// <param name="keepSpawning"></param>
 	private void SpawnBots(int startingDelay, int rate, bool keepSpawning)
 	{
 		if (menuActive == MenuActive.GAME)
@@ -226,7 +251,9 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
+	/// <summary>
+	/// Resets the Game
+	/// </summary>
 	public void Reset()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Project 1");

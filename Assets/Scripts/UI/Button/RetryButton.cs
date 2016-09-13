@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 public class RetryButton : ButtonEventHandler {
 
 	// Use this for initialization
 	private float _speed = 50.0f;
-	void Start () {
+	void Start ()
+	{
 		Init();
 	}
 
@@ -19,7 +23,10 @@ public class RetryButton : ButtonEventHandler {
 		}
 	}
 
-
+	/// <summary>
+	/// Overrides the on pointer click from base class.
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerClick(PointerEventData data)
 	{
 		base.OnPointerClick(data);

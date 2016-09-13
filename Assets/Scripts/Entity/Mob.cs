@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Mob : MonoBehaviour {
 
+	#region---- PRIVATE MEMBERS----
 	protected float Health;
 	protected float MaxHealth;
 	protected bool _isDead;
 	protected GameController _gameController;
+	#endregion----/PRIVATE MEMBERS----
 
 
 	void Start ()

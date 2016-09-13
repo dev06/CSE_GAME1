@@ -1,9 +1,11 @@
+//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
 using UnityEngine;
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-	// Use this for initialization
 	#region---PUBLIC MEMBERS----
 	public float CameraMoveSpeed;
 	public float CameraLookSpeed;
@@ -56,7 +58,6 @@ public class CameraController : MonoBehaviour {
 		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		_dummyLeft = _child.transform.FindChild("DummyLeft").gameObject;
 		_dummyRight = _child.transform.FindChild("DummyRight").gameObject;
-
 		GameObject[] _weaponBarrels_local = { transform.FindChild("barrel (1)").gameObject, transform.FindChild("barrel").gameObject };
 		_weaponBarrels = _weaponBarrels_local;
 
@@ -68,7 +69,6 @@ public class CameraController : MonoBehaviour {
 		if (_gameSceneManager.menuActive == MenuActive.GAME)
 		{
 			RegisterInput(_gameSceneManager.controllerProfile);
-
 			if (_gameSceneManager.TogglePlayerMovement)
 			{
 				Move();
@@ -102,9 +102,8 @@ public class CameraController : MonoBehaviour {
 		}
 
 		_isMoving = strafe != 0 || forward != 0;
-		//_rb.velocity = _movement;
 		_cc.Move(_movement * Time.deltaTime);
-		JitterCamera(10);
+
 
 	}
 	/// <summary>
@@ -141,10 +140,7 @@ public class CameraController : MonoBehaviour {
 				_lookVerticalInput = Input.GetAxis("Mouse Y");
 			}
 		}
-
 	}
-
-
 
 	/// <summary>
 	///	Manages the rotation for the player
@@ -152,11 +148,11 @@ public class CameraController : MonoBehaviour {
 	private void Look()
 	{
 		transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
-
 		_lookInput -= _lookVerticalInput * CameraLookSpeed;
 		_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
 		_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
 	}
+
 	/// <summary>
 	///	Bobs the camera
 	/// </summary>
@@ -176,11 +172,12 @@ public class CameraController : MonoBehaviour {
 		{
 			_targetHeadBob = Vector3.zero;
 		}
-
 		AdjustBarrels(_headBobPos);
 	}
-
-
+	/// <summary>
+	/// Adjusts the barrels or bobs the gun barrels
+	/// </summary>
+	/// <param name="_headBobPos"></param>
 	private void AdjustBarrels(Vector3 _headBobPos)
 	{
 		_weaponBarrels[0].transform.position = (_dummyLeft.transform.position + _dummyLeft.transform.forward / 2 + (transform.forward * (_recoil / 20.0f))) + transform.TransformDirection(_headBobPos) ;
@@ -189,19 +186,11 @@ public class CameraController : MonoBehaviour {
 		_weaponBarrels[1].transform.rotation = _dummyRight.transform.rotation * Quaternion.Euler(new Vector3(_recoil, 0, 0));
 
 	}
-
+	/// <summary>
+	/// Sets recoil to certain amount
+	/// </summary>
 	public void Recoil()
 	{
 		_recoil = -10;
-	}
-
-	/// <summary>
-	/// Jittes the camera base on the intesnity
-	/// </summary>
-	/// <param name="intensity"></param>
-	private void JitterCamera(float intensity)
-	{
-		//Vector3 _jitterVector = new Vector3(Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f)) - intensity / 2.0f , Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f) - intensity / 2.0f , Mathf.PingPong(Time.time, intensity * Random.Range(0.1f, 1.0f) - intensity / 2.0f)));
-		//Debug.Log(_jitte	Vector);
 	}
 }

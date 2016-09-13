@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : Mob
 {
 
+	#region-----PRIVATE MEMBERS-----
 	private float _healthRepletionTimer;
 	private float _healthRepletionTimerCounter;
+	#endregion-----/PRIVATE MEMBERS-----
 
 	void Start()
 	{
@@ -13,12 +18,13 @@ public class PlayerController : Mob
 		_healthRepletionTimer = Constants.HealthRepletionTimer;
 		MaxHealth = Constants.PlayerMaxHealth;
 		Health = MaxHealth;
-
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+
+		//Repletes the player health.
 		if (Health < MaxHealth)
 		{
 			if (_healthRepletionTimerCounter > _healthRepletionTimer)
@@ -30,6 +36,7 @@ public class PlayerController : Mob
 		_healthRepletionTimerCounter += Time.deltaTime;
 
 
+		//Ends the game
 		if (_gameController.menuActive == MenuActive.GAME)
 		{
 			if (Health <= 0)
@@ -57,9 +64,10 @@ public class PlayerController : Mob
 			_healthRepletionTimerCounter = 0;
 		}
 	}
-	/*Summary
-		Returns a float value base on a parameter
-	*/
+
+	/// <summary>
+	/// Returns a float value based on the parameter passed.
+	/// </summary>
 	public float ReturnFloatValue(string value)
 	{
 		switch (value)

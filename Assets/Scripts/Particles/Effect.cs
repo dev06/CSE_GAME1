@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 
 public class Effect : MonoBehaviour {
 
-	// Use this for initialization
+
 	public float life;
-	void Start () {
+
+	void Start ()
+	{
 
 	}
 
-	// Update is called once per frame
 	void Update ()
 	{
 		Destroy(gameObject, life);

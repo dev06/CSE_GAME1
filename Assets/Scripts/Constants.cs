@@ -12,11 +12,11 @@ public class Constants  {
 	//Game mech
 	public const int StartBotSpawningDelay = 0; //bots will spawn after x seconds (starting)
 	public const int BotSpawnDelay = 2; //spawn bots every x secs
-	public const int MaxBotAtTime = 2;
+	public const int MaxBotAtTime = 1;
 
 
 	//Enemy Members
-	public const float BotMaxHealth = 100.0f;
+	public const float BotMaxHealth = 200.0f;
 	public const float BotMovementSpeed = 4.5f;
 	public const float BotInitalDamage = 5.0f;
 
@@ -33,7 +33,6 @@ public class Constants  {
 	//HEALTH MECH
 	public const float HealthRepletionTimer = 10.0f;  //units in seconds.
 	public const float HealthRepletionPoints = 2.0f;  // Repletes x points every second.
-
 
 	//UI
 	public const float HideControlUITimer = 5.0f;

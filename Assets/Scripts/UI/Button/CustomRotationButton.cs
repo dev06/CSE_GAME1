@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class CustomRotationButton : ButtonEventHandler {
 
-	// Use this for initialization
-	//public ButtonID buttonID;
+	#region------PRIVATE MEMBERS--------
 	private float _speed = 50f;
 	private Text _text;
 	private Image _imageIcon;
 	private ToggleMouseButton _toggleMouseButton;
 	private KeyCode keyMapped;
+	#endregion------/PRIVATE MEMBERS--------
+
 	void Start ()
 	{
 		Init();
@@ -21,7 +25,7 @@ public class CustomRotationButton : ButtonEventHandler {
 		_toggleMouseButton = transform.parent.transform.parent.transform.FindChild("ToggleMouseControl").GetComponent<ToggleMouseButton>();
 	}
 
-	// Update is called once per frame
+
 	void Update ()
 	{
 
@@ -47,11 +51,11 @@ public class CustomRotationButton : ButtonEventHandler {
 		UpdateRotationInput();
 	}
 
-	void UpdateRotationInput()
+	/// <summary>
+	/// Updates the rotation input text in the UI
+	/// </summary>
+	private void UpdateRotationInput()
 	{
-
-
-
 		if (_gameController != null)
 		{
 			if (_gameController.controllerProfile == ControllerProfile.TGFH)
@@ -97,7 +101,11 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 	}
 
-	void RegisterCustomKey(ButtonID selectedButtonID)
+	/// <summary>
+	/// Registers the custom rotation key pressed for the selected button
+	/// </summary>
+	/// <param name="selectedButtonID"></param>
+	private void RegisterCustomKey(ButtonID selectedButtonID)
 	{
 		foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
 		{
@@ -148,7 +156,10 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 	}
 
-	bool DoesKeyExists(KeyCode key)
+	/// <summary>
+	/// Checks to see if the key is already mapped.
+	/// </summary>s
+	private bool DoesKeyExists(KeyCode key)
 	{
 		bool keyExits = false;
 		for (int i = 0; i < _gameController.customKey.Length; i++)
@@ -160,10 +171,13 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 
 		return keyExits;
-
 	}
 
-	void RegisterArrowKey(int index)
+	/// <summary>
+	/// Registers the Custom Arrow keys to the selected button.
+	/// </summary>
+	/// <param name="index"></param>
+	private void RegisterArrowKey(int index)
 	{
 		if (_gameController.customKey[index] == KeyCode.RightArrow)
 		{
@@ -188,7 +202,10 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 	}
 
-	void ResetArrowKey() {
+	/// <summary>
+	/// Resets the Arrow back to their default position.
+	/// </summary>
+	private void ResetArrowKey() {
 		if (buttonID == ButtonID.ROT_UP)
 		{
 			_imageIcon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _imageIcon.transform.rotation.z));
@@ -202,15 +219,19 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 	}
 
-
-	void SetActive(bool b)
+	/// <summary>
+	/// Sets the text and the image active based on the bool
+	/// </summary>
+	/// <param name="b"></param>
+	private void SetActive(bool b)
 	{
-
 		_text.enabled = _image.enabled = b;
-
-
 	}
 
+	/// <summary>
+	/// Overrides the on pointer enter from base class.
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerEnter(PointerEventData data)
 	{
 		if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
@@ -219,19 +240,22 @@ public class CustomRotationButton : ButtonEventHandler {
 		}
 	}
 
+	/// <summary>
+	/// Overrides the on pointer exit from base class.
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerExit(PointerEventData data)
 	{
-
-
 		if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
 		{
 			base.OnPointerExit(data);
-			//selectedButtonID = buttonID;
 		}
-
 	}
 
-
+	/// <summary>
+	/// Overrides the On pointer click from base class
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerClick(PointerEventData data)
 	{
 

@@ -1,17 +1,26 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class ToggleEventHandler : MonoBehaviour, IPointerClickHandler {
 
+	#region---- PUBLIC MEMBERS----
 	public bool isOn;
-	protected Image _image;
-	protected Image _outLineImage;
-	protected GameController _gameController;
 	public Sprite ActiveSprite;
 	public Sprite RestSprite;
 	public Color ActiveColor;
 	public Color RestColor;
+	#endregion---- /PUBLIC MEMBERS----
+
+	#region---- PROTECTED MEMBERS----
+	protected Image _image;
+	protected Image _outLineImage;
+	protected GameController _gameController;
+	#endregion---- /PROTECTED MEMBERS----
+
 
 	void OnEnable()
 	{
@@ -20,10 +29,14 @@ public class ToggleEventHandler : MonoBehaviour, IPointerClickHandler {
 		_image.color = (isOn) ? ActiveColor : RestColor;
 	}
 
-	void Start () {
+	void Start ()
+	{
 		Init();
 	}
 
+	/// <summary>
+	/// Init all the components
+	/// </summary>
 	protected void Init()
 	{
 		_image = transform.GetChild(1).GetComponent<Image>();
@@ -31,11 +44,10 @@ public class ToggleEventHandler : MonoBehaviour, IPointerClickHandler {
 		_gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-	}
-
+	/// <summary>
+	/// Overrides the on pointer click from the base class
+	/// </summary>
+	/// <param name="data"></param>
 	public virtual void OnPointerClick(PointerEventData data)
 	{
 		isOn = !isOn;

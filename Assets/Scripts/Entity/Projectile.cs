@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
+	#region----PRIVATE MEMBERS-----
 	public Vector3 forward;
 	protected GameController _gameController;
 	protected float _maxLife;
@@ -12,6 +16,7 @@ public class Projectile : MonoBehaviour {
 	protected float _damage;
 	protected ParticleSystem _trail;
 	protected GameObject _effect;
+	#endregion----PRIVATE MEMBERS-----
 
 
 
@@ -20,6 +25,9 @@ public class Projectile : MonoBehaviour {
 		Init();
 	}
 
+	/// <summary>
+	/// Init all the components
+	/// </summary>
 	public void Init()
 	{
 		_effect = (GameObject)Resources.Load("Prefabs/Particles/Effect");
@@ -30,6 +38,9 @@ public class Projectile : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Sets the trail color for particles
+	/// </summary>
 	public void SetTrailColor()
 	{
 		ParticleSystem.ColorOverLifetimeModule _colorOverLifeTime = _trail.colorOverLifetime;
