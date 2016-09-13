@@ -54,11 +54,13 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 
 			} else
 			{
-				_hideTimerCounter += Time.deltaTime / _container.Length;
+				if (_gameController.menuActive == MenuActive.GAME)
+				{
+					_hideTimerCounter += Time.deltaTime / _container.Length;
+				}
 			}
-
-			//Debug.Log(_hideTimerCounter);
 		}
+		ResetIfRequired();
 	}
 
 	/// <summary>
@@ -118,5 +120,18 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 	{
 		_showUI = false;
 
+	}
+
+	/// <summary>
+	/// Resets the Container Control if it current menu does not equal to game.
+	/// </summary>
+	private void ResetIfRequired()
+	{
+		if (_gameController.menuActive != MenuActive.GAME)
+		{
+			_canPlayAnim = false;
+			_showUI = false;
+			_hideTimerCounter = 0;
+		}
 	}
 }

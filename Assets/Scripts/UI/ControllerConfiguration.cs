@@ -19,6 +19,7 @@ public class ControllerConfiguration : MonoBehaviour {
 		if (_animation.clip != null)
 		{
 			_animation.Play(_animation.clip.name);
+			Debug.Log("Playing...");
 		}
 	}
 
