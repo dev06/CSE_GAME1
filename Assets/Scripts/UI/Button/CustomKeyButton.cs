@@ -1,22 +1,27 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class CustomKeyButton : ButtonEventHandler
 {
 
-	// Use this for initialization
+	#region------PRIVATE MEMBERS--------
 	private float _speed = 75.0f;
 	private Text _text;
 	private Image _imageIcon;
-	//public ButtonID buttonID;
-	void Start () {
+	#endregion------/PRIVATE MEMBERS--------
+
+
+	void Start ()
+	{
 		Init();
 		_text = transform.GetChild(0).GetComponent<Text>();
 		_imageIcon = transform.GetChild(1).GetComponent<Image>();
 		_imageIcon.color = RestColor;
 		_text.color = RestColor;
-
 	}
 
 	// Update is called once per frame
@@ -40,7 +45,10 @@ public class CustomKeyButton : ButtonEventHandler
 		UpdateKeyText();
 	}
 
-	void UpdateKeyText()
+	/// <summary>
+	/// Updates the values for keys in the UI.
+	/// </summary>
+	private void UpdateKeyText()
 	{
 		if (_gameController != null)
 		{
@@ -67,9 +75,6 @@ public class CustomKeyButton : ButtonEventHandler
 				} else if (buttonID == ButtonID.DOWN) {
 					RegisterArrowKey(3);
 				}
-
-
-
 			} else
 			{
 				_text.text = "";
@@ -78,8 +83,11 @@ public class CustomKeyButton : ButtonEventHandler
 	}
 
 
-
-	void RegisterCustomKey(ButtonID selectedButtonID)
+	/// <summary>
+	/// Registers a custom key based on the selected button id.
+	/// </summary>
+	/// <param name="selectedButtonID"></param>
+	private void RegisterCustomKey(ButtonID selectedButtonID)
 	{
 		foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
 		{
@@ -87,7 +95,6 @@ public class CustomKeyButton : ButtonEventHandler
 			{
 				if (Input.GetKeyDown(key))
 				{
-
 					if (key == KeyCode.Backspace)
 					{
 						if (selectedButtonID == ButtonID.LEFT)
@@ -134,7 +141,10 @@ public class CustomKeyButton : ButtonEventHandler
 		}
 	}
 
-	bool DoesKeyExists(KeyCode key)
+	/// <summary>
+	/// Checks to see if key is already mapped
+	/// </summary>
+	private bool DoesKeyExists(KeyCode key)
 	{
 		for (int i = 0; i < _gameController.customKey.Length; i++)
 		{
@@ -146,8 +156,12 @@ public class CustomKeyButton : ButtonEventHandler
 		return false;
 	}
 
-
-	void MapKey(ButtonID selectedButtonID, KeyCode key)
+	/// <summary>
+	/// Maps a key to selected button
+	/// </summary>
+	/// <param name="selectedButtonID"></param>
+	/// <param name="key"></param>
+	private void MapKey(ButtonID selectedButtonID, KeyCode key)
 	{
 		if (selectedButtonID == ButtonID.LEFT)
 		{
@@ -165,8 +179,11 @@ public class CustomKeyButton : ButtonEventHandler
 
 	}
 
-
-	void RegisterArrowKey(int index)
+	/// <summary>
+	/// Registers any arrow keys pressed.
+	/// </summary>
+	/// <param name="index"></param>
+	private void RegisterArrowKey(int index)
 	{
 		if (_gameController.customKey[index] == KeyCode.RightArrow)
 		{
@@ -191,7 +208,10 @@ public class CustomKeyButton : ButtonEventHandler
 		}
 	}
 
-	void ResetArrowKey() {
+	/// <summary>
+	/// Resets the Arrow key to their default rotations.
+	/// </summary>
+	private void ResetArrowKey() {
 		if (buttonID == ButtonID.ROT_UP)
 		{
 			_imageIcon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _imageIcon.transform.rotation.z));
@@ -205,6 +225,10 @@ public class CustomKeyButton : ButtonEventHandler
 		}
 	}
 
+	/// <summary>
+	/// Overrides the pointer enter from base class.
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerEnter(PointerEventData data)
 	{
 		if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
@@ -213,18 +237,22 @@ public class CustomKeyButton : ButtonEventHandler
 
 		}
 	}
-
+	/// <summary>
+	/// Overrides the pointer exit from base class
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerExit(PointerEventData data)
 	{
 		if (_gameController.controllerProfile == ControllerProfile.CUSTOM)
 		{
 			base.OnPointerExit(data);
 		}
-
-
 	}
 
-
+	/// <summary>
+	/// Overrides the pointer click from base class
+	/// </summary>
+	/// <param name="data"></param>
 	public override void OnPointerClick(PointerEventData data)
 	{
 

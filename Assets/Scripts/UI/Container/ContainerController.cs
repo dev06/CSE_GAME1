@@ -1,18 +1,24 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
+	#region-----PROTECTED MEMBERS-----
 	protected GameController _gameController;
 	protected static float _hideTimerCounter;
 	protected static bool _showUI;
 	protected bool _childrenActive;
-	public ContainerController.Role role;
+	#endregion-----/PROTECTED MEMBERS-----
+
+	#region-----PRIVATE MEMBERS-----
 	private Animation _animation;
 	private bool _initAnim;
 	private static bool _canPlayAnim;
 	private static GameObject[] _container;
-
+	#endregion-----/PRIVATE MEMBERS-----
 	void Start ()
 	{
 		Init();
@@ -55,7 +61,10 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 		}
 	}
 
-
+	/// <summary>
+	/// Sets the children active to the bool
+	/// </summary>
+	/// <param name="b"></param>
 	private void SetChildrenActive(bool b)
 	{
 
@@ -69,6 +78,10 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 		_childrenActive = b;
 	}
 
+	/// <summary>
+	/// Overrides the on pointer enter from base class
+	/// </summary>
+	/// <param name="data"></param>
 	public virtual void OnPointerEnter(PointerEventData data)
 	{
 		_showUI = true;
@@ -82,7 +95,10 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 		}
 	}
 
-
+	/// <summary>
+	/// Plays the animation in the direction specified.
+	/// </summary>
+	/// <param name="direction"></param>
 	private void PlayAnimation(int direction)
 	{
 		for (int i = 0; i < _container.Length; i++)
@@ -94,16 +110,13 @@ public class ContainerController : MonoBehaviour, IPointerEnterHandler, IPointer
 		}
 	}
 
+	/// <summary>
+	/// Overrides the on pointer exit
+	/// </summary>
+	/// <param name="data"></param>
 	public virtual void OnPointerExit(PointerEventData data)
 	{
 		_showUI = false;
 
-	}
-
-
-	public enum Role
-	{
-		MASTER,
-		SERVANT,
 	}
 }

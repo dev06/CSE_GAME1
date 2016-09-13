@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿//Devan Patel
+//Applications and Scripting
+//Sep.12.2016
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 public class GameOverText : MonoBehaviour {
 
-	// Use this for initialization
 	public float writeSpeed;
+
+	#region---- PRIVATE MEMBERS----
 	private Text _text;
 	private bool _start;
 	private bool _execute;
 	private GameController _gameController;
 	private int _textIndex;
 	private string _message;
+	#endregion---- /PRIVATE MEMBERS----
 	void Start ()
 	{
 		_message = "Game Over...";
@@ -18,7 +23,6 @@ public class GameOverText : MonoBehaviour {
 		_gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
 
-	// Update is called once per frame
 	void Update ()
 	{
 		_start = _gameController.menuActive == MenuActive.RETRY;
@@ -28,7 +32,7 @@ public class GameOverText : MonoBehaviour {
 			if (_execute == false)
 			{
 
-				InvokeRepeating("WriteText", 1.0f, writeSpeeda);
+				InvokeRepeating("WriteText", 1.0f, writeSpeed);
 				_execute = true;
 			}
 		}
@@ -38,11 +42,12 @@ public class GameOverText : MonoBehaviour {
 			_text.text = "";
 			_textIndex = 0;
 		}
-
-
 	}
 
-	void WriteText()
+	/// <summary>
+	/// Writes the text
+	/// </summary>
+	private void WriteText()
 	{
 		_textIndex++;
 		_text.text = _message.Substring(0, _textIndex);
