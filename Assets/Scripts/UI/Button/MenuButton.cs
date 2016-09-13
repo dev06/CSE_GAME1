@@ -42,26 +42,17 @@ public class MenuButton : ButtonEventHandler {
 	{
 
 		base.OnPointerEnter(data);
-<<<<<<< HEAD
 
 		if (_animation.IsPlaying(_animation.clip.name) == false)
-=======
-		if (buttonID == ButtonID.CREDIT)
->>>>>>> c3ffebb4c9b745efc02287ab802687bfbd8c3ca8
-		{
 			if (buttonID == ButtonID.CREDIT)
 			{
-				_animation["MenuBackGround"].time = 0;
-				_animation["MenuBackGround"].speed = 1;
-				_animation.Play("MenuBackGround");
+				if (buttonID == ButtonID.CREDIT)
+				{
+					_animation["MenuBackGround"].time = 0;
+					_animation["MenuBackGround"].speed = 1;
+					_animation.Play("MenuBackGround");
+				}
 			}
-		}
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> c3ffebb4c9b745efc02287ab802687bfbd8c3ca8
 	}
 	/// <summary>
 	/// Overrides the on pointer exit from base class
