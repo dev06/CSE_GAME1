@@ -36,5 +36,4 @@ public class Constants  {
 
 	//UI
 	public const float HideControlUITimer = 5.0f;
-
 }

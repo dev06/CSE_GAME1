@@ -1,4 +1,4 @@
-﻿//Devan Patel 
+﻿//Devan Patel
 //Applications and Scripting
 //Sep.12.2016
 using UnityEngine;
@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 
 	#region ----------- PUBLIC MEMBERS----------
 	public ControllerProfile controllerProfile;
+	public InventoryManager inventoryManager;
 	public static ButtonID selectedButtonID;
 	public MenuActive menuActive;
 	[HideInInspector]
@@ -55,7 +56,16 @@ public class GameController : MonoBehaviour {
 		_blankImage = GameObject.FindWithTag("UI/GameCanvas").transform.FindChild("Blank").GetComponent<Image>();
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
+		inventoryManager = new InventoryManager();
 		EnableMenu(MenuActive.MENU);
+
+	}
+
+	void Start()
+	{
+		// inventoryManager.AddItem(new Item("PurpleBall",
+		//                                   "A powerfull ball...",
+		//                                   Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
 
 	}
 
@@ -70,18 +80,29 @@ public class GameController : MonoBehaviour {
 		{
 			Application.Quit();
 		}
+
+		if (Input.GetKeyDown(KeyCode.E) && menuActive != MenuActive.MENU && menuActive != MenuActive.RETRY)
+		{
+			if (menuActive != MenuActive.INVENTORY)
+			{
+				EnableMenu(MenuActive.INVENTORY);
+				if (EventManager.OnInventoryActive != null) {
+					EventManager.OnInventoryActive(1);
+				}
+			} else {
+				if (EventManager.OnInventoryUnActive != null) {
+					EventManager.OnInventoryUnActive(-1);
+				}
+			}
+		}
+
+		if (Input.GetMouseButtonDown(0) && menuActive == MenuActive.GAME) {
+			inventoryManager.AddItem(new Item("PurpleBall",
+			                                  "A powerfull ball...",
+			                                  Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
+		}
 	}
 
-
-	/// <summary>
-	/// Waits and then disables the active menu
-	/// </summary>
-
-	private IEnumerator WaitAndDisable()
-	{
-		yield return new WaitForSeconds((menuActive == MenuActive.GAME) ? 0f :  .7f);
-		menuActive = (menuActive != MenuActive.CONTROL) ? MenuActive.CONTROL : MenuActive.GAME;
-	}
 
 	/// <summary>
 	/// Enables a given menu
@@ -92,22 +113,27 @@ public class GameController : MonoBehaviour {
 
 		switch (_menu)
 		{
-			case MenuActive.GAME:
-				ActivateUICanvas(false, "GameCanvas");
-				GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
-				GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
-				menuActive = MenuActive.GAME;
-				break;
-			case MenuActive.MENU:
-				GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "MenuCanvas");
-				menuActive = MenuActive.MENU;
-				break;
-			case MenuActive.RETRY:
-				GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "RetryCanvas");
-				menuActive = MenuActive.RETRY;
-				break;
+		case MenuActive.GAME:
+			ActivateUICanvas(false, "GameCanvas");
+			GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
+			GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
+			menuActive = MenuActive.GAME;
+			break;
+		case MenuActive.MENU:
+			GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "MenuCanvas");
+			menuActive = MenuActive.MENU;
+			break;
+		case MenuActive.RETRY:
+			GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "RetryCanvas");
+			menuActive = MenuActive.RETRY;
+			break;
+		case MenuActive.INVENTORY:
+			GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "InventoryCanvas");
+			menuActive = MenuActive.INVENTORY;
+			break;
 		}
 
 
@@ -273,6 +299,12 @@ public enum MenuActive
 	GAME,
 	CONTROL,
 	RETRY,
+	INVENTORY
+}
+
+public enum GameItem
+{
+	PURPLEBALL,
 }
 
 public enum ButtonID
