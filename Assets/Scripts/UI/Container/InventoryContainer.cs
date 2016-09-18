@@ -47,8 +47,9 @@ public class InventoryContainer : MonoBehaviour {
 			xCounter++;
 
 			GameObject _slot = Instantiate(_inventoryContainer_prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			if (yCounter == 0)
+			if (yCounter == 0) {
 				_slot.transform.parent = GameObject.FindWithTag("ContainerControl/InventoryContainer/TopRow").transform;
+			}
 			else {
 				_slot.transform.parent = GameObject.FindWithTag("ContainerControl/InventoryContainer/BottomRow").transform;
 			}
@@ -82,7 +83,7 @@ public class InventoryContainer : MonoBehaviour {
 	private void PlayAnimation(GameObject container, int direction)
 	{
 		Animation animation = container.GetComponent<Animation>();
-		if (direction < 0) _currentAnimation = animation;
+		if (direction < 0) { _currentAnimation = animation; }
 		animation[animation.clip.name].time =  (direction > 0) ? 0 : animation[animation.clip.name].length;
 		animation[animation.clip.name].speed = direction;
 		animation.Play(animation.clip.name);
