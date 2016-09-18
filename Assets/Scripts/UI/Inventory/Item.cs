@@ -47,5 +47,6 @@ public class Item
 public enum ItemID
 {
 	PurpleBall,
+	RedBall,
 	Null,
 }

@@ -100,6 +100,9 @@ public class GameController : MonoBehaviour {
 			inventoryManager.AddItem(new Item("PurpleBall",
 			                                  "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
 			                                  Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
+			inventoryManager.AddItem(new Item("RedBall",
+			                                  "A great ball that will slow down the enemies for certain time period. ",
+			                                  Resources.Load<Sprite>("Item/redBall"), 1, ItemID.RedBall));
 		}
 	}
 
@@ -113,27 +116,27 @@ public class GameController : MonoBehaviour {
 
 		switch (_menu)
 		{
-			case MenuActive.GAME:
-				ActivateUICanvas(false, "GameCanvas");
-				GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
-				GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
-				menuActive = MenuActive.GAME;
-				break;
-			case MenuActive.MENU:
-				GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "MenuCanvas");
-				menuActive = MenuActive.MENU;
-				break;
-			case MenuActive.RETRY:
-				GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "RetryCanvas");
-				menuActive = MenuActive.RETRY;
-				break;
-			case MenuActive.INVENTORY:
-				GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "InventoryCanvas");
-				menuActive = MenuActive.INVENTORY;
-				break;
+		case MenuActive.GAME:
+			ActivateUICanvas(false, "GameCanvas");
+			GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
+			GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
+			menuActive = MenuActive.GAME;
+			break;
+		case MenuActive.MENU:
+			GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "MenuCanvas");
+			menuActive = MenuActive.MENU;
+			break;
+		case MenuActive.RETRY:
+			GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "RetryCanvas");
+			menuActive = MenuActive.RETRY;
+			break;
+		case MenuActive.INVENTORY:
+			GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "InventoryCanvas");
+			menuActive = MenuActive.INVENTORY;
+			break;
 		}
 
 
@@ -305,6 +308,7 @@ public enum MenuActive
 public enum GameItem
 {
 	PURPLEBALL,
+	REDBALL,
 }
 
 public enum ButtonID
