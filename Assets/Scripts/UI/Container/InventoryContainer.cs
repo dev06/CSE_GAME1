@@ -6,6 +6,7 @@ public class InventoryContainer : MonoBehaviour {
 	private GameController _gameController;
 	private Animation  _currentAnimation;
 	private GameObject _inventoryContainer_prefab;
+	private GameObject _quickItemSlot_prefab;
 	private GameObject _topRow;
 	private GameObject _bottomRow;
 
@@ -23,10 +24,12 @@ public class InventoryContainer : MonoBehaviour {
 	private void Init()
 	{
 		_inventoryContainer_prefab = (GameObject)Resources.Load("Prefabs/UIPrefabs/Slot");
+		_quickItemSlot_prefab = (GameObject)Resources.Load("Prefabs/UIPrefabs/QuickItemSlot");
 		_topRow = transform.FindChild("TopRow").gameObject;
 		_bottomRow = transform.FindChild("BottomRow").gameObject;
 		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 		GenerateInventoryGrid();
+		//GenerateQuickItemSlots();
 	}
 
 	private void GenerateInventoryGrid()
@@ -60,6 +63,20 @@ public class InventoryContainer : MonoBehaviour {
 			float _verticalOffset = ( _slotTransform.sizeDelta.x * _slotTransform.localScale.x * yOffset) / 2.0f
 			                        - yCounter * _slotTransform.sizeDelta.y * _slotTransform.localScale.y * yOffset;
 			_slotTransform.anchoredPosition = new Vector3(-_horizontalOffset, 0 , 0);
+		}
+	}
+
+	private void GenerateQuickItemSlots()
+	{
+		float yOffset = 1.1f;
+		for (int i = 0; i < 4; i++)
+		{
+			GameObject _quickItemSlot = Instantiate(_quickItemSlot_prefab, Vector3.zero, Quaternion.identity) as GameObject;
+			_quickItemSlot.transform.parent = GameObject.FindWithTag("ContainerControl/InventoryContainer/QuickItem").transform;
+			RectTransform _qiTransform = _quickItemSlot.GetComponent<RectTransform>();
+			_qiTransform.localScale = new Vector3(1, 1, 1);
+			float _horizontalOffset = (4 * _qiTransform.localScale.y * _qiTransform.sizeDelta.y * yOffset) / 2.0f - (i * _qiTransform.localScale.y * _qiTransform.sizeDelta.y * yOffset);
+			_qiTransform.anchoredPosition = new Vector3(0, _horizontalOffset, 0);
 		}
 	}
 

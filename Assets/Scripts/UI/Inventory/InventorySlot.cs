@@ -12,6 +12,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	public Color RestColor;
 	public float HoverSize;
 	public float RestSize;
+	public InventoryType inventoryType;
 
 	private bool _onHover;
 
@@ -20,10 +21,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	private Text _slotItemQuantity; // slot item text
 
 
-
+	Quaternion rotation;
 	void Start ()
 	{
 		Init();
+		rotation = _slotItemImage.transform.rotation;
 	}
 
 	protected void Init()
@@ -33,7 +35,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		_slotItemImage = transform.FindChild("ItemImage").GetComponent<Image>();
 		_slotImage.color = RestColor;
 		_slotItemQuantity = _slotItemImage.transform.FindChild("ItemQuantity").GetComponent<Text>();
-		gameController.inventoryManager.inventorySlots.Add(this);
+		if (inventoryType != InventoryType.QuickItem) { gameController.inventoryManager.inventorySlots.Add(this); }
 
 	}
 
@@ -44,6 +46,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			transform.Rotate(new Vector3(0, 0, -50f * Time.deltaTime));
 			_slotItemImage.transform.Rotate(new Vector3(0, 0, 50f * Time.deltaTime));
 		}
+
 		ManageSlotItem();
 
 	}
@@ -80,6 +83,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 	public virtual void OnPointerEnter(PointerEventData data)
 	{
+		//	if (item != null)
+		//	{
 		if (HoverSprite != null)
 		{
 			_slotImage.sprite = HoverSprite;
@@ -88,8 +93,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		transform.localScale = new Vector3(HoverSize, HoverSize, 1);
 		GameObject.Find("ToolTip").GetComponent<ToolTip>().item = item;
 		_onHover = true;
+		//}
+
 	}
 	public virtual void OnPointerExit(PointerEventData data) {
+		//	if (item != null)
+		//	{
 		if (RestSprite != null)
 		{
 			_slotImage.sprite = RestSprite;
@@ -98,6 +107,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		transform.localScale = new Vector3(RestSize, RestSize, 1);
 		GameObject.Find("ToolTip").GetComponent<ToolTip>().item = null;
 		_onHover = false;
+		//	}
+
 
 	}
 	public virtual void OnPointerClick(PointerEventData data) {

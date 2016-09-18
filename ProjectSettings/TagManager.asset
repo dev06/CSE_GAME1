@@ -21,6 +21,8 @@ TagManager:
   - ContainerControl/InventoryContainer
   - ContainerControl/InventoryContainer/TopRow
   - ContainerControl/InventoryContainer/BottomRow
+  - Entity/PurpleBall
+  - ContainerControl/InventoryContainer/QuickItem
   layers:
   - Default
   - TransparentFX

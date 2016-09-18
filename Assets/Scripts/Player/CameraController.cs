@@ -147,10 +147,13 @@ public class CameraController : MonoBehaviour {
 	/// </summary>
 	private void Look()
 	{
-		transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
-		_lookInput -= _lookVerticalInput * CameraLookSpeed;
-		_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
-		_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
+		if (_gameSceneManager.onContainer == false)
+		{
+			transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
+			_lookInput -= _lookVerticalInput * CameraLookSpeed;
+			_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
+			_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
+		}
 	}
 
 	/// <summary>
