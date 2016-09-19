@@ -44,6 +44,7 @@ public class MenuButton : ButtonEventHandler {
 		base.OnPointerEnter(data);
 
 		if (_animation.IsPlaying(_animation.clip.name) == false)
+		{
 			if (buttonID == ButtonID.CREDIT)
 			{
 				if (buttonID == ButtonID.CREDIT)
@@ -53,6 +54,8 @@ public class MenuButton : ButtonEventHandler {
 					_animation.Play("MenuBackGround");
 				}
 			}
+		}
+
 	}
 	/// <summary>
 	/// Overrides the on pointer exit from base class
