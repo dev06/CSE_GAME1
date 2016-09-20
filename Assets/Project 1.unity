@@ -2262,7 +2262,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -4606,6 +4606,7 @@ GameObject:
   - 222: {fileID: 1156827136}
   - 114: {fileID: 1156827134}
   - 114: {fileID: 1156827135}
+  - 111: {fileID: 1156827137}
   m_Layer: 5
   m_Name: QuickItem
   m_TagString: ContainerControl/InventoryContainer/QuickItem
@@ -4679,6 +4680,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1156827132}
+--- !u!111 &1156827137
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1156827132}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 935022d988a9c984991ab2de483bd3eb, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 935022d988a9c984991ab2de483bd3eb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!224 &1158230278 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d,
@@ -6934,7 +6950,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -7877,7 +7893,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -8402,7 +8418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 22446050, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_AnchoredPosition.y

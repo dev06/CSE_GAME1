@@ -13,11 +13,11 @@ public class Item
 
 	public Item()
 	{
-		itemImage = null;
-		itemQuantity = 0;
-		itemName = "";
-		itemInfo = "";
-		itemID = ItemID.Null;
+		// itemImage = null;
+		// itemQuantity = 0;
+		// itemName = "";
+		// itemInfo = "";
+		// itemID = ItemID.Null;
 	}
 
 	public Item(string itemName,

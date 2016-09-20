@@ -59,7 +59,6 @@ public class GameController : MonoBehaviour {
 		Player = GameObject.FindGameObjectWithTag("Player");
 		inventoryManager = new InventoryManager();
 		EnableMenu(MenuActive.MENU);
-
 	}
 
 	void Start()
@@ -105,6 +104,12 @@ public class GameController : MonoBehaviour {
 			                                  "A great ball that will slow down the enemies for certain time period. ",
 			                                  Resources.Load<Sprite>("Item/redBall"), 1, ItemID.RedBall));
 		}
+
+		// if (Input.GetKeyDown(KeyCode.P))
+		// {
+		// 	inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[3]);
+		// }
+
 	}
 
 
@@ -136,11 +141,32 @@ public class GameController : MonoBehaviour {
 			case MenuActive.INVENTORY:
 				GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
 				ActivateUICanvas(false, "InventoryCanvas");
+				ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "QuickItem");
 				menuActive = MenuActive.INVENTORY;
 				break;
 		}
+	}
 
 
+	public void AssignToQuickItem(KeyCode key)
+	{
+
+		switch (key)
+		{
+			case KeyCode.Alpha1:
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[2]);
+				break;
+			case KeyCode.Alpha2:
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[1]);
+				break;
+			case KeyCode.Alpha3:
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[0]);
+				break;
+			case KeyCode.Alpha4:
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[3]);
+				break;
+
+		}
 	}
 
 	/// <summary>
@@ -158,6 +184,16 @@ public class GameController : MonoBehaviour {
 				GameObject.FindWithTag("UI").transform.GetChild(i).GetComponent<Canvas>().enabled = b;
 			}
 		}
+	}
+
+	private void ActivateChild(GameObject canvas, string child)
+	{
+		canvas.GetComponent<Canvas>().enabled = true;
+		for (int i = 0; i < canvas.transform.childCount; i++)
+		{
+			canvas.transform.GetChild(i).gameObject.SetActive(false);
+		}
+		canvas.transform.FindChild(child).gameObject.SetActive(true);
 	}
 
 	/// <summary>

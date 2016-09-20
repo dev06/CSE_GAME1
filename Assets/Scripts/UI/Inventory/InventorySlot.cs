@@ -35,7 +35,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		_slotItemImage = transform.FindChild("ItemImage").GetComponent<Image>();
 		_slotImage.color = RestColor;
 		_slotItemQuantity = _slotItemImage.transform.FindChild("ItemQuantity").GetComponent<Text>();
-		if (inventoryType != InventoryType.QuickItem) { gameController.inventoryManager.inventorySlots.Add(this); }
+		if (inventoryType != InventoryType.QuickItem)
+		{
+			gameController.inventoryManager.inventorySlots.Add(this);
+		} else {
+			gameController.inventoryManager.quickItemSlots.Add(this);
+		}
 
 	}
 
@@ -45,6 +50,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		{
 			transform.Rotate(new Vector3(0, 0, -50f * Time.deltaTime));
 			_slotItemImage.transform.Rotate(new Vector3(0, 0, 50f * Time.deltaTime));
+
+			foreach (KeyCode key in Constants.QuickItemKeys) {
+				if (Input.GetKeyDown(key))
+				{
+					gameController.AssignToQuickItem(key);
+				}
+			}
 		}
 
 		ManageSlotItem();
@@ -75,6 +87,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		}
 	}
 
+	public void RemoveSlotItem()
+	{
+		this.item = null;
+	}
+
 	public void UpdateItem(Item item)
 	{
 		this.item.itemQuantity += item.itemQuantity;
@@ -90,8 +107,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			_slotImage.sprite = HoverSprite;
 			_slotImage.color = HoverColor;
 		}
+		gameController.inventoryManager.hoverItem = item;
 		transform.localScale = new Vector3(HoverSize, HoverSize, 1);
-		GameObject.Find("ToolTip").GetComponent<ToolTip>().item = item;
+		if (inventoryType != InventoryType.QuickItem)
+		{
+			GameObject.Find("ToolTip").GetComponent<ToolTip>().item = item;
+		}
 		_onHover = true;
 		//}
 
@@ -104,8 +125,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			_slotImage.sprite = RestSprite;
 			_slotImage.color = RestColor;
 		}
+		gameController.inventoryManager.hoverItem = null;
 		transform.localScale = new Vector3(RestSize, RestSize, 1);
-		GameObject.Find("ToolTip").GetComponent<ToolTip>().item = null;
+		if (inventoryType != InventoryType.QuickItem)
+		{
+			GameObject.Find("ToolTip").GetComponent<ToolTip>().item = null;
+		}
+
 		_onHover = false;
 		//	}
 

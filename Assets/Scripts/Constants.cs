@@ -36,4 +36,7 @@ public class Constants  {
 
 	//UI
 	public const float HideControlUITimer = 5.0f;
+
+
+	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
 }
