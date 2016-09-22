@@ -24,6 +24,7 @@ TagManager:
   - Entity/PurpleBall
   - ContainerControl/InventoryContainer/QuickItem
   - UI/QuickItemCanvas
+  - Inventory/QuickItem
   layers:
   - Default
   - TransparentFX

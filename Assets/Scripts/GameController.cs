@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour {
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
 		inventoryManager = new InventoryManager();
+		AddQuickItemSlotToList();
 		EnableMenu(MenuActive.MENU);
 	}
 
@@ -105,11 +106,6 @@ public class GameController : MonoBehaviour {
 			                                  Resources.Load<Sprite>("Item/redBall"), 1, ItemID.RedBall));
 		}
 
-		// if (Input.GetKeyDown(KeyCode.P))
-		// {
-		// 	inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[3]);
-		// }
-
 	}
 
 
@@ -125,7 +121,6 @@ public class GameController : MonoBehaviour {
 			case MenuActive.GAME:
 				ActivateUICanvas(false, "GameCanvas");
 				GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
-				GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").GetComponent<Canvas>().enabled = true;
 				menuActive = MenuActive.GAME;
 				break;
 			case MenuActive.MENU:
@@ -150,22 +145,32 @@ public class GameController : MonoBehaviour {
 
 	public void AssignToQuickItem(KeyCode key)
 	{
-
+		GameObject quickItemInventory = GameObject.FindWithTag("ContainerControl/InventoryContainer/QuickItem").gameObject;
 		switch (key)
 		{
 			case KeyCode.Alpha1:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[2]);
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot1").GetComponent<InventorySlot>());
 				break;
 			case KeyCode.Alpha2:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[1]);
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot2").GetComponent<InventorySlot>());
 				break;
 			case KeyCode.Alpha3:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[0]);
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot3").GetComponent<InventorySlot>());
 				break;
 			case KeyCode.Alpha4:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, inventoryManager.quickItemSlots[3]);
+				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot4").GetComponent<InventorySlot>());
 				break;
 
+		}
+	}
+
+
+	public void AddQuickItemSlotToList()
+	{
+		GameObject quickItemList = GameObject.FindWithTag("ContainerControl/InventoryContainer/QuickItem").gameObject;
+		for (int i = 0; i < quickItemList.transform.childCount; i++)
+		{
+			inventoryManager.quickItemSlots.Add(quickItemList.transform.GetChild(i).GetComponent<InventorySlot>());
 		}
 	}
 

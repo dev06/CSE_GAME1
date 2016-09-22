@@ -10,6 +10,8 @@ public class InventoryManager {
 	public List<InventorySlot> quickItemSlots = new List<InventorySlot>();
 	public Item hoverItem; // item that is currently being hovered on.
 
+
+
 	public void AddItem(Item item)
 	{
 		int itemIndexInInventory;
@@ -33,26 +35,27 @@ public class InventoryManager {
 	{
 		if (slot.inventoryType == InventoryType.QuickItem)
 		{
-			for (int i = 0; i < quickItemSlots.Count; i++)
+			if (slot.item == null)
 			{
-				int index;
-
-
-				if (DoesItemExits(quickItemSlots, item, out index) == false)
+				for (int i = 0; i < quickItemSlots.Count; i++)
 				{
-					slot.SetItem(item);
-				} else
-				{
-					quickItemSlots[index].RemoveSlotItem();
-					slot.SetItem(item);
+					if (quickItemSlots[i].item != null)
+					{
+						if (quickItemSlots[i].item.itemID == item.itemID)
+						{
+							quickItemSlots[i].RemoveSlotItem();
+							quickItemSlots[i].SetItem(null);
+						}
+					}
 				}
+				slot.SetItem(item);
 			}
 		}
 	}
 
-	/// <summary>
-	/// Returns whether an item exits in a collection
-	/// </summary>
+/// <summary>
+/// Returns whether an item exits in a collection
+/// </summary>
 
 	public bool DoesItemExits(List<InventorySlot> collection, Item item, out int itemIndexInInventory)
 	{
@@ -77,6 +80,11 @@ public class InventoryManager {
 	public bool isOccupied(InventorySlot slot)
 	{
 		return slot.item != null;
+	}
+
+	public bool isOfType(Item item, Item targetItem)
+	{
+		return item.itemID == targetItem.itemID;
 	}
 
 	public int GetNextAvailableSlot()

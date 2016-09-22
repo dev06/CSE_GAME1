@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -38,8 +38,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		if (inventoryType != InventoryType.QuickItem)
 		{
 			gameController.inventoryManager.inventorySlots.Add(this);
-		} else {
-			gameController.inventoryManager.quickItemSlots.Add(this);
 		}
 
 	}
@@ -51,12 +49,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			transform.Rotate(new Vector3(0, 0, -50f * Time.deltaTime));
 			_slotItemImage.transform.Rotate(new Vector3(0, 0, 50f * Time.deltaTime));
 
+
 			foreach (KeyCode key in Constants.QuickItemKeys) {
 				if (Input.GetKeyDown(key))
 				{
 					gameController.AssignToQuickItem(key);
 				}
 			}
+
 		}
 
 		ManageSlotItem();

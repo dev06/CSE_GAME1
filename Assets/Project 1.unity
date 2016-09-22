@@ -2304,6 +2304,10 @@ Prefab:
       propertyPath: m_Name
       value: QS_Slot3
       objectReference: {fileID: 0}
+    - target: {fileID: 186136, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
+      propertyPath: m_TagString
+      value: Inventory/QuickItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
   m_IsPrefabParent: 0
@@ -6992,6 +6996,10 @@ Prefab:
       propertyPath: m_Name
       value: QS_Slot4
       objectReference: {fileID: 0}
+    - target: {fileID: 186136, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
+      propertyPath: m_TagString
+      value: Inventory/QuickItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
   m_IsPrefabParent: 0
@@ -7935,6 +7943,10 @@ Prefab:
       propertyPath: m_Name
       value: QS_Slot1
       objectReference: {fileID: 0}
+    - target: {fileID: 186136, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
+      propertyPath: m_TagString
+      value: Inventory/QuickItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
   m_IsPrefabParent: 0
@@ -8459,6 +8471,10 @@ Prefab:
     - target: {fileID: 186136, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
       propertyPath: m_Name
       value: QS_Slot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 186136, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
+      propertyPath: m_TagString
+      value: Inventory/QuickItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2bbbfb9e847d1a4285385656933bc5d, type: 2}
