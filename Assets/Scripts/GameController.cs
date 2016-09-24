@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour {
 	public float TotalEnemiesSpawned;
 	#endregion ----------- /PUBLIC MEMBERS----------
 
-
 	#region------PRIVATE MEMBERS------------
 	private GameObject _largeProjectile;
 	private GameObject _smallProjectile;
@@ -45,6 +44,7 @@ public class GameController : MonoBehaviour {
 
 
 	void Awake () {
+
 		SetCursorTexture((Texture2D)Resources.Load("UI/cursor"));
 		controllerProfile = ControllerProfile.WASD;
 		menuActive = MenuActive.MENU;
@@ -104,6 +104,10 @@ public class GameController : MonoBehaviour {
 			inventoryManager.AddItem(new Item("Red Ball",
 			                                  "A great ball that will slow down the enemies for certain time period. ",
 			                                  Resources.Load<Sprite>("Item/redBall"), 1, ItemID.RedBall));
+
+			inventoryManager.AddItem(new Item("Yellow Ball",
+			                                  "This ball allows you to teleport to a certain location. ",
+			                                  Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall));
 		}
 
 	}
@@ -121,6 +125,7 @@ public class GameController : MonoBehaviour {
 			case MenuActive.GAME:
 				ActivateUICanvas(false, "GameCanvas");
 				GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
+				ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "", true);
 				menuActive = MenuActive.GAME;
 				break;
 			case MenuActive.MENU:
@@ -136,29 +141,34 @@ public class GameController : MonoBehaviour {
 			case MenuActive.INVENTORY:
 				GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
 				ActivateUICanvas(false, "InventoryCanvas");
-				ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "QuickItem");
+				ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "QuickItem", false);
 				menuActive = MenuActive.INVENTORY;
 				break;
 		}
 	}
 
 
-	public void AssignToQuickItem(KeyCode key)
+	public void AssignToQuickItem(KeyCode key, out int qsIndex)
 	{
+		qsIndex = 0;
 		GameObject quickItemInventory = GameObject.FindWithTag("ContainerControl/InventoryContainer/QuickItem").gameObject;
 		switch (key)
 		{
 			case KeyCode.Alpha1:
 				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot1").GetComponent<InventorySlot>());
+				qsIndex = 1;
 				break;
 			case KeyCode.Alpha2:
 				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot2").GetComponent<InventorySlot>());
+				qsIndex = 2;
 				break;
 			case KeyCode.Alpha3:
 				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot3").GetComponent<InventorySlot>());
+				qsIndex = 3;
 				break;
 			case KeyCode.Alpha4:
 				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot4").GetComponent<InventorySlot>());
+				qsIndex = 4;
 				break;
 
 		}
@@ -191,14 +201,23 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	private void ActivateChild(GameObject canvas, string child)
+	private void ActivateChild(GameObject canvas, string child, bool all)
 	{
 		canvas.GetComponent<Canvas>().enabled = true;
-		for (int i = 0; i < canvas.transform.childCount; i++)
+		if (!all)
 		{
-			canvas.transform.GetChild(i).gameObject.SetActive(false);
+			for (int i = 0; i < canvas.transform.childCount; i++)
+			{
+				canvas.transform.GetChild(i).gameObject.SetActive(false);
+			}
+			canvas.transform.FindChild(child).gameObject.SetActive(true);
+		} else
+		{
+			for (int i = 0; i < canvas.transform.childCount; i++)
+			{
+				canvas.transform.GetChild(i).gameObject.SetActive(true);
+			}
 		}
-		canvas.transform.FindChild(child).gameObject.SetActive(true);
 	}
 
 	/// <summary>
@@ -357,6 +376,7 @@ public enum GameItem
 {
 	PURPLEBALL,
 	REDBALL,
+	YELLOWBALL,
 }
 
 public enum ButtonID

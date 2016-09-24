@@ -11,14 +11,8 @@ public class Item
 	public ItemID itemID;
 
 
-	public Item()
-	{
-		// itemImage = null;
-		// itemQuantity = 0;
-		// itemName = "";
-		// itemInfo = "";
-		// itemID = ItemID.Null;
-	}
+	public Item() {}
+
 
 	public Item(string itemName,
 	            string itemInfo,
@@ -48,5 +42,6 @@ public enum ItemID
 {
 	PurpleBall,
 	RedBall,
+	YellowBall,
 	Null,
 }

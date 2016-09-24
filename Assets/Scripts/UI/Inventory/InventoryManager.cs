@@ -48,9 +48,50 @@ public class InventoryManager {
 						}
 					}
 				}
-				slot.SetItem(item);
+				slot.SetItem(item, GetSlotIndex(quickItemSlots, slot));
+
+			} else
+			{
+				if (slot.item.itemID != item.itemID)
+				{
+					Item existingItem = slot.item;
+					for (int i = 0; i < quickItemSlots.Count; i++)
+					{
+						if (quickItemSlots[i].item != null)
+						{
+							if (quickItemSlots[i].item.itemID == item.itemID)
+							{
+								quickItemSlots[i].RemoveSlotItem();
+								quickItemSlots[i].SetItem(null);
+							}
+						}
+
+					}
+					slot.SetItem(item, GetSlotIndex(quickItemSlots, slot));
+					for (int i = 0; i < quickItemSlots.Count; i++)
+					{
+						if (quickItemSlots[i].item == null)
+						{
+							quickItemSlots[i].SetItem(existingItem, i);
+							break;
+						}
+					}
+				}
 			}
 		}
+	}
+
+	public int GetSlotIndex(List<InventorySlot> collection, InventorySlot slot)
+	{
+		for (int i = 0; i < collection.Count; i++)
+		{
+			if (collection[i].GetHashCode() == slot.GetHashCode())
+			{
+				return i;
+			}
+		}
+
+		return -1;
 	}
 
 /// <summary>
