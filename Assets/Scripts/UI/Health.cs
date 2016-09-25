@@ -31,7 +31,7 @@ public class Health : MonoBehaviour {
 		_fill = transform.FindChild("FillImage").GetComponent<Image>();
 		_still = transform.GetChild(0).FindChild("StillImage").GetComponent<Image>();
 		_text = transform.GetChild(0).FindChild("Text").GetComponent<Text>();
-
+		Debug.Log(GameObject.FindWithTag("Player").gameObject.name);
 	}
 
 	void Update ()

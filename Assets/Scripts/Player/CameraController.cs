@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour {
 	public float CameraLookAngle;
 	public float bobAmplitude = 0.2f;
 	public float bobFrequency = 0.8f;
+	public float hoverAmplitude;
+	public float hoverFrequency;
 	#endregion---/ PUBLIC MEMBERS---
 
 	#region---PRIVATE MEMBERS----
@@ -27,6 +29,8 @@ public class CameraController : MonoBehaviour {
 	private bool _isMoving;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
+	private Vector3 _targetHover = Vector3.zero;
+	private Vector3 _hoverPos = Vector3.zero;
 	private CharacterController _cc;
 	private Rigidbody _rb;
 	private Vector3 _velocity;
@@ -37,7 +41,7 @@ public class CameraController : MonoBehaviour {
 	private GameObject _dummyRight;
 	private GameObject[] _weaponBarrels;
 	private GameController _gameSceneManager;
-
+	private GameObject _playerHead;
 
 	#endregion---/PRIVATE MEMBERS---
 
@@ -53,7 +57,9 @@ public class CameraController : MonoBehaviour {
 	private void Init()
 	{
 		_rb = GetComponent<Rigidbody>();
-		_child = transform.FindChild("Main Camera").transform.gameObject;
+		//_child = transform.FindChild("Main Camera").transform.gameObject;
+		_child = Camera.main.transform.gameObject;
+		_playerHead = GameObject.FindWithTag("Player/Head");
 		_cc = GetComponent<CharacterController>();
 		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		_dummyLeft = _child.transform.FindChild("DummyLeft").gameObject;
@@ -73,6 +79,7 @@ public class CameraController : MonoBehaviour {
 			{
 				Move();
 				Look();
+				HoverPlayer();
 				HeadBob();
 				_recoil = Mathf.SmoothDamp(_recoil, 0, ref _recoilVel, .1f);
 			}
@@ -88,6 +95,7 @@ public class CameraController : MonoBehaviour {
 		float forward = _forwardInput * CameraMoveSpeed ;
 		Vector3 _movement = new Vector3(strafe, -5.0f, forward);
 		_movement = transform.rotation * _movement;
+
 		if (Mathf.Abs(forward) > 0)
 		{
 			_velocity.z = forward;
@@ -97,6 +105,7 @@ public class CameraController : MonoBehaviour {
 		if (Mathf.Abs(strafe) > 0)
 		{
 			_velocity.x = strafe;
+
 		} else {
 			_velocity.x = 0;
 		}
@@ -152,7 +161,8 @@ public class CameraController : MonoBehaviour {
 			transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
 			_lookInput -= _lookVerticalInput * CameraLookSpeed;
 			_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
-			_child.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
+			_playerHead.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
+
 		}
 	}
 
@@ -170,12 +180,23 @@ public class CameraController : MonoBehaviour {
 			_headBobPos.x = Mathf.Lerp (_headBobPos.x, _targetHeadBob.x, 2.5f * Time.deltaTime);
 			_headBobPos.y = Mathf.Lerp (_headBobPos.y, _targetHeadBob.y, 2.5f * Time.deltaTime);
 			_headBobPos.z = 0;
-			_child.transform.position = (transform.position + Vector3.up) + transform.TransformDirection(_headBobPos);
+			//	Camera.main.transform.position = (_playerHead.transform.position + Vector3.up) + transform.TransformDirection(_headBobPos);
 		} else
 		{
 			_targetHeadBob = Vector3.zero;
 		}
 		AdjustBarrels(_headBobPos);
+	}
+
+	public Vector3 hoverHeight;
+	public float cameraDistance;
+	public float cameraHorizontalOffset;
+	private void HoverPlayer()
+	{
+		_targetHover.y = Mathf.PingPong(hoverFrequency * Time.time, hoverAmplitude);
+		_targetHover.y -= hoverAmplitude / 2.0f;
+		_hoverPos.y = Mathf.Lerp(_hoverPos.y, _targetHover.y, 2.5f * Time.deltaTime);
+		Camera.main.transform.position = (transform.TransformDirection(_hoverPos) + _playerHead.transform.position) - (_playerHead.transform.forward * cameraDistance) - (_playerHead.transform.right * cameraHorizontalOffset) + hoverHeight;
 	}
 	/// <summary>
 	/// Adjusts the barrels or bobs the gun barrels

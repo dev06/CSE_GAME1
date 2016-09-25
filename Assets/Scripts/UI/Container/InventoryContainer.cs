@@ -9,11 +9,15 @@ public class InventoryContainer : MonoBehaviour {
 	private GameObject _quickItemSlot_prefab;
 	private GameObject _topRow;
 	private GameObject _bottomRow;
+	private InventoryManager _inventoryManager;
+	private bool _init;
 
 	void OnEnable()
 	{
 		EventManager.OnInventoryActive += AnimateContainers;
 		EventManager.OnInventoryUnActive += AnimateContainers;
+
+		EventManager.OnItemAddedOrRemoved += UpdateInventorySlotCount;
 	}
 
 	void Start ()
@@ -28,9 +32,10 @@ public class InventoryContainer : MonoBehaviour {
 		_topRow = transform.FindChild("TopRow").gameObject;
 		_bottomRow = transform.FindChild("BottomRow").gameObject;
 		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+		_inventoryManager = _gameController.inventoryManager;
 		GenerateInventoryGrid();
-		//GenerateQuickItemSlots();
 	}
+
 
 	private void GenerateInventoryGrid()
 	{
@@ -66,19 +71,6 @@ public class InventoryContainer : MonoBehaviour {
 		}
 	}
 
-	private void GenerateQuickItemSlots()
-	{
-		float yOffset = 1.1f;
-		for (int i = 0; i < 4; i++)
-		{
-			GameObject _quickItemSlot = Instantiate(_quickItemSlot_prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			_quickItemSlot.transform.parent = GameObject.FindWithTag("ContainerControl/InventoryContainer/QuickItem").transform;
-			RectTransform _qiTransform = _quickItemSlot.GetComponent<RectTransform>();
-			_qiTransform.localScale = new Vector3(1, 1, 1);
-			float _horizontalOffset = (4 * _qiTransform.localScale.y * _qiTransform.sizeDelta.y * yOffset) / 2.0f - (i * _qiTransform.localScale.y * _qiTransform.sizeDelta.y * yOffset);
-			_qiTransform.anchoredPosition = new Vector3(0, _horizontalOffset, 0);
-		}
-	}
 
 	void Update()
 	{
@@ -88,6 +80,41 @@ public class InventoryContainer : MonoBehaviour {
 			{
 				_gameController.EnableMenu(MenuActive.GAME);
 				_currentAnimation = null;
+			}
+		}
+	}
+
+	void LateUpdate()
+	{
+		if (_init == false)
+		{
+			UpdateInventorySlotCount();
+			_init = true;
+		}
+	}
+
+	private void UpdateInventorySlotCount()
+	{
+		int slotCount = _inventoryManager.InventorySlotOccupied();
+		int childCount  = transform.FindChild("BottomRow").childCount;
+		if (slotCount < 6)
+		{
+			for (int i = 0; i < childCount; i++)
+			{
+				transform.FindChild("BottomRow").GetChild(i).gameObject.SetActive(false);
+			}
+		} else
+		{
+			for (int i = 0; i < childCount; i++)
+			{
+				InventorySlot slot = transform.FindChild("BottomRow").GetChild(i).GetComponent<InventorySlot>();
+				if (slot.item == null)
+				{
+					slot.gameObject.SetActive(false);
+				} else
+				{
+					slot.gameObject.SetActive(true);
+				}
 			}
 		}
 	}
@@ -105,6 +132,4 @@ public class InventoryContainer : MonoBehaviour {
 		animation[animation.clip.name].speed = direction;
 		animation.Play(animation.clip.name);
 	}
-
-
 }

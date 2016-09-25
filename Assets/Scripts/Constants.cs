@@ -26,7 +26,7 @@ public class Constants  {
 	public const float CameraVerticalFOV = 60.0f;
 
 	//Projectile Members
-	public const float PlayerMovementSpeed = 5.0f;
+	public const float PlayerMovementSpeed = 10.0f;
 	public const float PlayerSprintSpeed = 8.0f;
 	public const float LargeProjectileDamage = 20.0f;
 

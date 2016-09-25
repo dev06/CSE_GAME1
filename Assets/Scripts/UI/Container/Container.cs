@@ -5,10 +5,33 @@ public class Container : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
 
 	private GameController _gameController;
+	private Animation _animation;
+
+	void OnEnable()
+	{
+		EventManager.OnInventoryActive += PlayAnimation;
+		EventManager.OnInventoryUnActive += PlayAnimation;
+
+	}
 
 	void Start ()
 	{
 		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+		_animation = GetComponent<Animation>();
+	}
+
+
+
+	public void PlayAnimation(int direction)
+	{
+		if (direction > 0)
+		{
+			_animation[_animation.clip.name].time = 0;
+		} else {
+			_animation[_animation.clip.name].time = _animation[_animation.clip.name].length;
+		}
+		_animation[_animation.clip.name].speed = direction;
+		_animation.Play(_animation.clip.name);
 	}
 
 
@@ -16,7 +39,6 @@ public class Container : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	public virtual void OnPointerEnter(PointerEventData data)
 	{
 		_gameController.onContainer = true;
-
 	}
 
 	public virtual void OnPointerExit(PointerEventData data)
@@ -24,4 +46,10 @@ public class Container : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 		_gameController.onContainer = false;
 	}
 
+
+	void OnDisable()
+	{
+		EventManager.OnInventoryActive -= PlayAnimation;
+		EventManager.OnInventoryUnActive -= PlayAnimation;
+	}
 }

@@ -8,4 +8,7 @@ public class EventManager : MonoBehaviour {
 	public static  InventoryActive OnInventoryUnActive;
 
 
+	public delegate void ItemAddedOrRemoved();
+	public static ItemAddedOrRemoved OnItemAddedOrRemoved;
+
 }

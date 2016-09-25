@@ -25,6 +25,7 @@ TagManager:
   - ContainerControl/InventoryContainer/QuickItem
   - UI/QuickItemCanvas
   - Inventory/QuickItem
+  - Player/Head
   layers:
   - Default
   - TransparentFX

@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour {
 		_blankImage = GameObject.FindWithTag("UI/GameCanvas").transform.FindChild("Blank").GetComponent<Image>();
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
+
 		inventoryManager = new InventoryManager();
 		AddQuickItemSlotToList();
 		EnableMenu(MenuActive.MENU);
@@ -64,9 +65,7 @@ public class GameController : MonoBehaviour {
 
 	void Start()
 	{
-		// inventoryManager.AddItem(new Item("PurpleBall",
-		//                                   "A powerfull ball...",
-		//                                   Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
+
 
 	}
 
@@ -108,7 +107,30 @@ public class GameController : MonoBehaviour {
 			inventoryManager.AddItem(new Item("Yellow Ball",
 			                                  "This ball allows you to teleport to a certain location. ",
 			                                  Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall));
+
+			inventoryManager.AddItem(new Item("Basic Medkit",
+			                                  "Repletes 10 health points.  ",
+			                                  Resources.Load<Sprite>("Item/greenHealth"), 1, ItemID.GreenHealth));
+
+			inventoryManager.AddItem(new Item("Effective Medkit",
+			                                  "Repletes 20 health points.  ",
+			                                  Resources.Load<Sprite>("Item/redHealth"), 1, ItemID.RedHealth));
+
+			inventoryManager.AddItem(new Item("Advanced Medkit",
+			                                  "Repletes 30 health points.  ",
+			                                  Resources.Load<Sprite>("Item/blueHealth"), 1, ItemID.BlueHealth));
+
 		}
+
+		if (Input.GetKeyDown(KeyCode.T) && menuActive == MenuActive.GAME)
+		{
+			inventoryManager.AddItem(new Item("Premium Medkit",
+			                                  "Repletes 40 health points.  ",
+			                                  Resources.Load<Sprite>("Item/orangeHealth"), 1, ItemID.OrangeHealth));
+
+		}
+
+		inventoryManager.SelectQuickItemSlot();
 
 	}
 
@@ -173,6 +195,7 @@ public class GameController : MonoBehaviour {
 
 		}
 	}
+
 
 
 	public void AddQuickItemSlotToList()
@@ -377,6 +400,10 @@ public enum GameItem
 	PURPLEBALL,
 	REDBALL,
 	YELLOWBALL,
+	GREENHEALTH,
+	REDHEALTH,
+	BLUEHEALTH,
+	ORANGEHEALTH,
 }
 
 public enum ButtonID

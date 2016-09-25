@@ -43,5 +43,9 @@ public enum ItemID
 	PurpleBall,
 	RedBall,
 	YellowBall,
+	GreenHealth,
+	BlueHealth,
+	RedHealth,
+	OrangeHealth,
 	Null,
 }

@@ -9,6 +9,8 @@ public class InventoryManager {
 	public List<InventorySlot> inventorySlots = new List<InventorySlot>();
 	public List<InventorySlot> quickItemSlots = new List<InventorySlot>();
 	public Item hoverItem; // item that is currently being hovered on.
+	public InventorySlot quickItemSelectedSlot;
+	public int inventoryCount;
 
 
 
@@ -27,7 +29,15 @@ public class InventoryManager {
 			}
 		} else
 		{
+
+			//inventorySlots[GetNextAvailableSlot()].gameObject.SetActive(true);
 			inventorySlots[GetNextAvailableSlot()].SetItem(item);
+		}
+		inventoryCount = InventorySlotOccupied();
+
+		if (EventManager.OnItemAddedOrRemoved != null)
+		{
+			EventManager.OnItemAddedOrRemoved();
 		}
 	}
 
@@ -81,6 +91,66 @@ public class InventoryManager {
 		}
 	}
 
+	public void ShiftItem(List<InventorySlot> collection)
+	{
+		for (int i = 0; i < collection.Count; i++)
+		{
+			InventorySlot currentSlot = collection[i];
+			if (currentSlot.item != null)
+			{
+				if (i > 0 && i < collection.Count - 1)
+				{
+					InventorySlot previousSlot = collection[i - 1];
+					if (previousSlot.item == null)
+					{
+						previousSlot.SetItem(currentSlot.item);
+						currentSlot.RemoveSlotItem();
+						currentSlot.SetItem(null);
+					}
+				}
+			}
+		}
+
+
+		if (EventManager.OnItemAddedOrRemoved != null)
+		{
+			EventManager.OnItemAddedOrRemoved();
+		}
+		inventoryCount = InventorySlotOccupied();
+
+	}
+
+	public int InventorySlotOccupied()
+	{
+		int slotsOccupied = 0;
+		for (int i = 0; i < inventorySlots.Count; i++)
+		{
+			if (inventorySlots[i].item != null)
+			{
+				slotsOccupied++;
+			}
+		}
+		return slotsOccupied;
+	}
+
+
+	public void SelectQuickItemSlot()
+	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			quickItemSelectedSlot = quickItemSlots[0];
+		} else 	if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			quickItemSelectedSlot = quickItemSlots[1];
+		} else 	if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			quickItemSelectedSlot = quickItemSlots[2];
+		} else 	if (Input.GetKeyDown(KeyCode.Alpha4))
+		{
+			quickItemSelectedSlot = quickItemSlots[3];
+		}
+	}
+
 	public int GetSlotIndex(List<InventorySlot> collection, InventorySlot slot)
 	{
 		for (int i = 0; i < collection.Count; i++)
@@ -94,9 +164,9 @@ public class InventoryManager {
 		return -1;
 	}
 
-/// <summary>
-/// Returns whether an item exits in a collection
-/// </summary>
+	/// <summary>
+	/// Returns whether an item exits in a collection
+	/// </summary>
 
 	public bool DoesItemExits(List<InventorySlot> collection, Item item, out int itemIndexInInventory)
 	{

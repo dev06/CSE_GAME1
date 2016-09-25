@@ -48,39 +48,79 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 	void Update()
 	{
-		if (_onHover)
+		if (inventoryType != InventoryType.QuickItem)
 		{
-			transform.Rotate(new Vector3(0, 0, -50f * Time.deltaTime));
-			_slotItemImage.transform.Rotate(new Vector3(0, 0, 50f * Time.deltaTime));
 
-			if (inventoryType != InventoryType.QuickItem)
+
+			if (_onHover)
 			{
-				foreach (KeyCode key in Constants.QuickItemKeys)
-				{
-					if (Input.GetKeyDown(key))
-					{
-						int qsIndex;
-						gameController.AssignToQuickItem(key, out qsIndex);
+				transform.Rotate(new Vector3(0, 0, -50f * Time.deltaTime));
+				_slotItemImage.transform.Rotate(new Vector3(0, 0, 50f * Time.deltaTime));
 
+				if (inventoryType != InventoryType.QuickItem)
+				{
+					foreach (KeyCode key in Constants.QuickItemKeys)
+					{
+						if (Input.GetKeyDown(key))
+						{
+							int qsIndex;
+							gameController.AssignToQuickItem(key, out qsIndex);
+
+						}
+					}
+				}
+
+				// Temp Code
+
+				if (Input.GetKeyDown(KeyCode.Delete))
+				{
+					for (int i = 0; i < _inventoryManager.quickItemSlots.Count; i++)
+					{
+						if (_inventoryManager.quickItemSlots[i].item != null)
+						{
+							if (item == _inventoryManager.quickItemSlots[i].item)
+							{
+								_inventoryManager.quickItemSlots[i].RemoveSlotItem();
+								_inventoryManager.quickItemSlots[i].SetItem(null);
+							}
+						}
+					}
+					RemoveSlotItem();
+					SetItem(null);
+					_inventoryManager.ShiftItem(_inventoryManager.inventorySlots);
+
+					if (inventoryType != InventoryType.QuickItem)
+					{
+						GameObject.Find("ToolTip").GetComponent<ToolTip>().item = item;
 					}
 				}
 			}
-
 		}
-		// if (inventoryType != InventoryType.QuickItem)
-		// {
-		// 	for (int i = 0; i < _inventoryManager.quickItemSlots.Count; i++)
-		// 	{
-		// 		if (_inventoryManager.quickItemSlots[i].item != null)
-		// 		{
-		// 			if (_inventoryManager.quickItemSlots[i].item == item)
-		// 			{
-		// 				_slotItemQuickSelect.text = "" + (i + 1);
-		// 				Debug.Log(i);
-		// 			}
-		// 		}
-		// 	}
-		// }
+
+		if (inventoryType == InventoryType.QuickItem)
+		{
+			if (_inventoryManager.quickItemSelectedSlot != null)
+			{
+				if (_inventoryManager.quickItemSelectedSlot == this)
+				{
+					if (HoverSprite != null)
+					{
+						_slotImage.sprite = HoverSprite;
+						_slotImage.color = HoverColor;
+						transform.Rotate(new Vector3(0, 0, -50f * Time.deltaTime));
+						_slotItemImage.transform.Rotate(new Vector3(0, 0, 50f * Time.deltaTime));
+					}
+				} else
+				{
+					if (RestSprite != null)
+					{
+						_slotImage.sprite = RestSprite;
+						_slotImage.color = RestColor;
+					}
+				}
+			}
+		}
+
 
 		ManageSlotItem();
 
@@ -93,11 +133,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		{
 			_slotItemImage.enabled = false;
 			_slotItemQuantity.enabled = false;
-			if (inventoryType != InventoryType.QuickItem)_slotItemQuickSelect.enabled = false;
+			if (inventoryType != InventoryType.QuickItem) { _slotItemQuickSelect.enabled = false; }
 		} else {
 			_slotItemImage.enabled = true;
 			_slotItemQuantity.enabled = true;
-			if (inventoryType != InventoryType.QuickItem)_slotItemQuickSelect.enabled = true;
+			if (inventoryType != InventoryType.QuickItem) { _slotItemQuickSelect.enabled = true; }
 		}
 
 	}
@@ -119,13 +159,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			this.item = item;
 			_slotItemImage.sprite = item.itemImage;
 			_slotItemQuantity.text = item.itemQuantity.ToString();
-
 		}
 	}
 
 	public void RemoveSlotItem()
 	{
 		this.item = null;
+
 	}
 
 	public void UpdateItem(Item item)
@@ -136,45 +176,48 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 	public virtual void OnPointerEnter(PointerEventData data)
 	{
-		if (item != null)
+
+		if (inventoryType != InventoryType.QuickItem)
 		{
+
 			if (HoverSprite != null)
 			{
 				_slotImage.sprite = HoverSprite;
 				_slotImage.color = HoverColor;
 			}
 			gameController.inventoryManager.hoverItem = item;
-			transform.localScale = new Vector3(HoverSize, HoverSize, 1);
-			if (inventoryType != InventoryType.QuickItem)
-			{
-				GameObject.Find("ToolTip").GetComponent<ToolTip>().item = item;
-			}
-			_onHover = true;
+			GameObject.Find("ToolTip").GetComponent<ToolTip>().item = item;
 		}
+		transform.localScale = new Vector3(HoverSize, HoverSize, 1);
+		_onHover = true;
+
 
 	}
 	public virtual void OnPointerExit(PointerEventData data) {
-		if (item != null)
+
+		if (inventoryType != InventoryType.QuickItem)
 		{
+
 			if (RestSprite != null)
 			{
 				_slotImage.sprite = RestSprite;
 				_slotImage.color = RestColor;
 			}
 			gameController.inventoryManager.hoverItem = null;
-			transform.localScale = new Vector3(RestSize, RestSize, 1);
-			if (inventoryType != InventoryType.QuickItem)
-			{
-				GameObject.Find("ToolTip").GetComponent<ToolTip>().item = null;
-			}
-
-			_onHover = false;
+			GameObject.Find("ToolTip").GetComponent<ToolTip>().item = null;
 		}
 
+		transform.localScale = new Vector3(RestSize, RestSize, 1);
+		_onHover = false;
 
 	}
-	public virtual void OnPointerClick(PointerEventData data) {
+	public virtual void OnPointerClick(PointerEventData data)
+	{
+		if (inventoryType == InventoryType.QuickItem)
+		{
+			_inventoryManager.quickItemSelectedSlot	= this;
 
+		}
 	}
 
 }

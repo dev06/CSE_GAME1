@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"Inven",
+				"InventorySlotOccupied"
+			],
+			[
+				"slot",
+				"slotsOccupied"
+			],
+			[
+				"_ani",
+				"_animation"
+			],
+			[
+				"Inventory",
+				"InventorySlot"
+			],
+			[
+				"quickite",
+				"quickItemSlots"
+			],
+			[
+				"quick",
+				"quickItemSlots.Count"
+			],
+			[
+				"Invent",
+				"InventorySlot"
+			],
+			[
+				"inventory",
+				"inventorySlots"
+			],
+			[
+				"currents",
+				"currentSlot"
+			],
+			[
+				"previou",
+				"previousSlot"
+			],
+			[
+				"prevou",
+				"previousSlot"
+			],
+			[
 				"Getc",
 				"GetComponent"
 			],
@@ -38,10 +82,6 @@
 			[
 				"Active",
 				"ActivateChild"
-			],
-			[
-				"slot",
-				"slot.SetItem"
 			],
 			[
 				"exi",
@@ -94,10 +134,6 @@
 			[
 				"net",
 				"networkMessage"
-			],
-			[
-				"quick",
-				"quickItemSlots"
 			],
 			[
 				"isO",
@@ -478,56 +514,11 @@
 			[
 				"gra",
 				"grad.colorKeys"
-			],
-			[
-				"MinMax",
-				"MinMaxGradient"
-			],
-			[
-				"_color",
-				"_colorOverLifeTime"
-			],
-			[
-				"Par",
-				"ParticleSystem"
-			],
-			[
-				"Cur",
-				"Cursor"
-			],
-			[
-				"Player",
-				"Player.transform"
-			],
-			[
-				"_ani",
-				"_animation"
-			],
-			[
-				"Wrap",
-				"WrapMode.PingPong"
-			],
-			[
-				"Mena",
-				"MenuActive.GAME"
-			],
-			[
-				"Mneu",
-				"MenuActive.CONTROL"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "Assets/Scripts/GameController.cs",
-			"settings":
-			{
-				"buffer_size": 12141,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -574,10 +565,20 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts"
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts"
 	],
 	"file_history":
 	[
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/GameController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventoryManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/Item.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/Container.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Event/EventManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Constants.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventorySlot.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/InventoryContainer.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/ContainerController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Button/CustomKeyButton.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/CSE_SUBLIME.sublime-project",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/OverridenNetworkDiscovery.cs",
@@ -695,21 +696,11 @@
 		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ClientScene/ClientSceneManager.cs",
 		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/PlayerController.cs",
 		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ClientScene/ModelDoor.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/ServerPlayerController.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ClientManager.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ResetSessionButtonEvent.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/Constants.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/HeadTracker.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/IO/ImportSpeech.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControlScene/ControlMenuController.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Camera/CameraController.cs",
-		"/E/HeadTracker.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/Slideshow/SlideshowController.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/AudioManager.cs"
+		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/ServerPlayerController.cs"
 	],
 	"find":
 	{
-		"height": 52.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -892,39 +883,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Assets/Scripts/GameController.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12141,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								558,
-								558
-							]
-						],
-						"settings":
-						{
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 20.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -989,6 +949,34 @@
 		"selected_items":
 		[
 			[
+				"gameocn",
+				"GameController.cs"
+			],
+			[
+				"item",
+				"UI\\Inventory\\Item.cs"
+			],
+			[
+				"even",
+				"UI\\Event\\EventManager.cs"
+			],
+			[
+				"customkey",
+				"UI\\Button\\CustomKeyButton.cs"
+			],
+			[
+				"cons",
+				"Constants.cs"
+			],
+			[
+				"ivnet",
+				"UI\\Inventory\\InventoryManager.cs"
+			],
+			[
+				"inventoryslo",
+				"UI\\Inventory\\InventorySlot.cs"
+			],
+			[
 				"ga",
 				"GameController.cs"
 			],
@@ -1019,14 +1007,6 @@
 			[
 				"netowrk",
 				"KSU_NETWORK_SOLUTION\\Assets\\Scripts\\Network\\NetworkConnectionManager.cs"
-			],
-			[
-				"item",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\Item.cs"
-			],
-			[
-				"inventoryslo",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\InventorySlot.cs"
 			],
 			[
 				"inventotrys",
@@ -1101,10 +1081,6 @@
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\ToolTip.cs"
 			],
 			[
-				"cons",
-				"CSE_GAME1\\Assets\\Scripts\\Constants.cs"
-			],
-			[
 				"con",
 				"AndroidGame\\Assets\\Scripts\\Constants.cs"
 			],
@@ -1155,10 +1131,6 @@
 			[
 				"customro",
 				"UI\\Button\\CustomRotationButton.cs"
-			],
-			[
-				"customkey",
-				"UI\\Button\\CustomKeyButton.cs"
 			],
 			[
 				"butt",
@@ -1487,18 +1459,6 @@
 			[
 				"clientnetw",
 				"Network\\ClientNetworkManager.cs"
-			],
-			[
-				"servernetw",
-				"Network\\ServerNetworkManager.cs"
-			],
-			[
-				"servernetworkma",
-				"Network\\ServerNetworkManager.cs"
-			],
-			[
-				"speechontr",
-				"ClientScene\\SpeechController.cs"
 			]
 		],
 		"width": 0.0
