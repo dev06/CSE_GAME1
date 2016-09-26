@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"Shoo",
+				"ShootProjectile"
+			],
+			[
+				"_bul",
+				"_blueBullet"
+			],
+			[
+				"hover",
+				"hoverHeight"
+			],
+			[
+				"_player",
+				"_playerHead.transform.position"
+			],
+			[
+				"_target",
+				"_targetHover.y"
+			],
+			[
+				"_ch",
+				"_characterAnimator"
+			],
+			[
 				"Inven",
 				"InventorySlotOccupied"
 			],
@@ -490,35 +514,59 @@
 			[
 				"tra",
 				"transform"
-			],
-			[
-				"_fil",
-				"_fillImage.color"
-			],
-			[
-				"_he",
-				"_HealthText"
-			],
-			[
-				"_hea",
-				"_heathQuadMaterial"
-			],
-			[
-				"GetC",
-				"GetComponent"
-			],
-			[
-				"Part",
-				"ParticleSystem"
-			],
-			[
-				"gra",
-				"grad.colorKeys"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "Assets/Scripts/Entity/Projectile.cs",
+			"settings":
+			{
+				"buffer_size": 2090,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Entity/LargeProjectile.cs",
+			"settings":
+			{
+				"buffer_size": 684,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/GameController.cs",
+			"settings":
+			{
+				"buffer_size": 13599,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/UI/Event/EventManager.cs",
+			"settings":
+			{
+				"buffer_size": 417,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "using UnityEngine;\nusing System.Collections;\n\npublic class _PlayerController : MonoBehaviour {\n\n\n    public float playerVelocity;\n    public float playerRotationVelocity; \n\n    private CharacterController _characterController;\n    private Camera _playerCamera;\n    private float _rotateX;\n    private float _rotateY; \n\n\n    void Start() {\n        //Cursor.lockState = CursorLockMode.Locked;\n\n        _playerCamera = Camera.main; \n        gameObject.AddComponent<CharacterController>();\n        _characterController = GetComponent<CharacterController>();\n    }\n\n    void Update() {\n        Move();\n        //Rotate(); \n    }\n\n\n    private void Move()\n    {\n        float h = Input.GetAxis(\"Horizontal\") * playerVelocity;\n        float v = Input.GetAxis(\"Vertical\") * playerVelocity;\n        Vector3 _movement = new Vector3(h, 0, v);\n        _movement = transform.rotation * _movement; \n        _characterController.Move(_movement * Time.deltaTime);\n    }\n\n    private void Rotate()\n    {\n        _rotateX = Input.GetAxis(\"Mouse X\") * playerRotationVelocity;\n        _rotateY -= Input.GetAxis(\"Mouse Y\") * playerRotationVelocity;\n        transform.Rotate(new Vector3(0, _rotateX, 0));\n        _rotateY = Mathf.Clamp(_rotateY, -60, 60);\n        _playerCamera.transform.localRotation = Quaternion.Euler(new Vector3(_rotateY, 0, 0));\n\n    }\n\n}\n",
+			"file": "Assets/VayLaserPack/Scripts/Laser Scripts/_PlayerController.cs",
+			"file_size": 1391,
+			"file_write_time": 131178380140000000,
+			"settings":
+			{
+				"buffer_size": 1339,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -569,14 +617,20 @@
 	],
 	"file_history":
 	[
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Constants.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Health.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/ParticleManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/CameraController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/Item.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/CameraControllerLaser.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/GameController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventoryManager.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/Item.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/Container.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Event/EventManager.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Constants.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventorySlot.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/InventoryContainer.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Event/EventManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventorySlot.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/PlayerController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/BodyGuards/ReadMe.txt.txt",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/Container.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/ContainerController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Button/CustomKeyButton.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
@@ -690,13 +744,7 @@
 		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/InputManager/CustomInputManager.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/GameSceneManager.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Entity/Bumper.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Instantiator.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/Logger.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ClientScene/SpeechController.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ClientScene/ClientSceneManager.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/PlayerController.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ClientScene/ModelDoor.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/ServerPlayerController.cs"
+		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Instantiator.cs"
 	],
 	"find":
 	{
@@ -728,6 +776,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CharacterController",
+			"transform.pos",
+			"_child",
+			";\n",
 			"ActivateChild",
 			"OnInventoryUnActive",
 			"AddToQuickItem",
@@ -851,11 +903,7 @@
 			"COMPLETE",
 			"        \n",
 			"region",
-			"REGION",
-			"MODEL_PATH",
-			"DELETE LIN",
-			"DELETE ",
-			"DELETEB"
+			"REGION"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -883,14 +931,166 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Assets/Scripts/Entity/Projectile.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1150,
+								1150
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Entity/LargeProjectile.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								665,
+								673
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/GameController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1686,
+								1686
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 607.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/UI/Event/EventManager.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 417,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								383,
+								383
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/VayLaserPack/Scripts/Laser Scripts/_PlayerController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1339,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								226,
+								226
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 280.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 51.0
+		"height": 42.0
 	},
 	"input":
 	{
@@ -949,6 +1149,50 @@
 		"selected_items":
 		[
 			[
+				"event",
+				"UI\\Event\\EventManager.cs"
+			],
+			[
+				"larg",
+				"Entity\\LargeProjectile.cs"
+			],
+			[
+				"p",
+				"Entity\\Projectile.cs"
+			],
+			[
+				"items",
+				"UI\\Inventory\\Item.cs"
+			],
+			[
+				"gamec",
+				"GameController.cs"
+			],
+			[
+				"game",
+				"GameController.cs"
+			],
+			[
+				"heal",
+				"UI\\Health.cs"
+			],
+			[
+				"con",
+				"Constants.cs"
+			],
+			[
+				"slot",
+				"UI\\Inventory\\InventorySlot.cs"
+			],
+			[
+				"eventm",
+				"UI\\Event\\EventManager.cs"
+			],
+			[
+				"inventory",
+				"UI\\Container\\InventoryContainer.cs"
+			],
+			[
 				"gameocn",
 				"GameController.cs"
 			],
@@ -986,10 +1230,6 @@
 			],
 			[
 				"gamecon",
-				"CSE_GAME1\\Assets\\Scripts\\GameController.cs"
-			],
-			[
-				"game",
 				"CSE_GAME1\\Assets\\Scripts\\GameController.cs"
 			],
 			[
@@ -1069,20 +1309,12 @@
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Container\\ContainerController.cs"
 			],
 			[
-				"inventory",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Container\\InventoryContainer.cs"
-			],
-			[
 				"",
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\InventorySlot.cs"
 			],
 			[
 				"tooltip",
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\ToolTip.cs"
-			],
-			[
-				"con",
-				"AndroidGame\\Assets\\Scripts\\Constants.cs"
 			],
 			[
 				"gameinput",
@@ -1219,10 +1451,6 @@
 			[
 				"games",
 				"GameController.cs"
-			],
-			[
-				"heal",
-				"UI\\Health.cs"
 			],
 			[
 				"gam",
@@ -1431,34 +1659,6 @@
 			[
 				"session",
 				"SessionManager.cs"
-			],
-			[
-				"serverplayerc",
-				"ControllerTestScene\\ServerPlayerController.cs"
-			],
-			[
-				"masterme",
-				"Network\\MasterMessageType.cs"
-			],
-			[
-				"slidesho",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"videoplayer",
-				"ControlScene\\VideoPlayer.cs"
-			],
-			[
-				"slideshowc",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"slideshow",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"clientnetw",
-				"Network\\ClientNetworkManager.cs"
 			]
 		],
 		"width": 0.0
@@ -1471,7 +1671,7 @@
 		[
 			[
 				"",
-				"C:\\Users\\Devan\\Documents\\UnityProjects\\KSU\\NetworkingSolution\\KSU_NETWORK_SOLUTION\\KSU_SUBLIME.sublime-project"
+				"E:\\Unity\\Projects\\AndroidGame\\AndroidSublime.sublime-project"
 			],
 			[
 				"android",
