@@ -11,4 +11,8 @@ public class EventManager : MonoBehaviour {
 	public delegate void ItemAddedOrRemoved();
 	public static ItemAddedOrRemoved OnItemAddedOrRemoved;
 
+
+	public delegate void Shoot();
+	public static Shoot OnShoot;
+
 }

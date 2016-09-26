@@ -26,6 +26,8 @@ TagManager:
   - UI/QuickItemCanvas
   - Inventory/QuickItem
   - Player/Head
+  - Entity/BlueBall
+  - Entity/YellowBall
   layers:
   - Default
   - TransparentFX

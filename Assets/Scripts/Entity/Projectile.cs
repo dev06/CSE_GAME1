@@ -32,25 +32,33 @@ public class Projectile : MonoBehaviour {
 	{
 		_effect = (GameObject)Resources.Load("Prefabs/Particles/Effect");
 		_gameController = FindObjectOfType(typeof(GameController)) as GameController;
-		_trail =  (transform.GetChild(0).GetComponent<ParticleSystem>()) ? transform.GetChild(0).GetComponent<ParticleSystem>() : null;
+		//_trail =  (transform.GetChild(0).GetComponent<ParticleSystem>()) ? transform.GetChild(0).GetComponent<ParticleSystem>() : null;
 		_maxLife = 3;
 		SetTrailColor();
+		GetComponent<Rigidbody>().velocity = forward * 50;
+		transform.GetChild(0).transform.forward = forward;
 
 	}
+
+	void Update()
+	{
+		Destroy(gameObject, _maxLife);
+	}
+
 
 	/// <summary>
 	/// Sets the trail color for particles
 	/// </summary>
 	public void SetTrailColor()
 	{
-		ParticleSystem.ColorOverLifetimeModule _colorOverLifeTime = _trail.colorOverLifetime;
-		if (_trail != null)
-		{
+		// if (_trail != null)
+		// {
 
-			Gradient grad = new Gradient();
-			grad.SetKeys(new GradientColorKey[] { new GradientColorKey(_color, 0.0f), new GradientColorKey(_color, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
-			_colorOverLifeTime.color = new ParticleSystem.MinMaxGradient(grad);
-		}
+		// 	ParticleSystem.ColorOverLifetimeModule _colorOverLifeTime = _trail.colorOverLifetime;
+		// 	Gradient grad = new Gradient();
+		// 	grad.SetKeys(new GradientColorKey[] { new GradientColorKey(_color, 0.0f), new GradientColorKey(_color, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
+		// 	_colorOverLifeTime.color = new ParticleSystem.MinMaxGradient(grad);
+		// }
 	}
 
 	void OnTriggerEnter(Collider col)

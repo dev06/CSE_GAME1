@@ -61,6 +61,12 @@ public class GameController : MonoBehaviour {
 		inventoryManager = new InventoryManager();
 		AddQuickItemSlotToList();
 		EnableMenu(MenuActive.MENU);
+
+
+		if (EventManager.OnShoot != null)
+		{
+			EventManager.OnShoot();
+		}
 	}
 
 	void Start()
@@ -73,7 +79,9 @@ public class GameController : MonoBehaviour {
 	void Update ()
 	{
 
-		ShootProjectile();
+		ShootProjectile((GameObject)Resources.Load("Prefabs/Projectile/BlueBullet"), GameObject.Find("BulletRight").transform.position);
+		ShootProjectile((GameObject)Resources.Load("Prefabs/Projectile/BlueBullet"), GameObject.Find("BulletLeft").transform.position);
+
 		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
 		DecreaseGameCanvasBlankAlpha();
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -100,9 +108,9 @@ public class GameController : MonoBehaviour {
 			inventoryManager.AddItem(new Item("Purple Ball",
 			                                  "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
 			                                  Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
-			inventoryManager.AddItem(new Item("Red Ball",
+			inventoryManager.AddItem(new Item("Blue Ball",
 			                                  "A great ball that will slow down the enemies for certain time period. ",
-			                                  Resources.Load<Sprite>("Item/redBall"), 1, ItemID.RedBall));
+			                                  Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall));
 
 			inventoryManager.AddItem(new Item("Yellow Ball",
 			                                  "This ball allows you to teleport to a certain location. ",
@@ -258,30 +266,36 @@ public class GameController : MonoBehaviour {
 	/// <summary>
 	/// Shoots the projectile
 	/// </summary>
-	private void ShootProjectile()
+	private void ShootProjectile(GameObject _prefab, Vector3 _position)
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-			Transform _camTransform = Camera.main.transform;
-			int _bulletPos = Random.Range(_camTransform.childCount - 1, _camTransform.childCount - 3);
 
 
-			GameObject _l_projectile = Instantiate(_largeProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-			_l_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
-			_bulletPos = (_bulletPos == _camTransform.childCount - 1) ? _camTransform.childCount - 2 : _camTransform.childCount - 1;
-			GameObject _smokeLarge = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			GameObject _blueBullet = Instantiate(_prefab, _position, Quaternion.identity) as GameObject;
+			_blueBullet.GetComponent<Projectile>().forward = Camera.main.transform.forward;
 
 
-			GameObject _s_projectile = Instantiate(_smallProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-			_s_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
-			_l_projectile.transform.parent = activeEntities.transform;
-			_s_projectile.transform.parent = activeEntities.transform;
+			// Transform _camTransform = Camera.main.transform;
+			// int _bulletPos = Random.Range(_camTransform.childCount - 1, _camTransform.childCount - 3);
 
-			GameObject _smokeSmall = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
 
-			Player.GetComponent<CameraController>().Recoil();
-			_smokeLarge.transform.parent = activeEntities.transform;
-			_smokeSmall.transform.parent = activeEntities.transform;
+			// GameObject _l_projectile = Instantiate(_largeProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			// _l_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
+			// _bulletPos = (_bulletPos == _camTransform.childCount - 1) ? _camTransform.childCount - 2 : _camTransform.childCount - 1;
+			// GameObject _smokeLarge = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+
+
+			// GameObject _s_projectile = Instantiate(_smallProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+			// _s_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
+			// _l_projectile.transform.parent = activeEntities.transform;
+			// _s_projectile.transform.parent = activeEntities.transform;
+
+			// GameObject _smokeSmall = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
+
+			// Player.GetComponent<CameraController>().Recoil();
+			// _smokeLarge.transform.parent = activeEntities.transform;
+			// _smokeSmall.transform.parent = activeEntities.transform;
 
 		}
 	}
@@ -398,7 +412,7 @@ public enum InventoryType
 public enum GameItem
 {
 	PURPLEBALL,
-	REDBALL,
+	BlUEBALL,
 	YELLOWBALL,
 	GREENHEALTH,
 	REDHEALTH,

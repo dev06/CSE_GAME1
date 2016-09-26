@@ -41,7 +41,7 @@ public class Item
 public enum ItemID
 {
 	PurpleBall,
-	RedBall,
+	BlueBall,
 	YellowBall,
 	GreenHealth,
 	BlueHealth,
