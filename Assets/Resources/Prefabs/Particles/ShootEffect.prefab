@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 459246}
   - 198: {fileID: 19864260}
   - 199: {fileID: 19963250}
-  - 114: {fileID: 11499120}
+  - 114: {fileID: 11498098}
   m_Layer: 0
   m_Name: ShootEffect
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11499120
+--- !u!114 &11498098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b64e84b6bffd0d47b196f7a3621623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0.5
+  life: 0.58
 --- !u!198 &19864260
 ParticleSystem:
   m_ObjectHideFlags: 1

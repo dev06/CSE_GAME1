@@ -35,8 +35,9 @@ public class GameController : MonoBehaviour {
 	private GameObject _largeProjectile;
 	private GameObject _smallProjectile;
 	private GameObject _bot;
-	private float _botSpawnCounter;
 	private GameObject _smoke;
+	private GameObject _shootEffectPrefab;
+	private float _botSpawnCounter;
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
 	private int _index;
 	private Image _blankImage;
@@ -55,6 +56,8 @@ public class GameController : MonoBehaviour {
 		_smoke = (GameObject)Resources.Load("Prefabs/Particles/Smoke");
 		_bot = (GameObject)Resources.Load("Prefabs/Bot");
 		_blankImage = GameObject.FindWithTag("UI/GameCanvas").transform.FindChild("Blank").GetComponent<Image>();
+		_shootEffectPrefab = (GameObject)Resources.Load("Prefabs/Particles/ShootEffect");
+
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -104,39 +107,39 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetMouseButtonDown(0) && menuActive == MenuActive.GAME) {
-			inventoryManager.AddItem(new Item("Purple Ball",
-			                                  "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
-			                                  Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
-			inventoryManager.AddItem(new Item("Blue Ball",
-			                                  "A great ball that will slow down the enemies for certain time period. ",
-			                                  Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall));
+		// if (Input.GetMouseButtonDown(0) && menuActive == MenuActive.GAME) {
+		// 	inventoryManager.AddItem(new Item("Purple Ball",
+		// 	                                  "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
+		// 	                                  Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
+		// 	inventoryManager.AddItem(new Item("Blue Ball",
+		// 	                                  "A great ball that will slow down the enemies for certain time period. ",
+		// 	                                  Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall));
 
-			inventoryManager.AddItem(new Item("Yellow Ball",
-			                                  "This ball allows you to teleport to a certain location. ",
-			                                  Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall));
+		// 	inventoryManager.AddItem(new Item("Yellow Ball",
+		// 	                                  "This ball allows you to teleport to a certain location. ",
+		// 	                                  Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall));
 
-			inventoryManager.AddItem(new Item("Basic Medkit",
-			                                  "Repletes 10 health points.  ",
-			                                  Resources.Load<Sprite>("Item/greenHealth"), 1, ItemID.GreenHealth));
+		// 	inventoryManager.AddItem(new Item("Basic Medkit",
+		// 	                                  "Repletes 10 health points.  ",
+		// 	                                  Resources.Load<Sprite>("Item/greenHealth"), 1, ItemID.GreenHealth));
 
-			inventoryManager.AddItem(new Item("Effective Medkit",
-			                                  "Repletes 20 health points.  ",
-			                                  Resources.Load<Sprite>("Item/redHealth"), 1, ItemID.RedHealth));
+		// 	inventoryManager.AddItem(new Item("Effective Medkit",
+		// 	                                  "Repletes 20 health points.  ",
+		// 	                                  Resources.Load<Sprite>("Item/redHealth"), 1, ItemID.RedHealth));
 
-			inventoryManager.AddItem(new Item("Advanced Medkit",
-			                                  "Repletes 30 health points.  ",
-			                                  Resources.Load<Sprite>("Item/blueHealth"), 1, ItemID.BlueHealth));
+		// 	inventoryManager.AddItem(new Item("Advanced Medkit",
+		// 	                                  "Repletes 30 health points.  ",
+		// 	                                  Resources.Load<Sprite>("Item/blueHealth"), 1, ItemID.BlueHealth));
 
-		}
 
-		if (Input.GetKeyDown(KeyCode.T) && menuActive == MenuActive.GAME)
-		{
-			inventoryManager.AddItem(new Item("Premium Medkit",
-			                                  "Repletes 40 health points.  ",
-			                                  Resources.Load<Sprite>("Item/orangeHealth"), 1, ItemID.OrangeHealth));
 
-		}
+		// if (Input.GetKeyDown(KeyCode.T) && menuActive == MenuActive.GAME)
+		// {
+		// 	inventoryManager.AddItem(new Item("Premium Medkit",
+		// 	                                  "Repletes 40 health points.  ",
+		// 	                                  Resources.Load<Sprite>("Item/orangeHealth"), 1, ItemID.OrangeHealth));
+
+
 
 		inventoryManager.SelectQuickItemSlot();
 
@@ -270,37 +273,16 @@ public class GameController : MonoBehaviour {
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-
-
 			GameObject _blueBullet = Instantiate(_prefab, _position, Quaternion.identity) as GameObject;
-			GameObject _effect = Instantiate((GameObject)Resources.Load("Prefabs/Particles/ShootEffect"), _position, Quaternion.identity) as GameObject;
+			GameObject _effect = Instantiate(_shootEffectPrefab, _position, Quaternion.identity) as GameObject;
 			_blueBullet.GetComponent<Projectile>().forward = Camera.main.transform.forward;
+			_blueBullet.transform.parent = activeEntities.transform;
+			_effect.transform.parent = activeEntities.transform;
+
 			if (EventManager.OnShoot != null)
 			{
 				EventManager.OnShoot();
 			}
-
-			// Transform _camTransform = Camera.main.transform;
-			// int _bulletPos = Random.Range(_camTransform.childCount - 1, _camTransform.childCount - 3);
-
-
-			// GameObject _l_projectile = Instantiate(_largeProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-			// _l_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
-			// _bulletPos = (_bulletPos == _camTransform.childCount - 1) ? _camTransform.childCount - 2 : _camTransform.childCount - 1;
-			// GameObject _smokeLarge = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-
-
-			// GameObject _s_projectile = Instantiate(_smallProjectile, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-			// _s_projectile.GetComponent<Projectile>().forward = _camTransform.GetChild(_bulletPos).transform.forward;
-			// _l_projectile.transform.parent = activeEntities.transform;
-			// _s_projectile.transform.parent = activeEntities.transform;
-
-			// GameObject _smokeSmall = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
-
-			Player.GetComponent<CameraController>().Recoil();
-			// _smokeLarge.transform.parent = activeEntities.transform;
-			// _smokeSmall.transform.parent = activeEntities.transform;
-
 		}
 	}
 
@@ -416,7 +398,7 @@ public enum InventoryType
 public enum GameItem
 {
 	PURPLEBALL,
-	BlUEBALL,
+	BLUEBALL,
 	YELLOWBALL,
 	GREENHEALTH,
 	REDHEALTH,

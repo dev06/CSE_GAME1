@@ -628,6 +628,8 @@ GameObject:
   - 92: {fileID: 249417301}
   - 124: {fileID: 249417300}
   - 81: {fileID: 249417299}
+  - 114: {fileID: 249417305}
+  - 114: {fileID: 249417304}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -703,6 +705,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1397541598}
   m_RootOrder: 0
+--- !u!114 &249417304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 249417298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478a2083ad114a07d000fbfb8d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
+  blurAmount: 0.2
+  extraBlur: 0
+--- !u!114 &249417305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 249417298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.19
+  intensity: 0.81
+  blurSize: 5.5
+  blurIterations: 2
+  blurType: 1
+  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
 --- !u!1 &275144120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +2086,7 @@ MonoBehaviour:
   hoverAmplitude: 0.6
   hoverFrequency: 0.5
   cameraDistance: 4.5
-  cameraHorizontalOffset: 0
+  cameraHorizontalOffset: -1.33
   recoilAmount: 4.8
   hoverHeight: {x: 0, y: -0.05, z: 0}
 --- !u!143 &773388596
@@ -6169,7 +6202,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459246, guid: b89befc59027c6b4baa06deb5e129bfc, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b89befc59027c6b4baa06deb5e129bfc, type: 2}
@@ -6276,7 +6309,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400034, guid: 47bb966baf2a52f4d9400942d0f277c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.58
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 47bb966baf2a52f4d9400942d0f277c5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6304,7 +6337,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 47bb966baf2a52f4d9400942d0f277c5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 47bb966baf2a52f4d9400942d0f277c5, type: 3}
       propertyPath: m_Controller
