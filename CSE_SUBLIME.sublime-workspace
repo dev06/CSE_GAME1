@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"Transfor",
+				"Transform"
+			],
+			[
+				"_ro",
+				"_rotationSpeedOffset"
+			],
+			[
+				"qui",
+				"quickItemSlots"
+			],
+			[
+				"_shoo",
+				"_shootEffect"
+			],
+			[
+				"_sho",
+				"_shootEffect"
+			],
+			[
+				"Quater",
+				"Quaternion"
+			],
+			[
+				"Instant",
+				"Instantiate"
+			],
+			[
+				"Resou",
+				"Resources"
+			],
+			[
+				"_move",
+				"_moveCam"
+			],
+			[
+				"_mo",
+				"_moveCam"
+			],
+			[
 				"Shoo",
 				"ShootProjectile"
 			],
@@ -404,10 +444,6 @@
 				"Vector2"
 			],
 			[
-				"_ro",
-				"_rotationFreqNumber"
-			],
-			[
 				"_wall",
 				"_wallObjects.transform"
 			],
@@ -478,42 +514,6 @@
 			[
 				"FindGamee",
 				"GameObject.FindGameObjectsWithTag(tag)"
-			],
-			[
-				"Cont",
-				"ContainerController"
-			],
-			[
-				"S",
-				"SERVANT"
-			],
-			[
-				"InputButton",
-				"InputButton.Left"
-			],
-			[
-				"_re",
-				"_rectTransform.localScale"
-			],
-			[
-				"_pro",
-				"_profileTwoTransform"
-			],
-			[
-				"Camera",
-				"CameraMoveSpeed"
-			],
-			[
-				"Transform",
-				"TransformDirection"
-			],
-			[
-				"tranform",
-				"transform.forward"
-			],
-			[
-				"tra",
-				"transform"
 			]
 		]
 	},
@@ -523,16 +523,7 @@
 			"file": "Assets/Scripts/Entity/Projectile.cs",
 			"settings":
 			{
-				"buffer_size": 2090,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Scripts/Entity/LargeProjectile.cs",
-			"settings":
-			{
-				"buffer_size": 684,
+				"buffer_size": 1584,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
@@ -541,29 +532,25 @@
 			"file": "Assets/Scripts/GameController.cs",
 			"settings":
 			{
-				"buffer_size": 13599,
+				"buffer_size": 12669,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/UI/Event/EventManager.cs",
+			"file": "Assets/Scripts/Entity/EntityItem.cs",
 			"settings":
 			{
-				"buffer_size": 417,
+				"buffer_size": 2107,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "using UnityEngine;\nusing System.Collections;\n\npublic class _PlayerController : MonoBehaviour {\n\n\n    public float playerVelocity;\n    public float playerRotationVelocity; \n\n    private CharacterController _characterController;\n    private Camera _playerCamera;\n    private float _rotateX;\n    private float _rotateY; \n\n\n    void Start() {\n        //Cursor.lockState = CursorLockMode.Locked;\n\n        _playerCamera = Camera.main; \n        gameObject.AddComponent<CharacterController>();\n        _characterController = GetComponent<CharacterController>();\n    }\n\n    void Update() {\n        Move();\n        //Rotate(); \n    }\n\n\n    private void Move()\n    {\n        float h = Input.GetAxis(\"Horizontal\") * playerVelocity;\n        float v = Input.GetAxis(\"Vertical\") * playerVelocity;\n        Vector3 _movement = new Vector3(h, 0, v);\n        _movement = transform.rotation * _movement; \n        _characterController.Move(_movement * Time.deltaTime);\n    }\n\n    private void Rotate()\n    {\n        _rotateX = Input.GetAxis(\"Mouse X\") * playerRotationVelocity;\n        _rotateY -= Input.GetAxis(\"Mouse Y\") * playerRotationVelocity;\n        transform.Rotate(new Vector3(0, _rotateX, 0));\n        _rotateY = Mathf.Clamp(_rotateY, -60, 60);\n        _playerCamera.transform.localRotation = Quaternion.Euler(new Vector3(_rotateY, 0, 0));\n\n    }\n\n}\n",
-			"file": "Assets/VayLaserPack/Scripts/Laser Scripts/_PlayerController.cs",
-			"file_size": 1391,
-			"file_write_time": 131178380140000000,
+			"file": "Assets/Scripts/Player/CameraController.cs",
 			"settings":
 			{
-				"buffer_size": 1339,
-				"encoding": "UTF-8 with BOM",
+				"buffer_size": 7247,
 				"line_ending": "Windows"
 			}
 		}
@@ -617,16 +604,18 @@
 	],
 	"file_history":
 	[
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/LargeProjectile.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Constants.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventoryManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/_PlayerController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Event/EventManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/CameraController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Health.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/ParticleManager.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/CameraController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/Item.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/CameraControllerLaser.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/GameController.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventoryManager.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/InventoryContainer.cs",
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Event/EventManager.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventorySlot.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/PlayerController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/BodyGuards/ReadMe.txt.txt",
@@ -742,9 +731,7 @@
 		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/PlayerController/MovementHandler.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/TurnOffBehaviour.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/InputManager/CustomInputManager.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/GameSceneManager.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Entity/Bumper.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Instantiator.cs"
+		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/GameSceneManager.cs"
 	],
 	"find":
 	{
@@ -776,6 +763,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"gameitem",
+			"recoil",
 			"CharacterController",
 			"transform.pos",
 			"_child",
@@ -901,9 +890,7 @@
 			"ResetCamera",
 			"tab",
 			"COMPLETE",
-			"        \n",
-			"region",
-			"REGION"
+			"        \n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -940,15 +927,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2090,
+						"buffer_size": 1584,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1150,
-								1150
+								903,
+								903
 							]
 						],
 						"settings":
@@ -958,27 +945,57 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 67.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Assets/Scripts/Entity/LargeProjectile.cs",
+					"file": "Assets/Scripts/GameController.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 684,
+						"buffer_size": 12669,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								665,
-								673
+								4252,
+								4252
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1734.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Entity/EntityItem.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								423,
+								423
 							]
 						],
 						"settings":
@@ -989,36 +1006,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Assets/Scripts/GameController.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13599,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1686,
-								1686
-							]
-						],
-						"settings":
-						{
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 607.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1026,19 +1013,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "Assets/Scripts/UI/Event/EventManager.cs",
+					"file": "Assets/Scripts/Player/CameraController.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 417,
+						"buffer_size": 7247,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								383,
-								383
+								6589,
+								7057
 							]
 						],
 						"settings":
@@ -1048,41 +1035,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3570.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Assets/VayLaserPack/Scripts/Laser Scripts/_PlayerController.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1339,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								226,
-								226
-							]
-						],
-						"settings":
-						{
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 280.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1149,6 +1105,38 @@
 		"selected_items":
 		[
 			[
+				"lar",
+				"Entity\\LargeProjectile.cs"
+			],
+			[
+				"camera",
+				"Player\\CameraController.cs"
+			],
+			[
+				"cons",
+				"Constants.cs"
+			],
+			[
+				"ivnetory",
+				"UI\\Inventory\\InventoryManager.cs"
+			],
+			[
+				"gamec",
+				"GameController.cs"
+			],
+			[
+				"enity",
+				"Entity\\EntityItem.cs"
+			],
+			[
+				"ca",
+				"Player\\CameraController.cs"
+			],
+			[
+				"prj",
+				"Entity\\Projectile.cs"
+			],
+			[
 				"event",
 				"UI\\Event\\EventManager.cs"
 			],
@@ -1163,10 +1151,6 @@
 			[
 				"items",
 				"UI\\Inventory\\Item.cs"
-			],
-			[
-				"gamec",
-				"GameController.cs"
 			],
 			[
 				"game",
@@ -1207,10 +1191,6 @@
 			[
 				"customkey",
 				"UI\\Button\\CustomKeyButton.cs"
-			],
-			[
-				"cons",
-				"Constants.cs"
 			],
 			[
 				"ivnet",
@@ -1403,10 +1383,6 @@
 			[
 				"controlcon",
 				"UI\\ControllerConfiguration.cs"
-			],
-			[
-				"camera",
-				"Player\\CameraController.cs"
 			],
 			[
 				"smal",
@@ -1639,26 +1615,6 @@
 			[
 				"clientnetwork",
 				"Network\\ClientNetworkManager.cs"
-			],
-			[
-				"speech",
-				"ClientScene\\SpeechController.cs"
-			],
-			[
-				"servernetwo",
-				"Network\\ServerNetworkManager.cs"
-			],
-			[
-				"constants",
-				"Constants.cs"
-			],
-			[
-				"serverplay",
-				"ControllerTestScene\\ServerPlayerController.cs"
-			],
-			[
-				"session",
-				"SessionManager.cs"
 			]
 		],
 		"width": 0.0
@@ -1671,7 +1627,7 @@
 		[
 			[
 				"",
-				"E:\\Unity\\Projects\\AndroidGame\\AndroidSublime.sublime-project"
+				"E:\\Unity\\KSU\\NetworkingSolution\\KSU_NETWORK_SOLUTION\\KSU_SUBLIME.sublime-project"
 			],
 			[
 				"android",
