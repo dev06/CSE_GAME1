@@ -273,8 +273,12 @@ public class GameController : MonoBehaviour {
 
 
 			GameObject _blueBullet = Instantiate(_prefab, _position, Quaternion.identity) as GameObject;
+			GameObject _effect = Instantiate((GameObject)Resources.Load("Prefabs/Particles/ShootEffect"), _position, Quaternion.identity) as GameObject;
 			_blueBullet.GetComponent<Projectile>().forward = Camera.main.transform.forward;
-
+			if (EventManager.OnShoot != null)
+			{
+				EventManager.OnShoot();
+			}
 
 			// Transform _camTransform = Camera.main.transform;
 			// int _bulletPos = Random.Range(_camTransform.childCount - 1, _camTransform.childCount - 3);
@@ -293,7 +297,7 @@ public class GameController : MonoBehaviour {
 
 			// GameObject _smokeSmall = Instantiate(_smoke, _camTransform.GetChild(_bulletPos).transform.position, Quaternion.identity) as GameObject;
 
-			// Player.GetComponent<CameraController>().Recoil();
+			Player.GetComponent<CameraController>().Recoil();
 			// _smokeLarge.transform.parent = activeEntities.transform;
 			// _smokeSmall.transform.parent = activeEntities.transform;
 

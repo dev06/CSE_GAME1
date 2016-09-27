@@ -14,6 +14,10 @@ public class CameraController : MonoBehaviour {
 	public float bobFrequency = 0.8f;
 	public float hoverAmplitude;
 	public float hoverFrequency;
+	public float cameraDistance;
+	public float cameraHorizontalOffset;
+	public float recoilAmount;
+	public Vector3 hoverHeight;
 	#endregion---/ PUBLIC MEMBERS---
 
 	#region---PRIVATE MEMBERS----
@@ -62,10 +66,7 @@ public class CameraController : MonoBehaviour {
 		_playerHead = GameObject.FindWithTag("Player/Head");
 		_cc = GetComponent<CharacterController>();
 		_gameSceneManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-
-		//GameObject[] _weaponBarrels_local = { transform.FindChild("barrel (1)").gameObject, transform.FindChild("barrel").gameObject };
-		//_weaponBarrels = _weaponBarrels_local;
-
+		EventManager.OnShoot += MoveCamera;
 	}
 
 	// Update is called once per frame
@@ -80,7 +81,18 @@ public class CameraController : MonoBehaviour {
 				Look();
 				HoverPlayer();
 				HeadBob();
-				_recoil = Mathf.SmoothDamp(_recoil, 0, ref _recoilVel, .1f);
+
+			}
+
+			if (_moveCam)
+			{
+				cameraDistance = Mathf.SmoothDamp(cameraDistance, recoilAmount, ref _recoilVel, .1f);
+				if (recoilAmount - cameraDistance < .1f)
+				{
+					_moveCam = false;
+				}
+			} else {
+				cameraDistance = Mathf.SmoothDamp(cameraDistance, 4.5f, ref _recoilVel, .1f);
 			}
 		}
 
@@ -187,9 +199,7 @@ public class CameraController : MonoBehaviour {
 		//AdjustBarrels(_headBobPos);
 	}
 
-	public Vector3 hoverHeight;
-	public float cameraDistance;
-	public float cameraHorizontalOffset;
+
 	private void HoverPlayer()
 	{
 		_targetHover.y = Mathf.PingPong(hoverFrequency * Time.time, hoverAmplitude);
@@ -197,23 +207,18 @@ public class CameraController : MonoBehaviour {
 		_hoverPos.y = Mathf.Lerp(_hoverPos.y, _targetHover.y, 2.5f * Time.deltaTime);
 		Camera.main.transform.position = (transform.TransformDirection(_hoverPos) + _playerHead.transform.position) - (_playerHead.transform.forward * cameraDistance) - (_playerHead.transform.right * cameraHorizontalOffset) + hoverHeight;
 	}
-	/// <summary>
-	/// Adjusts the barrels or bobs the gun barrels
-	/// </summary>
-	/// <param name="_headBobPos"></param>
-	// private void AdjustBarrels(Vector3 _headBobPos)
-	// {
-	// 	_weaponBarrels[0].transform.position = (_dummyLeft.transform.position + _dummyLeft.transform.forward / 2 + (transform.forward * (_recoil / 20.0f))) + transform.TransformDirection(_headBobPos) ;
-	// 	_weaponBarrels[0].transform.rotation = _dummyLeft.transform.rotation * Quaternion.Euler(new Vector3(_recoil, 0, 0));
-	// 	_weaponBarrels[1].transform.position = (_dummyRight.transform.position + _dummyRight.transform.forward / 2 + (transform.forward * (_recoil / 20.0f))) + transform.TransformDirection(_headBobPos);
-	// 	_weaponBarrels[1].transform.rotation = _dummyRight.transform.rotation * Quaternion.Euler(new Vector3(_recoil, 0, 0));
 
-	// }
 	/// <summary>
 	/// Sets recoil to certain amount
 	/// </summary>
 	public void Recoil()
 	{
-		_recoil = -10;
+		_recoil = -1;
+	}
+
+	private bool _moveCam;
+	public void MoveCamera()
+	{
+		_moveCam = true;
 	}
 }

@@ -45,6 +45,12 @@ public class Projectile : MonoBehaviour {
 		Destroy(gameObject, _maxLife);
 	}
 
+	void FixedUpdate()
+	{
+		float speed = Random.Range(40.0f, 50.0f);
+		transform.Rotate(new Vector3(Time.deltaTime * Time.time * speed,  Time.deltaTime * Time.time * speed, Time.deltaTime * Time.time * speed));
+	}
+
 
 	/// <summary>
 	/// Sets the trail color for particles
