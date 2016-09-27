@@ -38,5 +38,12 @@ public class Constants  {
 	public const float HideControlUITimer = 5.0f;
 
 
+	//Entity
+	public const float EntityRotationSpeed = 25f;
+	public const float EntityHoverAmp = .05f;
+	public const float EntityHoverFreq = .1f;
+
+
+
 	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
 }

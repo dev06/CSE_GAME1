@@ -32,9 +32,7 @@ public class Projectile : MonoBehaviour {
 	{
 		_effect = (GameObject)Resources.Load("Prefabs/Particles/Effect");
 		_gameController = FindObjectOfType(typeof(GameController)) as GameController;
-		//_trail =  (transform.GetChild(0).GetComponent<ParticleSystem>()) ? transform.GetChild(0).GetComponent<ParticleSystem>() : null;
 		_maxLife = 3;
-		SetTrailColor();
 		GetComponent<Rigidbody>().velocity = forward * 50;
 		transform.GetChild(0).transform.forward = forward;
 
@@ -45,26 +43,15 @@ public class Projectile : MonoBehaviour {
 		Destroy(gameObject, _maxLife);
 	}
 
-
-	/// <summary>
-	/// Sets the trail color for particles
-	/// </summary>
-	public void SetTrailColor()
+	void FixedUpdate()
 	{
-		// if (_trail != null)
-		// {
-
-		// 	ParticleSystem.ColorOverLifetimeModule _colorOverLifeTime = _trail.colorOverLifetime;
-		// 	Gradient grad = new Gradient();
-		// 	grad.SetKeys(new GradientColorKey[] { new GradientColorKey(_color, 0.0f), new GradientColorKey(_color, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
-		// 	_colorOverLifeTime.color = new ParticleSystem.MinMaxGradient(grad);
-		// }
+		float speed = Random.Range(40.0f, 50.0f);
+		transform.Rotate(new Vector3(Time.deltaTime * Time.time * speed,  Time.deltaTime * Time.time * speed, Time.deltaTime * Time.time * speed));
 	}
+
 
 	void OnTriggerEnter(Collider col)
 	{
-
-
 		if (col.gameObject.tag != "Player")
 		{
 			if (col.gameObject.GetComponent<Mob>() != null)

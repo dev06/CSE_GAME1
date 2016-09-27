@@ -29,15 +29,18 @@ public class InventoryManager {
 			}
 		} else
 		{
-
-			//inventorySlots[GetNextAvailableSlot()].gameObject.SetActive(true);
-			inventorySlots[GetNextAvailableSlot()].SetItem(item);
+			inventorySlots[GetNextAvailableSlot(inventorySlots)].SetItem(item);
 		}
 		inventoryCount = InventorySlotOccupied();
 
 		if (EventManager.OnItemAddedOrRemoved != null)
 		{
 			EventManager.OnItemAddedOrRemoved();
+		}
+
+		if (GetNextAvailableSlot(quickItemSlots) != -1)
+		{
+			AddToQuickItem(item, quickItemSlots[GetNextAvailableSlot(quickItemSlots)]);
 		}
 	}
 
@@ -198,11 +201,11 @@ public class InventoryManager {
 		return item.itemID == targetItem.itemID;
 	}
 
-	public int GetNextAvailableSlot()
+	public int GetNextAvailableSlot(List<InventorySlot> collection)
 	{
-		for (int i = 0; i < inventorySlots.Count; i++)
+		for (int i = 0; i < collection.Count; i++)
 		{
-			Item currentSlotItem = inventorySlots[i].item;
+			Item currentSlotItem = collection[i].item;
 			if (currentSlotItem == null)
 			{
 				return i;
