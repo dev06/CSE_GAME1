@@ -21,7 +21,7 @@ public class Entity: MonoBehaviour
 	{
 		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 		_rotation = Vector3.zero;
-		_rotationSpeedOffset = Random.Range(1.0f, 5.0f);
+		_rotationSpeedOffset = Random.Range(1.0f, 2.0f);
 	}
 
 	void Update()
