@@ -72,18 +72,10 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	void Start()
-	{
-
-
-	}
-
 
 	void Update ()
 	{
 
-		ShootProjectile((GameObject)Resources.Load("Prefabs/Projectile/BlueBullet"), GameObject.Find("BulletRight").transform.position);
-		ShootProjectile((GameObject)Resources.Load("Prefabs/Projectile/BlueBullet"), GameObject.Find("BulletLeft").transform.position);
 
 		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
 		DecreaseGameCanvasBlankAlpha();
@@ -106,40 +98,6 @@ public class GameController : MonoBehaviour {
 				}
 			}
 		}
-
-		// if (Input.GetMouseButtonDown(0) && menuActive == MenuActive.GAME) {
-		// 	inventoryManager.AddItem(new Item("Purple Ball",
-		// 	                                  "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
-		// 	                                  Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall));
-		// 	inventoryManager.AddItem(new Item("Blue Ball",
-		// 	                                  "A great ball that will slow down the enemies for certain time period. ",
-		// 	                                  Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall));
-
-		// 	inventoryManager.AddItem(new Item("Yellow Ball",
-		// 	                                  "This ball allows you to teleport to a certain location. ",
-		// 	                                  Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall));
-
-		// 	inventoryManager.AddItem(new Item("Basic Medkit",
-		// 	                                  "Repletes 10 health points.  ",
-		// 	                                  Resources.Load<Sprite>("Item/greenHealth"), 1, ItemID.GreenHealth));
-
-		// 	inventoryManager.AddItem(new Item("Effective Medkit",
-		// 	                                  "Repletes 20 health points.  ",
-		// 	                                  Resources.Load<Sprite>("Item/redHealth"), 1, ItemID.RedHealth));
-
-		// 	inventoryManager.AddItem(new Item("Advanced Medkit",
-		// 	                                  "Repletes 30 health points.  ",
-		// 	                                  Resources.Load<Sprite>("Item/blueHealth"), 1, ItemID.BlueHealth));
-
-
-
-		// if (Input.GetKeyDown(KeyCode.T) && menuActive == MenuActive.GAME)
-		// {
-		// 	inventoryManager.AddItem(new Item("Premium Medkit",
-		// 	                                  "Repletes 40 health points.  ",
-		// 	                                  Resources.Load<Sprite>("Item/orangeHealth"), 1, ItemID.OrangeHealth));
-
-
 
 		inventoryManager.SelectQuickItemSlot();
 
@@ -265,26 +223,6 @@ public class GameController : MonoBehaviour {
 		GameObject.FindGameObjectWithTag("UI/ControlConfigCanvas").transform.FindChild("AlphaBackGround").transform.FindChild("ControlConfigBackground").gameObject.SetActive(value);
 	}
 
-
-	/// <summary>
-	/// Shoots the projectile
-	/// </summary>
-	private void ShootProjectile(GameObject _prefab, Vector3 _position)
-	{
-		if (Input.GetMouseButtonDown(1))
-		{
-			GameObject _blueBullet = Instantiate(_prefab, _position, Quaternion.identity) as GameObject;
-			GameObject _effect = Instantiate(_shootEffectPrefab, _position, Quaternion.identity) as GameObject;
-			_blueBullet.GetComponent<Projectile>().forward = Camera.main.transform.forward;
-			_blueBullet.transform.parent = activeEntities.transform;
-			_effect.transform.parent = activeEntities.transform;
-
-			if (EventManager.OnShoot != null)
-			{
-				EventManager.OnShoot();
-			}
-		}
-	}
 
 	/// <summary>
 	/// Lowers the beginning alpha

@@ -24,7 +24,7 @@ public class Entity: MonoBehaviour
 		_rotationSpeedOffset = Random.Range(1.0f, 2.0f);
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		HoverAndRotate();
 	}
@@ -37,8 +37,8 @@ public class Entity: MonoBehaviour
 		transform.Rotate(_rotation);
 
 		_targetHover.y = Mathf.PingPong(Constants.EntityHoverFreq * Time.time, Constants.EntityHoverAmp);
-		_targetHover.y -= Constants.EntityHoverAmp / 2.0f;
-		_hoverPos.y = Mathf.Lerp(_hoverPos.y, _targetHover.y, _rotationSpeedOffset * Time.deltaTime);
+		_targetHover.y -= (Constants.EntityHoverAmp / 2.0f);
+		_hoverPos.y = Mathf.Lerp(_hoverPos.y, _targetHover.y, 2.5f * Time.deltaTime);
 		transform.position += _hoverPos;
 	}
 }
@@ -68,15 +68,15 @@ public class EntityItem : Entity {
 			case GameItem.BLUEBALL:
 				return new Item("Blue Ball",
 				                "A great ball that will slow down the enemies for certain time period. ",
-				                Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall);
+				                Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall, ItemType.Projectile);
 			case GameItem.YELLOWBALL:
 				return new Item("Yellow Ball",
 				                "This ball allows you to teleport to a certain location. ",
-				                Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall);
+				                Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall, ItemType.Projectile);
 			case GameItem.PURPLEBALL:
 				return new Item("Purple Ball",
 				                "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
-				                Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall);
+				                Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall, ItemType.Projectile);
 		}
 		return null;
 	}

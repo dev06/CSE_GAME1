@@ -28,6 +28,7 @@ TagManager:
   - Player/Head
   - Entity/BlueBall
   - Entity/YellowBall
+  - Manager/ProjectileManager
   layers:
   - Default
   - TransparentFX

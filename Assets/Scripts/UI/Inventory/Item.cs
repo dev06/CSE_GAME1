@@ -9,6 +9,7 @@ public class Item
 	public string itemName;
 	public string itemInfo;
 	public ItemID itemID;
+	public ItemType itemType;
 
 
 	public Item() {}
@@ -18,13 +19,15 @@ public class Item
 	            string itemInfo,
 	            Sprite itemImage,
 	            int itemQuantity,
-	            ItemID itemID) {
+	            ItemID itemID,
+	            ItemType itemType) {
 
 		this.itemName = itemName;
 		this.itemImage = itemImage;
 		this.itemInfo = itemInfo;
 		this.itemQuantity = itemQuantity;
 		this.itemID = itemID;
+		this.itemType = itemType;
 	}
 
 
@@ -33,8 +36,9 @@ public class Item
 		this.itemImage = item.itemImage;
 		this.itemQuantity = item.itemQuantity;
 		this.itemInfo = item.itemInfo;
-		this.itemName = itemName;
-		this.itemID = itemID;
+		this.itemName = item.itemName;
+		this.itemID = item.itemID;
+		this.itemType = item.itemType;
 	}
 }
 
@@ -48,4 +52,9 @@ public enum ItemID
 	RedHealth,
 	OrangeHealth,
 	Null,
+}
+
+public enum ItemType
+{
+	Projectile,
 }

@@ -31,6 +31,7 @@ public class CameraController : MonoBehaviour {
 	private float _recoil;
 	private float _recoilVel;
 	private bool _isMoving;
+	private bool _moveCam;
 	private Vector3 _headBobPos = Vector3.zero;
 	private Vector3 _targetHeadBob = Vector3.zero;
 	private Vector3 _targetHover = Vector3.zero;
@@ -216,9 +217,18 @@ public class CameraController : MonoBehaviour {
 		_recoil = -1;
 	}
 
-	private bool _moveCam;
+
 	public void MoveCamera()
 	{
-		_moveCam = true;
+		if (_gameSceneManager.inventoryManager.quickItemSelectedSlot != null)
+		{
+			if (_gameSceneManager.inventoryManager.quickItemSelectedSlot.item != null)
+			{
+				if (_gameSceneManager.inventoryManager.quickItemSelectedSlot.item.itemType == ItemType.Projectile)
+				{
+					_moveCam = true;
+				}
+			}
+		}
 	}
 }

@@ -40,7 +40,14 @@ public class InventoryManager {
 
 		if (GetNextAvailableSlot(quickItemSlots) != -1)
 		{
-			AddToQuickItem(item, quickItemSlots[GetNextAvailableSlot(quickItemSlots)]);
+
+			InventorySlot _currentQuickItemSlot = quickItemSlots[GetNextAvailableSlot(quickItemSlots)];
+			if (IsCollectionEmpty(quickItemSlots))
+			{
+				quickItemSelectedSlot = _currentQuickItemSlot;
+			}
+
+			AddToQuickItem(item, _currentQuickItemSlot);
 		}
 	}
 
@@ -199,6 +206,23 @@ public class InventoryManager {
 	public bool isOfType(Item item, Item targetItem)
 	{
 		return item.itemID == targetItem.itemID;
+	}
+
+	public bool IsCollectionEmpty(List<InventorySlot> _collection)
+	{
+		for (int i = 0; i < _collection.Count; i++)
+		{
+			InventorySlot _slot = _collection[i];
+			if (_slot.item == null)
+			{
+				continue;
+			} else
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	public int GetNextAvailableSlot(List<InventorySlot> collection)
