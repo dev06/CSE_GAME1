@@ -10,21 +10,99 @@ public class PlayerController : Mob
 	#region-----PRIVATE MEMBERS-----
 	private float _healthRepletionTimer;
 	private float _healthRepletionTimerCounter;
+	private MeshRenderer _meshRenderer;
+	private ParticleSystemRenderer _hoverEffect;
+	private ParticleSystemRenderer _shootEffect;
+
 	#endregion-----/PRIVATE MEMBERS-----
+
+
+	void OnEnable()
+	{
+		EventManager.OnQuickItemChange += ManageSkin;
+	}
 
 	void Start()
 	{
 		Init();
 		_healthRepletionTimer = Constants.HealthRepletionTimer;
+		_meshRenderer = GetComponent<MeshRenderer>();
+		_hoverEffect = (ParticleSystemRenderer)transform.FindChild("HoverEffect").GetComponent<ParticleSystem>().GetComponent<Renderer>();
+		_shootEffect = (ParticleSystemRenderer)((GameObject)Resources.Load("Prefabs/Particles/ShootEffect")).GetComponent<ParticleSystem>().GetComponent<Renderer>();
+
 		MaxHealth = Constants.PlayerMaxHealth;
 		Health = MaxHealth;
+
 	}
+
 
 	// Update is called once per frame
 	void Update()
 	{
 
-		//Repletes the player health.
+		ManageRepletion();
+		ManageHoverEffect();
+		EndGame();
+
+
+	}
+
+	private void ManageSkin()
+	{
+		InventorySlot _currentQuickItemSlot = _gameController.inventoryManager.quickItemSelectedSlot;
+		if (_currentQuickItemSlot != null)
+		{
+			if (_currentQuickItemSlot.item != null)
+			{
+				Item item = _currentQuickItemSlot.item;
+				switch (item.itemID)
+				{
+					case ItemID.BlueBall:
+					{
+						_meshRenderer.material = Constants.Character_Blue_Mat;
+						_hoverEffect.material = Constants.Character_Blue_Hover_Mat;
+						_shootEffect.material = Constants.Character_Blue_Shoot_Mat;
+
+						break;
+					} case ItemID.YellowBall:
+					{
+						_meshRenderer.material = Constants.Character_Yellow_Mat;
+						_hoverEffect.material = Constants.Character_Yellow_Hover_Mat;
+						_shootEffect.material = Constants.Character_Yellow_Shoot_Mat;
+
+						break;
+					}
+					case ItemID.PurpleBall:
+					{
+						_meshRenderer.material = Constants.Character_Purple_Mat;
+						_hoverEffect.material = Constants.Character_Purple_Hover_Mat;
+						_shootEffect.material = Constants.Character_Purple_Shoot_Mat;
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	private void EndGame()
+	{
+		if (_gameController.menuActive == MenuActive.GAME)
+		{
+			if (Health <= 0)
+			{
+				GameObject.Find("RetryCanvas").GetComponent<Animation>().Play(GameObject.Find("RetryCanvas").GetComponent<Animation>().clip.name);
+				_gameController.EnableMenu(MenuActive.RETRY);
+			}
+		}
+	}
+
+	private void ManageHoverEffect()
+	{
+		_hoverEffect.gameObject.transform.Rotate(new Vector3(0, 0, Time.deltaTime * 150.0f));
+	}
+
+	private void ManageRepletion()
+	{
 		if (Health < MaxHealth)
 		{
 			if (_healthRepletionTimerCounter > _healthRepletionTimer)
@@ -34,22 +112,7 @@ public class PlayerController : Mob
 		}
 
 		_healthRepletionTimerCounter += Time.deltaTime;
-
-
-		//Ends the game
-		if (_gameController.menuActive == MenuActive.GAME)
-		{
-			if (Health <= 0)
-			{
-				GameObject.Find("RetryCanvas").GetComponent<Animation>().Play(GameObject.Find("RetryCanvas").GetComponent<Animation>().clip.name);
-				_gameController.EnableMenu(MenuActive.RETRY);
-			}
-		}
-
 	}
-
-
-
 
 	void OnCollisionEnter(Collision col)
 	{
@@ -78,9 +141,5 @@ public class PlayerController : Mob
 
 		return 0;
 	}
-
-
-
-
 
 }

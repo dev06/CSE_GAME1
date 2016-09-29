@@ -15,4 +15,8 @@ public class EventManager : MonoBehaviour {
 	public delegate void Shoot();
 	public static Shoot OnShoot;
 
+
+	public delegate void QuickItemSelected();
+	public static QuickItemSelected OnQuickItemChange;
+
 }

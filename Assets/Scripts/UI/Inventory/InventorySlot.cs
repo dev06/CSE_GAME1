@@ -216,7 +216,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		if (inventoryType == InventoryType.QuickItem)
 		{
 			_inventoryManager.quickItemSelectedSlot	= this;
-
+			if (EventManager.OnQuickItemChange != null)
+			{
+				EventManager.OnQuickItemChange();
+			}
 		}
 	}
 

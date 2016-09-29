@@ -30,6 +30,12 @@ public class CameraController : MonoBehaviour {
 	private float _forwardInput;
 	private float _recoil;
 	private float _recoilVel;
+	private float _strafeVel;
+	private float _forwardVel;
+	private float _strafeAcc;
+	private float _fowardAcc;
+	private float _lookHorizontalVel;
+	private float _lookHorizontalAcc;
 	private bool _isMoving;
 	private bool _moveCam;
 	private Vector3 _headBobPos = Vector3.zero;
@@ -101,11 +107,15 @@ public class CameraController : MonoBehaviour {
 	/// <summary>
 	/// Moves the Players
 	/// </summary>
+
 	private void Move()
 	{
 		float strafe = _strafeInput * CameraMoveSpeed ;
 		float forward = _forwardInput * CameraMoveSpeed ;
-		Vector3 _movement = new Vector3(strafe, -5.0f, forward);
+		_strafeAcc = Mathf.SmoothDamp(_strafeAcc, _strafeInput * CameraMoveSpeed, ref _strafeVel, Constants.PlayerStrafeAcc);
+		_fowardAcc = Mathf.SmoothDamp(_fowardAcc, _forwardInput * CameraMoveSpeed, ref _forwardVel, Constants.PlayerForwardAcc);
+
+		Vector3 _movement = new Vector3(_strafeAcc, -5.0f, _fowardAcc);
 		_movement = transform.rotation * _movement;
 
 		if (Mathf.Abs(forward) > 0)
@@ -123,6 +133,7 @@ public class CameraController : MonoBehaviour {
 		}
 
 		_isMoving = strafe != 0 || forward != 0;
+
 		_cc.Move(_movement * Time.deltaTime);
 
 
@@ -166,17 +177,21 @@ public class CameraController : MonoBehaviour {
 	/// <summary>
 	///	Manages the rotation for the player
 	/// </summary>
+
 	private void Look()
 	{
 		if (_gameSceneManager.onContainer == false)
 		{
-			transform.Rotate(0, _lookHorizontalInput * CameraLookSpeed, 0);
+			_lookHorizontalAcc = Mathf.SmoothDamp(_lookHorizontalAcc, _lookHorizontalInput, ref _lookHorizontalVel, Constants.PlayerRotationHorizontalDelay);
+			transform.Rotate(0, _lookHorizontalAcc * CameraLookSpeed, 0);
 			_lookInput -= _lookVerticalInput * CameraLookSpeed;
 			_lookInput = Mathf.Clamp(_lookInput , -CameraLookAngle, CameraLookAngle);
-			_playerHead.transform.localRotation = Quaternion.Euler(_lookInput, 0, 0);
+			_playerHead.transform.localRotation = Quaternion.Lerp(_playerHead.transform.localRotation, Quaternion.Euler(_lookInput, 0, 0), Time.deltaTime * Constants.PlayerRotationVerticalDelay);
 
 		}
 	}
+
+
 
 	/// <summary>
 	///	Bobs the camera

@@ -11,6 +11,7 @@ public class Mob : MonoBehaviour {
 	protected float MaxHealth;
 	protected bool _isDead;
 	protected GameController _gameController;
+	protected NavMeshAgent _agent;
 	#endregion----/PRIVATE MEMBERS----
 
 
@@ -24,6 +25,7 @@ public class Mob : MonoBehaviour {
 	public void Init()
 	{
 		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+		_agent = (GetComponent<NavMeshAgent>() != null) ? transform.GetComponent<NavMeshAgent>() : null;
 	}
 
 	/// <summary>

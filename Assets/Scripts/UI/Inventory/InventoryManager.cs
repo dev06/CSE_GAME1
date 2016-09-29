@@ -45,9 +45,15 @@ public class InventoryManager {
 			if (IsCollectionEmpty(quickItemSlots))
 			{
 				quickItemSelectedSlot = _currentQuickItemSlot;
+
 			}
 
 			AddToQuickItem(item, _currentQuickItemSlot);
+			if (EventManager.OnQuickItemChange != null)
+			{
+				EventManager.OnQuickItemChange();
+			}
+
 		}
 	}
 
@@ -146,18 +152,37 @@ public class InventoryManager {
 
 	public void SelectQuickItemSlot()
 	{
-		if (Input.GetKeyDown(KeyCode.Alpha1))
+		if (Input.anyKeyDown)
 		{
-			quickItemSelectedSlot = quickItemSlots[0];
-		} else 	if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			quickItemSelectedSlot = quickItemSlots[1];
-		} else 	if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			quickItemSelectedSlot = quickItemSlots[2];
-		} else 	if (Input.GetKeyDown(KeyCode.Alpha4))
-		{
-			quickItemSelectedSlot = quickItemSlots[3];
+			if (Input.GetKeyDown(KeyCode.Alpha1))
+			{
+				quickItemSelectedSlot = quickItemSlots[0];
+				if (EventManager.OnQuickItemChange != null)
+				{
+					EventManager.OnQuickItemChange();
+				}
+			} else 	if (Input.GetKeyDown(KeyCode.Alpha2))
+			{
+				quickItemSelectedSlot = quickItemSlots[1];
+				if (EventManager.OnQuickItemChange != null)
+				{
+					EventManager.OnQuickItemChange();
+				}
+			} else 	if (Input.GetKeyDown(KeyCode.Alpha3))
+			{
+				quickItemSelectedSlot = quickItemSlots[2];
+				if (EventManager.OnQuickItemChange != null)
+				{
+					EventManager.OnQuickItemChange();
+				}
+			} else 	if (Input.GetKeyDown(KeyCode.Alpha4))
+			{
+				quickItemSelectedSlot = quickItemSlots[3];
+				if (EventManager.OnQuickItemChange != null)
+				{
+					EventManager.OnQuickItemChange();
+				}
+			}
 		}
 	}
 

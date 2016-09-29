@@ -21,8 +21,8 @@ public class ProjectileManager : MonoBehaviour {
 		_purpleBullet = (GameObject)Resources.Load("Prefabs/Projectile/PurpleBullet");
 		_shootEffectPrefab = (GameObject)Resources.Load("Prefabs/Particles/ShootEffect");
 		_activeEntities = GameObject.Find("ActiveEntities");
-		_bulletRight = GameObject.Find("BulletRight");
-		_bulletLeft = GameObject.Find("BulletLeft");
+		_bulletRight = _gameController.Player.transform.FindChild("BulletRight").gameObject;
+		_bulletLeft = _gameController.Player.transform.FindChild("BulletLeft").gameObject;
 
 	}
 
