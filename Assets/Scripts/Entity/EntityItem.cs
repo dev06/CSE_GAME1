@@ -63,6 +63,8 @@ public class EntityItem : Entity {
 
 	private Item SwithGameItemToItemID(GameItem item)
 	{
+
+
 		switch (item)
 		{
 			case GameItem.BLUEBALL:

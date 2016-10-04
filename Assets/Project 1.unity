@@ -555,7 +555,7 @@ ParticleSystem:
         rgba: 1418093343
       minMaxState: 0
     startSize:
-      scalar: 0.45424634
+      scalar: 0.395715
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2312,7 +2312,7 @@ ParticleSystem:
         rgba: 1418093343
       minMaxState: 0
     startSize:
-      scalar: 0.41466656
+      scalar: 0.490154
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3805,7 +3805,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.3990181
+      value: 0.3923015
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -4435,7 +4435,7 @@ ParticleSystem:
         rgba: 1418093343
       minMaxState: 0
     startSize:
-      scalar: 0.442607
+      scalar: 0.48332515
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6786,7 +6786,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.4887991
+      value: 0.4886426
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -7892,7 +7892,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.40765214
+      value: 0.5341532
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -9879,7 +9879,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.34892982
+      value: 0.5499588
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -10041,7 +10041,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.52899265
+      value: 0.4986269
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -10610,7 +10610,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.46894825
+      value: 0.5265713
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -11239,7 +11239,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.3838832
+      value: 0.50799316
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -11623,7 +11623,7 @@ ParticleSystem:
         rgba: 1418093343
       minMaxState: 0
     startSize:
-      scalar: 0.38173562
+      scalar: 0.5834123
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13766,6 +13766,14 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: b478f9849d8693440b144ca6773f5535, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: b478f9849d8693440b144ca6773f5535, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b478f9849d8693440b144ca6773f5535, type: 3}
   m_IsPrefabParent: 0
@@ -14300,7 +14308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.5128848
+      value: 0.48209786
       objectReference: {fileID: 0}
     - target: {fileID: 19866474, guid: afc04e7d2bdd38f41b688a85d644dcaf, type: 2}
       propertyPath: InitialModule.maxNumParticles

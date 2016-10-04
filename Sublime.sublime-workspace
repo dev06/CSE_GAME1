@@ -4,6 +4,74 @@
 		"selected_items":
 		[
 			[
+				"_leanfor",
+				"_leanForwrdAcc"
+			],
+			[
+				"_lean",
+				"_leanStrafeAcc"
+			],
+			[
+				"_str",
+				"_strafeInput"
+			],
+			[
+				"_leanst",
+				"_leanStrafeVel"
+			],
+			[
+				"_lea",
+				"_leanStrafeAcc"
+			],
+			[
+				"_lookho",
+				"_lookHorizontalVel"
+			],
+			[
+				"CameraLook",
+				"CameraLookSpeed"
+			],
+			[
+				"_look",
+				"_lookHorizontalInput"
+			],
+			[
+				"CameraLoo",
+				"CameraLookSpeed"
+			],
+			[
+				"_lo",
+				"_lookHorizontalInput"
+			],
+			[
+				"Quater",
+				"Quaternion"
+			],
+			[
+				"_straf",
+				"_strafeVel"
+			],
+			[
+				"Particel",
+				"Particle"
+			],
+			[
+				"Resour",
+				"Resources.Load\t*(path)"
+			],
+			[
+				"EventManager",
+				"EventManager.OnQuickItemChange"
+			],
+			[
+				"quick",
+				"quickItemSlots"
+			],
+			[
+				"_bul",
+				"_blueBullet"
+			],
+			[
 				"numpl",
 				"numPlayers"
 			],
@@ -98,10 +166,6 @@
 			[
 				"net",
 				"networkMessage"
-			],
-			[
-				"quick",
-				"quickItemSlots"
 			],
 			[
 				"isO",
@@ -450,70 +514,6 @@
 			[
 				"Transform",
 				"TransformDirection"
-			],
-			[
-				"tranform",
-				"transform.forward"
-			],
-			[
-				"tra",
-				"transform"
-			],
-			[
-				"_fil",
-				"_fillImage.color"
-			],
-			[
-				"_he",
-				"_HealthText"
-			],
-			[
-				"_hea",
-				"_heathQuadMaterial"
-			],
-			[
-				"GetC",
-				"GetComponent"
-			],
-			[
-				"Part",
-				"ParticleSystem"
-			],
-			[
-				"gra",
-				"grad.colorKeys"
-			],
-			[
-				"MinMax",
-				"MinMaxGradient"
-			],
-			[
-				"_color",
-				"_colorOverLifeTime"
-			],
-			[
-				"Par",
-				"ParticleSystem"
-			],
-			[
-				"Cur",
-				"Cursor"
-			],
-			[
-				"Player",
-				"Player.transform"
-			],
-			[
-				"_ani",
-				"_animation"
-			],
-			[
-				"Wrap",
-				"WrapMode.PingPong"
-			],
-			[
-				"Mena",
-				"MenuActive.GAME"
 			]
 		]
 	},
@@ -563,9 +563,25 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts"
+	],
 	"file_history":
 	[
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/GameController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/Projectile/ProjectileManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/Enemy/enemy_one/EnemyOne.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/Mob.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/CameraController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Player/PlayerController.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/Item.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/EntityItem.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Inventory/InventorySlot.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/ParticleManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/VayLaserPack/Scripts/Laser Scripts/LaserParticleManager.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/Bot.cs",
+		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/Container.cs",
 		"/E/Unity/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/GameController.cs",
 		"/E/Unity/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/NetworkMessageSender.cs",
 		"/E/Unity/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/NetworkMessageReceiver.cs",
@@ -680,23 +696,11 @@
 		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/KeepAliveBehaviour.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Script/cube.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/CustomText.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/DefaultTrackableEventHandler.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/ImageTargetBehaviour.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/VuforiaBehaviour.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/DeviceTrackerBehaviour.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Entity/EntityMovementHandler.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Entity/AIMovementHandler.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/PlayerController/MovementHandler.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/TurnOffBehaviour.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/InputManager/CustomInputManager.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/GameSceneManager.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Entity/Bumper.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/GameScene/Instantiator.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Bump/Assets/Scripts/Logger.cs"
+		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/DefaultTrackableEventHandler.cs"
 	],
 	"find":
 	{
-		"height": 52.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -724,6 +728,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"move",
+			"}\n",
+			"effect",
+			"shootp",
 			"ActivateChild",
 			"OnInventoryUnActive",
 			"AddToQuickItem",
@@ -847,11 +855,7 @@
 			"COMPLETE",
 			"        \n",
 			"region",
-			"REGION",
-			"MODEL_PATH",
-			"DELETE LIN",
-			"DELETE ",
-			"DELETEB"
+			"REGION"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -874,7 +878,7 @@
 		"show_context": false,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": false
+		"wrap": true
 	},
 	"groups":
 	[
@@ -886,7 +890,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 51.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -935,7 +939,7 @@
 	"project": "Sublime.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -944,6 +948,70 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"camera",
+				"Player\\CameraController.cs"
+			],
+			[
+				"player",
+				"Player\\PlayerController.cs"
+			],
+			[
+				"bot",
+				"Entity\\Bot.cs"
+			],
+			[
+				"cama",
+				"Player\\CameraController.cs"
+			],
+			[
+				"cons",
+				"Constants.cs"
+			],
+			[
+				"conats",
+				"UI\\Container\\Container.cs"
+			],
+			[
+				"inventoryslo",
+				"UI\\Inventory\\InventorySlot.cs"
+			],
+			[
+				"event",
+				"UI\\Event\\EventManager.cs"
+			],
+			[
+				"inventory",
+				"UI\\Inventory\\InventoryManager.cs"
+			],
+			[
+				"mob",
+				"Entity\\Mob.cs"
+			],
+			[
+				"invent",
+				"UI\\Inventory\\InventoryManager.cs"
+			],
+			[
+				"entity",
+				"Entity\\EntityItem.cs"
+			],
+			[
+				"item",
+				"UI\\Inventory\\Item.cs"
+			],
+			[
+				"inventoryman",
+				"UI\\Inventory\\InventoryManager.cs"
+			],
+			[
+				"pr",
+				"Entity\\Projectile\\ProjectileManager.cs"
+			],
+			[
+				"game",
+				"GameController.cs"
+			],
 			[
 				"button",
 				"UI\\Button\\Button.cs"
@@ -959,10 +1027,6 @@
 			[
 				"network",
 				"Network\\NetworkConnectionManager.cs"
-			],
-			[
-				"game",
-				"GameController.cs"
 			],
 			[
 				"gamecont",
@@ -989,20 +1053,8 @@
 				"KSU_NETWORK_SOLUTION\\Assets\\Scripts\\Network\\NetworkConnectionManager.cs"
 			],
 			[
-				"item",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\Item.cs"
-			],
-			[
-				"inventoryslo",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\InventorySlot.cs"
-			],
-			[
 				"inventotrys",
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\InventorySlot.cs"
-			],
-			[
-				"inventoryman",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\InventoryManager.cs"
 			],
 			[
 				"networkcon",
@@ -1029,10 +1081,6 @@
 				"AndroidGame\\Assets\\Scripts\\GameScene\\LevelGenerator.cs"
 			],
 			[
-				"player",
-				"AndroidGame\\Assets\\Scripts\\Entity\\Player.cs"
-			],
-			[
 				"entitywa",
 				"AndroidGame\\Assets\\Scripts\\Entity\\Wall.cs"
 			],
@@ -1049,20 +1097,12 @@
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Container\\ContainerController.cs"
 			],
 			[
-				"inventory",
-				"CSE_GAME1\\Assets\\Scripts\\UI\\Container\\InventoryContainer.cs"
-			],
-			[
 				"",
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\InventorySlot.cs"
 			],
 			[
 				"tooltip",
 				"CSE_GAME1\\Assets\\Scripts\\UI\\Inventory\\ToolTip.cs"
-			],
-			[
-				"cons",
-				"CSE_GAME1\\Assets\\Scripts\\Constants.cs"
 			],
 			[
 				"con",
@@ -1133,14 +1173,6 @@
 				"UI\\ButtonEventHandler.cs"
 			],
 			[
-				"mob",
-				"Entity\\Mob.cs"
-			],
-			[
-				"bot",
-				"Entity\\Bot.cs"
-			],
-			[
 				"proje",
 				"Entity\\Projectile.cs"
 			],
@@ -1159,10 +1191,6 @@
 			[
 				"controlcon",
 				"UI\\ControllerConfiguration.cs"
-			],
-			[
-				"camera",
-				"Player\\CameraController.cs"
 			],
 			[
 				"smal",
@@ -1431,30 +1459,6 @@
 			[
 				"videoplayer",
 				"ControlScene\\VideoPlayer.cs"
-			],
-			[
-				"slideshowc",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"slideshow",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"clientnetw",
-				"Network\\ClientNetworkManager.cs"
-			],
-			[
-				"servernetw",
-				"Network\\ServerNetworkManager.cs"
-			],
-			[
-				"servernetworkma",
-				"Network\\ServerNetworkManager.cs"
-			],
-			[
-				"speechontr",
-				"ClientScene\\SpeechController.cs"
 			]
 		],
 		"width": 0.0
@@ -1467,7 +1471,7 @@
 		[
 			[
 				"",
-				"E:\\Unity\\Projects\\CSE_Game1\\CSE_GAME\\CSE_SUBLIME.sublime-project"
+				"E:\\Unity\\Projects\\AndroidGame\\AndroidSublime.sublime-project"
 			],
 			[
 				"android",
