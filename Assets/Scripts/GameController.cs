@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour {
 	#region ----------- PUBLIC MEMBERS----------
 	public ControllerProfile controllerProfile;
 	public InventoryManager inventoryManager;
+	[HideInInspector]
+	public NavMeshController navMeshController;
 	public static ButtonID selectedButtonID;
 	public MenuActive menuActive;
 	[HideInInspector]
@@ -41,6 +43,7 @@ public class GameController : MonoBehaviour {
 	private ControllerProfile[] ControllerProfileList = { ControllerProfile.WASD, ControllerProfile.TGFH};
 	private int _index;
 	private Image _blankImage;
+
 	#endregion------/PRIVATE MEMBERS------------
 
 
@@ -51,13 +54,13 @@ public class GameController : MonoBehaviour {
 		menuActive = MenuActive.MENU;
 		customKey = new KeyCode[8];
 		TogglePlayerMovement = true;
+		navMeshController = GameObject.FindWithTag("Manager/NavMeshManager").GetComponent<NavMeshController>();
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
 		_smoke = (GameObject)Resources.Load("Prefabs/Particles/Smoke");
 		_bot = (GameObject)Resources.Load("Prefabs/Bot");
 		_blankImage = GameObject.FindWithTag("UI/GameCanvas").transform.FindChild("Blank").GetComponent<Image>();
 		_shootEffectPrefab = (GameObject)Resources.Load("Prefabs/Particles/ShootEffect");
-
 		activeEntities = GameObject.FindWithTag("ActiveEntities");
 		Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -100,6 +103,12 @@ public class GameController : MonoBehaviour {
 		}
 
 		inventoryManager.SelectQuickItemSlot();
+
+
+		if (Input.GetKeyDown(KeyCode.G))
+		{
+			Debug.Log(navMeshController.GetNextWayPoint());
+		}
 
 	}
 

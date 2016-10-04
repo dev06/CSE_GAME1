@@ -29,6 +29,8 @@ TagManager:
   - Entity/BlueBall
   - Entity/YellowBall
   - Manager/ProjectileManager
+  - Manager/NavMeshManager
+  - Entity/Pillar
   layers:
   - Default
   - TransparentFX

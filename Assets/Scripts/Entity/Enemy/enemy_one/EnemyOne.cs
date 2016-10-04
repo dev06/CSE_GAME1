@@ -17,7 +17,13 @@ public class EnemyOne : Mob {
 	void Update ()
 	{
 		ManageHoverEffect();
-		_agent.SetDestination(Target.transform.position);
+		if (_gameController.navMeshController.navMesh_wayPoints.Count > 0)
+		{
+			if (_agent.remainingDistance < 10)
+			{
+				_agent.SetDestination(_gameController.navMeshController.navMesh_wayPoints[_gameController.navMeshController.GetNextWayPoint()].transform.position);
+			}
+		}
 	}
 
 	private void ManageHoverEffect()
