@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"nav",
+				"navMesh_wayPoints.Count"
+			],
+			[
+				"NavMes",
+				"NavMeshController"
+			],
+			[
 				"_leanfor",
 				"_leanForwrdAcc"
 			],
@@ -506,14 +514,6 @@
 			[
 				"_pro",
 				"_profileTwoTransform"
-			],
-			[
-				"Camera",
-				"CameraMoveSpeed"
-			],
-			[
-				"Transform",
-				"TransformDirection"
 			]
 		]
 	},
@@ -565,10 +565,16 @@
 	},
 	"expanded_folders":
 	[
-		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts"
+		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts"
 	],
 	"file_history":
 	[
+		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
+		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Enemy/enemy_one/EnemyOne.cs",
+		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingExample/Assets/Player.cs",
+		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/UI/Button/ConnectionButton.cs",
+		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Controller/NavMesh/NavMeshController.cs",
+		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Mob.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/GameController.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/Projectile/ProjectileManager.cs",
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/Entity/Enemy/enemy_one/EnemyOne.cs",
@@ -597,10 +603,8 @@
 		"/C/Users/Devan/Desktop/New Unity Project/Assets/_CompletedAssets/Scripts/Camera/CameraFollow.cs",
 		"/C/Users/Devan/AppData/Local/Temp/Rar$DIa0.656/NetworkDiscovery.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/GameController.cs",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/CSE_SUBLIME.sublime-project",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/OverridenNetworkDiscovery.cs",
-		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/UI/Button/ConnectionButton.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/NetworkConnectionManager.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/NetworkMessageReceiver.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/Inventory/InventoryManager.cs",
@@ -669,7 +673,6 @@
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/ControllerConfiguration.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/ButtonEventHandler.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Player/CameraController.cs",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Mob.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Projectile.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/Button/CustomRotationButton.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/Button/CustomKeyButton.cs",
@@ -693,10 +696,7 @@
 		"/C/Users/Devan/Documents/Unity/Projects/CSE_Game1/Assets/Scripts/CameraController.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/CSE_Game1/Assets/Scripts/Constants.cs",
 		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/CameraController.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/KeepAliveBehaviour.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Script/cube.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/CustomText.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/DefaultTrackableEventHandler.cs"
+		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/KeepAliveBehaviour.cs"
 	],
 	"find":
 	{
@@ -949,6 +949,18 @@
 		"selected_items":
 		[
 			[
+				"nav",
+				"Controller\\NavMesh\\NavMeshController.cs"
+			],
+			[
+				"enem",
+				"Entity\\Enemy\\enemy_one\\EnemyOne.cs"
+			],
+			[
+				"game",
+				"GameController.cs"
+			],
+			[
 				"camera",
 				"Player\\CameraController.cs"
 			],
@@ -1007,10 +1019,6 @@
 			[
 				"pr",
 				"Entity\\Projectile\\ProjectileManager.cs"
-			],
-			[
-				"game",
-				"GameController.cs"
 			],
 			[
 				"button",
@@ -1451,14 +1459,6 @@
 			[
 				"masterme",
 				"Network\\MasterMessageType.cs"
-			],
-			[
-				"slidesho",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"videoplayer",
-				"ControlScene\\VideoPlayer.cs"
 			]
 		],
 		"width": 0.0
