@@ -6,6 +6,8 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
+	public Body owner;
+
 	#region----PRIVATE MEMBERS-----
 	public Vector3 forward;
 	protected GameController _gameController;
@@ -13,7 +15,7 @@ public class Projectile : MonoBehaviour {
 	protected float _size;
 	protected Color _color;
 	protected float _velocity;
-	protected float _damage;
+	public float _damage;
 	protected ParticleSystem _trail;
 	protected GameObject _effect;
 	#endregion----PRIVATE MEMBERS-----
@@ -34,7 +36,10 @@ public class Projectile : MonoBehaviour {
 		_gameController = FindObjectOfType(typeof(GameController)) as GameController;
 		_maxLife = 3;
 		GetComponent<Rigidbody>().velocity = forward * 50;
-		transform.GetChild(0).transform.forward = forward;
+		if (transform.childCount > 0)
+		{
+			transform.GetChild(0).transform.forward = forward;
+		}
 
 	}
 
@@ -52,18 +57,19 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (col.gameObject.tag != "Player")
+
+		if (col.gameObject.GetComponent<Mob>() != null)
 		{
-			if (col.gameObject.GetComponent<Mob>() != null)
+
+			if (col.gameObject.GetComponent<Mob>().body != owner)
 			{
 				col.gameObject.SendMessage("DoDamage", _damage);
-
-			} else {
-				GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
-				effect_clone.transform.parent = _gameController.activeEntities.transform;
-
 			}
-			Destroy(gameObject);
+
+		} else {
+			GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
+			effect_clone.transform.parent = _gameController.activeEntities.transform;
+
 		}
 	}
 }

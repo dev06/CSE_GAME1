@@ -9,8 +9,6 @@ public class Container : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
 	void OnEnable()
 	{
-		EventManager.OnInventoryActive += PlayAnimation;
-		EventManager.OnInventoryUnActive += PlayAnimation;
 
 	}
 
@@ -49,7 +47,6 @@ public class Container : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
 	void OnDisable()
 	{
-		EventManager.OnInventoryActive -= PlayAnimation;
-		EventManager.OnInventoryUnActive -= PlayAnimation;
+
 	}
 }

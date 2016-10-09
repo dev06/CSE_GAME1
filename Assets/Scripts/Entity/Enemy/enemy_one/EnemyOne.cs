@@ -5,6 +5,7 @@ public class EnemyOne : Mob {
 
 	private GameObject _hover;
 	public GameObject Target;
+
 	void Start ()
 	{
 		Init();
@@ -13,18 +14,35 @@ public class EnemyOne : Mob {
 		_hover = transform.FindChild("HoverEffect").gameObject;
 	}
 
-	// Update is called once per frame
 	void Update ()
 	{
 		ManageHoverEffect();
-		if (_gameController.navMeshController.navMesh_wayPoints.Count > 0)
+		Move();
+	}
+
+	private void Move()
+	{
+		if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 10)
 		{
-			if (_agent.remainingDistance < 10)
+			if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 6)
 			{
-				_agent.SetDestination(_gameController.navMeshController.navMesh_wayPoints[_gameController.navMeshController.GetNextWayPoint()].transform.position);
+				_gameController.Player.gameObject.SendMessage("DoDamage", Time.deltaTime * Constants.PatrolEnemyDamage);
 			}
+			_agent.SetDestination(_gameController.Player.transform.position);
+			RotateTowards(_gameController.Player.transform);
+
+		} else {
+			if (_gameController.navMeshController.navMesh_wayPoints.Count > 0)
+			{
+				if (_agent.remainingDistance < 10)
+				{
+					_agent.SetDestination(_gameController.navMeshController.navMesh_wayPoints[_gameController.navMeshController.GetNextWayPoint()].transform.position);
+				}
+			}
+
 		}
 	}
+
 
 	private void ManageHoverEffect()
 	{

@@ -16,7 +16,6 @@ public class InventoryContainer : MonoBehaviour {
 	{
 		EventManager.OnInventoryActive += AnimateContainers;
 		EventManager.OnInventoryUnActive += AnimateContainers;
-
 		EventManager.OnItemAddedOrRemoved += UpdateInventorySlotCount;
 	}
 
@@ -131,5 +130,12 @@ public class InventoryContainer : MonoBehaviour {
 		animation[animation.clip.name].time =  (direction > 0) ? 0 : animation[animation.clip.name].length;
 		animation[animation.clip.name].speed = direction;
 		animation.Play(animation.clip.name);
+	}
+
+	void OnDisable()
+	{
+		EventManager.OnInventoryActive -= AnimateContainers;
+		EventManager.OnInventoryUnActive -= AnimateContainers;
+		EventManager.OnItemAddedOrRemoved -= UpdateInventorySlotCount;
 	}
 }

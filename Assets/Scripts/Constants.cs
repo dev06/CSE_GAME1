@@ -20,6 +20,14 @@ public class Constants  {
 	public const float BotMovementSpeed = 4.5f;
 	public const float BotInitalDamage = 5.0f;
 
+	//Patrol Enemy
+	public const float PatrolEnemyDamage = 10.0f;
+
+
+	//Guard Enemy
+	public const float GuardEnemyShootDelay = 0.75f;
+
+
 	//Player/Camera members
 	public const float PlayerMaxHealth = 100.0f;
 	public const float SmallProjectileDamage = 10.0f;
@@ -63,6 +71,12 @@ public class Constants  {
 	public static Material Character_Yellow_Shoot_Mat = (Material)Resources.Load("Materials/Entity/EntityParticles/shoot_particles/yellow_effect_shoot");
 	public static Material Character_Purple_Shoot_Mat = (Material)Resources.Load("Materials/Entity/EntityParticles/shoot_particles/purple_effect_shoot");
 
+	public static GameObject Blue_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Player/BlueBullet");
+	public static GameObject Yellow_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Player/YellowBullet");
+	public static GameObject Purple_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Player/PurpleBullet");
+
+
+	public static GameObject Enemy_Two_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Enemy/Enemy_Two/Enemy_Two_Bullet");
 
 	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
 }

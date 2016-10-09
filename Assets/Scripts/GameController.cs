@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 	#region ----------- PUBLIC MEMBERS----------
 	public ControllerProfile controllerProfile;
 	public InventoryManager inventoryManager;
+	public ProjectileManager projectileManager;
 	[HideInInspector]
 	public NavMeshController navMeshController;
 	public static ButtonID selectedButtonID;
@@ -55,6 +56,7 @@ public class GameController : MonoBehaviour {
 		customKey = new KeyCode[8];
 		TogglePlayerMovement = true;
 		navMeshController = GameObject.FindWithTag("Manager/NavMeshManager").GetComponent<NavMeshController>();
+		projectileManager = GameObject.FindWithTag("Manager/ProjectileManager").GetComponent<ProjectileManager>();
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
 		_smoke = (GameObject)Resources.Load("Prefabs/Particles/Smoke");
@@ -78,8 +80,6 @@ public class GameController : MonoBehaviour {
 
 	void Update ()
 	{
-
-
 		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
 		DecreaseGameCanvasBlankAlpha();
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -352,6 +352,14 @@ public enum GameItem
 	BLUEHEALTH,
 	ORANGEHEALTH,
 }
+
+public enum Body
+{
+	Player,
+	Enemy_One,
+	Enemy_Two,
+}
+
 
 public enum ButtonID
 {

@@ -142,4 +142,9 @@ public class PlayerController : Mob
 		return 0;
 	}
 
+	void OnDisable()
+	{
+		EventManager.OnQuickItemChange -= ManageSkin;
+	}
+
 }

@@ -14,6 +14,7 @@ public class Mob : MonoBehaviour {
 	protected NavMeshAgent _agent;
 	#endregion----/PRIVATE MEMBERS----
 
+	public Body body;
 
 	void Start ()
 	{
@@ -53,6 +54,13 @@ public class Mob : MonoBehaviour {
 			Health -= damage;
 		}
 	}
+
+	protected  void RotateTowards (Transform target) {
+		Vector3 direction = (target.position - transform.position).normalized;
+		Quaternion lookRotation = Quaternion.LookRotation(direction);
+		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 30);
+	}
+
 	/// <summary>
 	/// Gets and Set Health
 	/// </summary>
