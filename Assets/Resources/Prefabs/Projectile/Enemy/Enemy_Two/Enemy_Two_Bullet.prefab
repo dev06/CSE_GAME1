@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3316660}
   - 135: {fileID: 13598396}
   - 23: {fileID: 2329790}
-  - 114: {fileID: 11478168}
   - 54: {fileID: 5454658}
+  - 114: {fileID: 11449304}
   m_Layer: 0
   m_Name: Enemy_Two_Bullet
   m_TagString: Untagged
@@ -81,7 +81,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11478168
+--- !u!114 &11449304
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,12 +89,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 149092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 555297642f516614dbce5d99336a4aed, type: 3}
+  m_Script: {fileID: 11500000, guid: 58f0f02f3f43ac34bb070ac9a2954f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
   forward: {x: 0, y: 0, z: 0}
-  _damage: 5
 --- !u!135 &13598396
 SphereCollider:
   m_ObjectHideFlags: 1

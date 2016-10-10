@@ -48,7 +48,7 @@ GameObject:
   - 136: {fileID: 13677880}
   m_Layer: 0
   m_Name: Enemy_One
-  m_TagString: Untagged
+  m_TagString: Entity/Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: 1
+  behaviour: 0
   Target: {fileID: 0}
 --- !u!136 &13677880
 CapsuleCollider:

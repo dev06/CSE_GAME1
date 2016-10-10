@@ -358,7 +358,9 @@ public enum Body
 	Player,
 	Enemy_One,
 	Enemy_Two,
+	Droid,
 }
+
 
 
 public enum ButtonID
@@ -384,3 +386,15 @@ public enum ButtonID
 
 	NONE,
 }
+
+public enum EntityBehaviour {
+	Idle,
+	Shoot,
+	Patrol,
+	Attack,
+	Guard,
+	Chase,
+	Follow,
+}
+
+

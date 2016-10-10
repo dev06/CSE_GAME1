@@ -6,18 +6,20 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
+	[HideInInspector]
 	public Body owner;
-
-	#region----PRIVATE MEMBERS-----
+	[HideInInspector]
 	public Vector3 forward;
+	public Transform target;
+	#region----PRIVATE MEMBERS-----
 	protected GameController _gameController;
 	protected float _maxLife;
 	protected float _size;
 	protected Color _color;
 	protected float _velocity;
-	public float _damage;
 	protected ParticleSystem _trail;
 	protected GameObject _effect;
+	protected float _damage;
 	#endregion----PRIVATE MEMBERS-----
 
 
@@ -35,41 +37,16 @@ public class Projectile : MonoBehaviour {
 		_effect = (GameObject)Resources.Load("Prefabs/Particles/Effect");
 		_gameController = FindObjectOfType(typeof(GameController)) as GameController;
 		_maxLife = 3;
-		GetComponent<Rigidbody>().velocity = forward * 50;
+
 		if (transform.childCount > 0)
 		{
 			transform.GetChild(0).transform.forward = forward;
 		}
-
 	}
 
-	void Update()
+	protected void MoveTo(Vector3 destination, float velocity)
 	{
-		Destroy(gameObject, _maxLife);
+		Vector3.MoveTowards(transform.position, destination, velocity);
 	}
 
-	void FixedUpdate()
-	{
-		float speed = Random.Range(40.0f, 50.0f);
-		transform.Rotate(new Vector3(Time.deltaTime * Time.time * speed,  Time.deltaTime * Time.time * speed, Time.deltaTime * Time.time * speed));
-	}
-
-
-	void OnTriggerEnter(Collider col)
-	{
-
-		if (col.gameObject.GetComponent<Mob>() != null)
-		{
-
-			if (col.gameObject.GetComponent<Mob>().body != owner)
-			{
-				col.gameObject.SendMessage("DoDamage", _damage);
-			}
-
-		} else {
-			GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
-			effect_clone.transform.parent = _gameController.activeEntities.transform;
-
-		}
-	}
 }

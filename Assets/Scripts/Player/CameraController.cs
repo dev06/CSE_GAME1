@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
 	public float hoverFrequency;
 	public float cameraDistance;
 	public float cameraHorizontalOffset;
-	public float recoilAmount;
+	private float recoilAmount;
 	public Vector3 hoverHeight;
 	#endregion---/ PUBLIC MEMBERS---
 
@@ -60,6 +60,7 @@ public class CameraController : MonoBehaviour {
 	{
 		Init();
 		CameraMoveSpeed = Constants.PlayerMovementSpeed;
+		recoilAmount = Constants.CameraRecoilAmount + Constants.CameraDistanceFromPlayer;
 
 	}
 	/// <summary>
@@ -99,7 +100,7 @@ public class CameraController : MonoBehaviour {
 					_moveCam = false;
 				}
 			} else {
-				cameraDistance = Mathf.SmoothDamp(cameraDistance, 4.5f, ref _recoilVel, .1f);
+				cameraDistance = Mathf.SmoothDamp(cameraDistance, Constants.CameraDistanceFromPlayer, ref _recoilVel, .1f);
 			}
 		}
 

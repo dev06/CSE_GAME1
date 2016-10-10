@@ -19,31 +19,43 @@ public class EnemyTwo : Mob {
 		_bulletRight = transform.FindChild("BulletRight").gameObject;
 		_bulletLeft = transform.FindChild("BulletLeft").gameObject;
 		_shot = true;
+		_speed = Constants.GuardEnemySpeed;
+		_agent.speed = _speed;
 	}
 
 	void Update ()
 	{
+		CheckIfIsDead();
 		ManageHoverEffect();
 		Move();
 	}
 
 	private void Move()
 	{
-		ManageInitPoints();
-		if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 20)
+		if (Health > 0)
 		{
-			if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 10)
+			ManageInitPoints();
+			if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 35)
 			{
-				if (CanShoot())
+				if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 15)
 				{
-					_gameController.projectileManager.Shoot(Constants.Enemy_Two_Bullet, _bulletRight.transform.position, _bulletRight.transform.forward, body);
-					_gameController.projectileManager.Shoot(Constants.Enemy_Two_Bullet, _bulletLeft.transform.position, _bulletLeft.transform.forward, body);
-					_shot = true;
+					if (CanShoot())
+					{
+						_gameController.projectileManager.Shoot(Constants.Enemy_Two_Bullet, _bulletRight.transform.position, _bulletRight.transform.forward, body);
+						_gameController.projectileManager.Shoot(Constants.Enemy_Two_Bullet, _bulletLeft.transform.position, _bulletLeft.transform.forward, body);
+						_shot = true;
+					}
+					behaviour = EntityBehaviour.Shoot;
+					_gameController.Player.gameObject.SendMessage("DoDamage", Time.deltaTime * Constants.PatrolEnemyDamage);
+				} else
+				{
+					_agent.SetDestination(_gameController.Player.transform.position);
+					RotateTowards(_gameController.Player.transform);
+					behaviour = EntityBehaviour.Chase;
 				}
-				_gameController.Player.gameObject.SendMessage("DoDamage", Time.deltaTime * Constants.PatrolEnemyDamage);
+			} else {
+				behaviour = EntityBehaviour.Idle;
 			}
-			_agent.SetDestination(_gameController.Player.transform.position);
-			RotateTowards(_gameController.Player.transform);
 		}
 	}
 

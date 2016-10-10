@@ -6,15 +6,19 @@ using System.Collections;
 
 public class Mob : MonoBehaviour {
 
+	public Body body;
+	public EntityBehaviour behaviour;
+
 	#region---- PRIVATE MEMBERS----
+
 	protected float Health;
 	protected float MaxHealth;
 	protected bool _isDead;
 	protected GameController _gameController;
 	protected NavMeshAgent _agent;
+	protected float _speed;
 	#endregion----/PRIVATE MEMBERS----
 
-	public Body body;
 
 	void Start ()
 	{

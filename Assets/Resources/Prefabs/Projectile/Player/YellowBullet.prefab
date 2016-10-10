@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3355266}
   - 65: {fileID: 6524782}
   - 23: {fileID: 2310668}
-  - 114: {fileID: 11481288}
   - 54: {fileID: 5462130}
+  - 114: {fileID: 11496616}
   m_Layer: 0
   m_Name: YellowBullet
   m_TagString: Entity/YellowBall
@@ -124,7 +124,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11481288
+--- !u!114 &11496616
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -132,9 +132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 103018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 555297642f516614dbce5d99336a4aed, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d175b922bae75c41b7001138c3c26f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: 0
   forward: {x: 0, y: 0, z: 0}
 --- !u!198 &19833762
 ParticleSystem:

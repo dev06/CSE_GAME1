@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3302392}
   - 65: {fileID: 6575198}
   - 23: {fileID: 2336474}
-  - 114: {fileID: 11496676}
   - 54: {fileID: 5489760}
+  - 114: {fileID: 11481024}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: Entity/BlueBall
@@ -124,7 +124,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11496676
+--- !u!114 &11481024
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -132,9 +132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 111588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 555297642f516614dbce5d99336a4aed, type: 3}
+  m_Script: {fileID: 11500000, guid: c0bc81f36cdc9ba49853266208787830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: 0
   forward: {x: 0, y: 0, z: 0}
 --- !u!198 &19891192
 ParticleSystem:

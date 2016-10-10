@@ -34,7 +34,7 @@ GameObject:
   - 114: {fileID: 11481642}
   m_Layer: 0
   m_Name: Enemy_Two
-  m_TagString: Untagged
+  m_TagString: Entity/Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.897182, y: 3.21, z: -11.871349}
+  m_LocalPosition: {x: -10.897182, y: 3.21, z: -28.763}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: 2
+  behaviour: 0
 --- !u!136 &13695424
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -222,7 +223,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 138826}
   m_Enabled: 1
   m_Radius: 1.92
-  m_Speed: 10
+  m_Speed: 7
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 500

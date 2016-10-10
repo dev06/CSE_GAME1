@@ -22,16 +22,30 @@ public class Constants  {
 
 	//Patrol Enemy
 	public const float PatrolEnemyDamage = 10.0f;
+	public const float PatrolEnemySpeed = 10.0f;
 
 
 	//Guard Enemy
 	public const float GuardEnemyShootDelay = 0.75f;
+	public const float GuardEnemySpeed = 7;
 
+
+	#region---FRIENDLY---
+	//Droid
+	public const float DroidMovementSpeed = 10.0f;
+	public const float DroidMaxHealth = 50.0f;
+
+
+
+	#endregion---/FRIENDLY---
 
 	//Player/Camera members
 	public const float PlayerMaxHealth = 100.0f;
 	public const float SmallProjectileDamage = 10.0f;
 	public const float CameraVerticalFOV = 60.0f;
+	public const float CameraDistanceFromPlayer = 8.0f;
+	public const float CameraRecoilAmount = 0.5f; // amount is being added to the camera distance from the player.
+
 	public const float PlayerForwardAcc = .5f;
 	public const float PlayerStrafeAcc = .45f;
 	public const float PlayerRotationVerticalDelay = 8f; // uses lerp
@@ -39,10 +53,20 @@ public class Constants  {
 
 
 
+
+
 	//Projectile Members
 	public const float PlayerMovementSpeed = 10.0f;
 	public const float PlayerSprintSpeed = 8.0f;
 	public const float LargeProjectileDamage = 20.0f;
+
+
+	public const float Character_BlueProjectileDamage = 2.0f;
+	public const float Character_YellowProjectileDamage = 5.0f;
+	public const float Character_PurpleProjectileDamage = 15.0f;
+	public const float GuardEnemy_ProjectileDamage = 2.0f;
+	public const float Droid_ProjectileDamage = 4.0f;
+
 
 	//HEALTH MECH
 	public const float HealthRepletionTimer = 10.0f;  //units in seconds.
@@ -76,7 +100,13 @@ public class Constants  {
 	public static GameObject Purple_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Player/PurpleBullet");
 
 
+	public static GameObject Droid_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Friendly/Droid/Droid_Bullet");
+
+
 	public static GameObject Enemy_Two_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Enemy/Enemy_Two/Enemy_Two_Bullet");
+
+
+
 
 	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
 }
