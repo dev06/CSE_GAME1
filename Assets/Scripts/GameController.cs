@@ -80,6 +80,13 @@ public class GameController : MonoBehaviour {
 
 	void Update ()
 	{
+
+		if (Input.GetMouseButtonDown(1))
+		{
+
+			UseItem();
+		}
+
 		SpawnBots(Constants.StartBotSpawningDelay, Constants.BotSpawnDelay, KeepSpawning);
 		DecreaseGameCanvasBlankAlpha();
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -147,7 +154,6 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
 	public void AssignToQuickItem(KeyCode key, out int qsIndex)
 	{
 		qsIndex = 0;
@@ -173,8 +179,6 @@ public class GameController : MonoBehaviour {
 
 		}
 	}
-
-
 
 	public void AddQuickItemSlotToList()
 	{
@@ -311,6 +315,42 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+
+	private void UseItem()
+	{
+		if (inventoryManager.quickItemSelectedSlot != null)
+		{
+			Item _item = inventoryManager.quickItemSelectedSlot.item;
+			if (_item != null)
+			{
+				if (_item.itemType == ItemType.Projectile)
+				{
+					if (EventManager.OnShoot != null)
+					{
+						EventManager.OnShoot();
+						inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 2);
+					}
+				} else if (_item.itemType == ItemType.Collectible)
+				{
+					float _playerHealth = Player.GetComponent<PlayerController>().GetHealth;
+					float _playerMaxHealth = Player.GetComponent<PlayerController>().GetMaxHealth;
+					if (_playerHealth > 0 && _playerHealth < _playerMaxHealth)
+					{
+						if (_item.itemID == ItemID.BasicHealth)
+						{
+							Player.gameObject.SendMessage("RepleteHealth", Constants.BasicHealthRepletion);
+							inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
+						} else if (_item.itemID == ItemID.InterMedHealth)
+						{
+							Player.gameObject.SendMessage("RepleteHealth", Constants.InterMedHealthRepletion);
+							inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	/// <summary>
 	/// Resets the Game
 	/// </summary>
@@ -347,10 +387,8 @@ public enum GameItem
 	PURPLEBALL,
 	BLUEBALL,
 	YELLOWBALL,
-	GREENHEALTH,
-	REDHEALTH,
-	BLUEHEALTH,
-	ORANGEHEALTH,
+	BASICHEALTH,
+	INTERMEDHEALTH,
 }
 
 public enum Body

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Droid : Mob {
 
+	private GameObject _hover;
 	private  float _angularVelocity;
 	private Vector3 _destionationRight;
 	private Vector3 _destionationLeft;
@@ -15,11 +16,13 @@ public class Droid : Mob {
 	private bool _shot;
 	private GameObject[] _enemies;
 	private Transform _enemyTarget;
+
 	void Start () {
 		Init();
 		MaxHealth = Constants.DroidMaxHealth;
 		Health = MaxHealth;
 		_angularVelocity = 5.0f;
+		_hover = transform.FindChild("HoverEffect").gameObject;
 		_speed = Constants.DroidMovementSpeed;
 		_agent.speed = _speed;
 		_bulletLeft = transform.FindChild("BulletLeft");
@@ -35,7 +38,7 @@ public class Droid : Mob {
 	{
 		_destionationRight = _target.position + ( _target.right * _horizontalDistance) + ( -_target.forward * _verticalDistance);
 		_destionationLeft =  _target.position + ( -_target.right * _horizontalDistance) + ( -_target.forward * _verticalDistance);
-
+		ManageHoverEffect();
 		if (_enemyTarget != null)
 		{
 			_bulletLeft.LookAt(_enemyTarget.transform.position);
@@ -55,29 +58,30 @@ public class Droid : Mob {
 			}
 		}
 
-		Debug.Log(_enemyTarget);
 		_agent.SetDestination(GetClosestDestination());
 
-
+		_enemyTarget = EnemyInRange();
 
 	}
 
-	void FixedUpdate()
+
+	Transform EnemyInRange()
 	{
 		for (int i = 0; i < _enemies.Length; i++)
 		{
 			if (_enemies[i] != null)
 			{
-				Mob _mob = _enemies[i].GetComponent<Mob>();
-				Debug.Log(_mob.behaviour);
-				if (_mob.behaviour == EntityBehaviour.Chase)
+				if (Vector3.Distance(_enemies[i].transform.position, _target.position) > Constants.DroidDistanceToAttack)
 				{
-					_enemyTarget = _mob.transform;
-				} else {
-					_enemyTarget = null;
+					continue;
+				} else
+				{
+					return _enemies[i].transform;
 				}
 			}
 		}
+
+		return null;
 	}
 
 	Vector3 GetClosestDestination()
@@ -116,5 +120,9 @@ public class Droid : Mob {
 			}
 		}
 		return false;
+	}
+	private void ManageHoverEffect()
+	{
+		_hover.transform.Rotate(new Vector3(0, 0,  Time.deltaTime * 150.0f));
 	}
 }

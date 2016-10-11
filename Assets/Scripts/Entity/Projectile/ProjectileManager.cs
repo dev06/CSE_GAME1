@@ -28,13 +28,7 @@ public class ProjectileManager : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(1))
-		{
-			if (EventManager.OnShoot != null)
-			{
-				EventManager.OnShoot();
-			}
-		}
+
 	}
 
 
@@ -72,7 +66,10 @@ public class ProjectileManager : MonoBehaviour {
 
 	public void Shoot(GameObject prefab, Vector3 _position, Vector3 _forward, Body _owner)
 	{
-		ShootProjectile(prefab, _position, _forward, _owner);
+		if (_gameController.menuActive == MenuActive.GAME)
+		{
+			ShootProjectile(prefab, _position, _forward, _owner);
+		}
 	}
 
 	private void ShootProjectile(GameObject _prefab, Vector3 _position, Vector3 _forward, Body _owner)

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class EnemyOne : Mob {
 
 	private GameObject _hover;
@@ -14,18 +14,27 @@ public class EnemyOne : Mob {
 		_hover = transform.FindChild("HoverEffect").gameObject;
 		_speed = Constants.PatrolEnemySpeed;
 		_agent.speed = _speed;
+		_fillImage = transform.FindChild("HealthBar").gameObject.transform.FindChild("FillImage").GetComponent<Image>();
+		_stillImage = transform.FindChild("HealthBar").gameObject.transform.FindChild("StillImage").GetComponent<Image>();
+		_HealthText = transform.FindChild("HealthBar").gameObject.transform.FindChild("Text").GetComponent<Text>();
 	}
 
 
 	void Update ()
 	{
-		CheckIfIsDead();
-		ManageHoverEffect();
-		Move();
+		if (_gameController.menuActive == MenuActive.GAME)
+		{
+			CheckIfIsDead();
+			ManageHoverEffect();
+			Move();
+			UpdateHealthQuad();
+		}
+
 	}
 
 	private void Move()
 	{
+
 		if (Health > 0)
 		{
 			if (Vector3.Distance(transform.position, _gameController.Player.transform.position) < 10)

@@ -31,6 +31,8 @@ TagManager:
   - Manager/ProjectileManager
   - Manager/NavMeshManager
   - Entity/Pillar
+  - Entity/BasicHealth
+  - Entity/InterMedHealth
   layers:
   - Default
   - TransparentFX

@@ -47,14 +47,13 @@ public enum ItemID
 	PurpleBall,
 	BlueBall,
 	YellowBall,
-	GreenHealth,
-	BlueHealth,
-	RedHealth,
-	OrangeHealth,
+	BasicHealth,
+	InterMedHealth,
 	Null,
 }
 
 public enum ItemType
 {
 	Projectile,
+	Collectible,
 }

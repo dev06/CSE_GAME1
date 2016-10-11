@@ -24,19 +24,20 @@ public class DroidProjectile : Projectile {
 
 	void OnTriggerEnter(Collider col)
 	{
-
-		if (col.gameObject.GetComponent<Mob>() != null)
+		if (col.gameObject.tag != "Player")
 		{
-
-			if (col.gameObject.GetComponent<Mob>().body != owner)
+			if (col.gameObject.GetComponent<Mob>() != null)
 			{
-				col.gameObject.SendMessage("DoDamage", _damage);
-				Destroy(gameObject);
-			}
+				if (col.gameObject.GetComponent<Mob>().body != owner)
+				{
+					col.gameObject.SendMessage("DoDamage", _damage);
+					Destroy(gameObject);
+				}
 
-		} else {
-			GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
-			effect_clone.transform.parent = _gameController.activeEntities.transform;
+			} else {
+				GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
+				effect_clone.transform.parent = _gameController.activeEntities.transform;
+			}
 		}
 	}
 }

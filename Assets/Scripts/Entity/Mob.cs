@@ -3,7 +3,7 @@
 //Sep.12.2016using UnityEngine;
 using UnityEngine;
 using System.Collections;
-
+using  UnityEngine.UI;
 public class Mob : MonoBehaviour {
 
 	public Body body;
@@ -17,6 +17,12 @@ public class Mob : MonoBehaviour {
 	protected GameController _gameController;
 	protected NavMeshAgent _agent;
 	protected float _speed;
+	protected GameObject _healthBar;
+
+	private float _velocity;
+	protected Image _fillImage;
+	protected Image _stillImage;
+	protected Text _HealthText;
 	#endregion----/PRIVATE MEMBERS----
 
 
@@ -47,6 +53,19 @@ public class Mob : MonoBehaviour {
 		_isDead = GetHealth <= 0;
 	}
 
+	protected void RepleteHealth(float amount)
+	{
+		if (Health > 0 && Health < MaxHealth)
+		{
+			Health += amount;
+		}
+
+		if (Health > MaxHealth)
+		{
+			Health = MaxHealth;
+		}
+	}
+
 	/// <summary>
 	/// Does damage to the entity based on the damage
 	/// </summary>
@@ -72,6 +91,22 @@ public class Mob : MonoBehaviour {
 	{
 		get { return Health; }
 		set { this.Health = value; }
+	}
+
+	public float GetMaxHealth
+	{
+		get {return MaxHealth; }
+		set {this.MaxHealth = value; }
+	}
+
+	protected void UpdateHealthQuad()
+	{
+		_fillImage.transform.parent.transform.LookAt(Camera.main.transform.position);
+		_fillImage.fillAmount = Mathf.SmoothDamp(_fillImage.fillAmount, Health / MaxHealth, ref _velocity, .3f);
+		_fillImage.color = Color.Lerp(Color.red, Color.green, (Health / MaxHealth));
+		_HealthText.color = _fillImage.color;
+		_stillImage.transform.Rotate(new Vector3(0, 0, Time.deltaTime * 50.0f));
+		_HealthText.text = "" + (int)(_fillImage.fillAmount * MaxHealth);
 	}
 
 

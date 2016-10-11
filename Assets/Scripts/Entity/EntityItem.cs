@@ -56,7 +56,16 @@ public class EntityItem : Entity {
 	{
 		if (col.gameObject.tag == "Player")
 		{
-			_gameController.inventoryManager.AddItem(SwithGameItemToItemID(gameItem));
+			int index;
+			if (!_gameController.inventoryManager.DoesItemExits(_gameController.inventoryManager.inventorySlots, SwithGameItemToItemID(gameItem), out index))
+			{
+				_gameController.inventoryManager.AddItem(SwithGameItemToItemID(gameItem));
+			} else
+			{
+				Item updatedItem  =  SwithGameItemToItemID(gameItem);
+				_gameController.inventoryManager.inventorySlots[index].UpdateItem(updatedItem);
+				Debug.Log("Item exits and quantity should be updated" + index );
+			}
 			Destroy(gameObject);
 		}
 	}
@@ -70,15 +79,24 @@ public class EntityItem : Entity {
 			case GameItem.BLUEBALL:
 				return new Item("Blue Ball",
 				                "A great ball that will slow down the enemies for certain time period. ",
-				                Resources.Load<Sprite>("Item/blueBall"), 1, ItemID.BlueBall, ItemType.Projectile);
+				                Resources.Load<Sprite>("Item/blueBall"), 50, ItemID.BlueBall, ItemType.Projectile);
 			case GameItem.YELLOWBALL:
 				return new Item("Yellow Ball",
 				                "This ball allows you to teleport to a certain location. ",
-				                Resources.Load<Sprite>("Item/yellowBall"), 1, ItemID.YellowBall, ItemType.Projectile);
+				                Resources.Load<Sprite>("Item/yellowBall"), 50, ItemID.YellowBall, ItemType.Projectile);
 			case GameItem.PURPLEBALL:
 				return new Item("Purple Ball",
 				                "A powerfull ball that is capable of destroying the enemies in 10 seconds. ",
-				                Resources.Load<Sprite>("Item/purpleBall"), 1, ItemID.PurpleBall, ItemType.Projectile);
+				                Resources.Load<Sprite>("Item/purpleBall"), 50, ItemID.PurpleBall, ItemType.Projectile);
+			case GameItem.BASICHEALTH:
+				return new Item("Basic Health",
+				                "A Simple Medkit that restores " +  Constants.BasicHealthRepletion + " health points" ,
+				                Resources.Load<Sprite>("Item/greenHealth"), 3, ItemID.BasicHealth, ItemType.Collectible);
+			case GameItem.INTERMEDHEALTH:
+				return new Item("Intermediate Health",
+				                "A little advanced Medkit that restores " + Constants.InterMedHealthRepletion + " health points" ,
+				                Resources.Load<Sprite>("Item/redHealth"), 2, ItemID.InterMedHealth, ItemType.Collectible);
+
 		}
 		return null;
 	}

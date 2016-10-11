@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class EnemyTwo : Mob {
 
 	private GameObject _hover;
@@ -21,17 +21,25 @@ public class EnemyTwo : Mob {
 		_shot = true;
 		_speed = Constants.GuardEnemySpeed;
 		_agent.speed = _speed;
+		_fillImage = transform.FindChild("HealthBar").gameObject.transform.FindChild("FillImage").GetComponent<Image>();
+		_stillImage = transform.FindChild("HealthBar").gameObject.transform.FindChild("StillImage").GetComponent<Image>();
+		_HealthText = transform.FindChild("HealthBar").gameObject.transform.FindChild("Text").GetComponent<Text>();
 	}
 
 	void Update ()
 	{
-		CheckIfIsDead();
-		ManageHoverEffect();
-		Move();
+		if (_gameController.menuActive == MenuActive.GAME)
+		{
+			CheckIfIsDead();
+			ManageHoverEffect();
+			Move();
+			UpdateHealthQuad();
+		}
 	}
 
 	private void Move()
 	{
+
 		if (Health > 0)
 		{
 			ManageInitPoints();
@@ -49,13 +57,15 @@ public class EnemyTwo : Mob {
 					_gameController.Player.gameObject.SendMessage("DoDamage", Time.deltaTime * Constants.PatrolEnemyDamage);
 				} else
 				{
-					_agent.SetDestination(_gameController.Player.transform.position);
-					RotateTowards(_gameController.Player.transform);
 					behaviour = EntityBehaviour.Chase;
 				}
+				_agent.SetDestination(_gameController.Player.transform.position);
+				RotateTowards(_gameController.Player.transform);
+
 			} else {
 				behaviour = EntityBehaviour.Idle;
 			}
+
 		}
 	}
 

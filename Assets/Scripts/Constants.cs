@@ -32,6 +32,7 @@ public class Constants  {
 
 	#region---FRIENDLY---
 	//Droid
+	public const float DroidDistanceToAttack = 25.0f;
 	public const float DroidMovementSpeed = 10.0f;
 	public const float DroidMaxHealth = 50.0f;
 
@@ -80,6 +81,11 @@ public class Constants  {
 	public const float EntityRotationSpeed = 25f;
 	public const float EntityHoverAmp = .05f;
 	public const float EntityHoverFreq = .1f;
+
+	public const float BasicHealthRepletion = 5f;
+	public const float InterMedHealthRepletion = 10f;
+
+
 
 
 	public static Material Character_Blue_Mat = (Material)Resources.Load("Materials/Entity/Character/character_blue_mat/character_blue_mat");

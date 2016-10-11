@@ -222,7 +222,13 @@ public class CameraController : MonoBehaviour {
 		_targetHover.y = Mathf.PingPong(hoverFrequency * Time.time, hoverAmplitude);
 		_targetHover.y -= hoverAmplitude / 2.0f;
 		_hoverPos.y = Mathf.Lerp(_hoverPos.y, _targetHover.y, 2.5f * Time.deltaTime);
-		Camera.main.transform.position = (transform.TransformDirection(_hoverPos) + _playerHead.transform.position) - (_playerHead.transform.forward * cameraDistance) - (_playerHead.transform.right * cameraHorizontalOffset) + hoverHeight;
+		Vector3 _offsetPos = (transform.TransformDirection(_hoverPos) + _playerHead.transform.position) - (_playerHead.transform.forward * cameraDistance) - (_playerHead.transform.right * cameraHorizontalOffset) + hoverHeight;
+		if (Vector3.Distance(Camera.main.transform.position, _offsetPos) > 0.05f)
+		{
+			Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, _offsetPos, Time.deltaTime * 2.0f);
+		} else {
+			Camera.main.transform.position =  _offsetPos;
+		}
 	}
 
 	/// <summary>

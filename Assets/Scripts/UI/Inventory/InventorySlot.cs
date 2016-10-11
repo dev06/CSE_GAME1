@@ -172,6 +172,55 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	{
 		this.item.itemQuantity += item.itemQuantity;
 		SetItem(this.item);
+
+		for (int i = 0; i < _inventoryManager.quickItemSlots.Count; i++)
+		{
+			if (_inventoryManager.quickItemSlots[i].item != null)
+			{
+				if (_inventoryManager.quickItemSlots[i].item.itemID == item.itemID)
+				{
+					_inventoryManager.quickItemSlots[i].SetItem(this.item);
+				}
+			}
+		}
+	}
+
+	public void DepleteItem(Item item, int amount)
+	{
+
+		Item newItem = item;
+		newItem.itemQuantity -= amount;
+		for (int i = 0; i < _inventoryManager.inventorySlots.Count; i++)
+		{
+			Item _inventorySlotItem = _inventoryManager.inventorySlots[i].item;
+			if (_inventorySlotItem != null)
+			{
+				if (_inventorySlotItem.itemID == newItem.itemID)
+				{
+					_inventoryManager.inventorySlots[i].SetItem(newItem);
+				}
+			}
+		}
+		if (newItem.itemQuantity <= 0)
+		{
+			RemoveSlotItem();
+			for (int i = 0; i < _inventoryManager.inventorySlots.Count; i++)
+			{
+				Item _inventorySlotItem = _inventoryManager.inventorySlots[i].item;
+				if (_inventorySlotItem != null)
+				{
+					if (_inventorySlotItem.itemID == newItem.itemID)
+					{
+						_inventoryManager.inventorySlots[i].RemoveSlotItem();
+					}
+				}
+			}
+
+			_inventoryManager.ShiftItem(_inventoryManager.inventorySlots);
+		} else
+		{
+			SetItem(newItem);
+		}
 	}
 
 	public virtual void OnPointerEnter(PointerEventData data)
