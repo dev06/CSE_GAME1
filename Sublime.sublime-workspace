@@ -569,6 +569,8 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Entity/NetworkScale.cs",
+		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Friendly/Droid.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Enemy/enemy_one/EnemyOne.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingExample/Assets/Player.cs",
@@ -694,9 +696,7 @@
 		"/C/Users/Devan/Documents/Unity/Projects/.gitignore.txt",
 		"/C/Users/Devan/Documents/UnityProjects/CSEGame1/Assets/Scripts/Constants.cs",
 		"/C/Users/Devan/Documents/Unity/Projects/CSE_Game1/Assets/Scripts/CameraController.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/CSE_Game1/Assets/Scripts/Constants.cs",
-		"/C/Git/FOPSMobile/FearOfPublicSpeaking5.3.4/Assets/Scripts/ControllerTestScene/CameraController.cs",
-		"/C/Users/Devan/Documents/Unity/Projects/Vuforia AR Test/Assets/Vuforia/Scripts/KeepAliveBehaviour.cs"
+		"/C/Users/Devan/Documents/Unity/Projects/CSE_Game1/Assets/Scripts/Constants.cs"
 	],
 	"find":
 	{
@@ -948,6 +948,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"droid",
+				"Entity\\Friendly\\Droid.cs"
+			],
 			[
 				"nav",
 				"Controller\\NavMesh\\NavMeshController.cs"
@@ -1455,10 +1459,6 @@
 			[
 				"serverplayerc",
 				"ControllerTestScene\\ServerPlayerController.cs"
-			],
-			[
-				"masterme",
-				"Network\\MasterMessageType.cs"
 			]
 		],
 		"width": 0.0

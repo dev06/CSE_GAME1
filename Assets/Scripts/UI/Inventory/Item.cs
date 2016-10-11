@@ -51,6 +51,7 @@ public enum ItemID
 	InterMedHealth,
 	AdvancedHealth,
 	SuperHealth,
+	SpeedBuff,
 	Null,
 }
 
@@ -58,4 +59,5 @@ public enum ItemType
 {
 	Projectile,
 	Collectible,
+	Buff,
 }

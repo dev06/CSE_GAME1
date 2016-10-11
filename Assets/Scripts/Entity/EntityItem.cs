@@ -64,7 +64,6 @@ public class EntityItem : Entity {
 			{
 				Item updatedItem  =  SwithGameItemToItemID(gameItem);
 				_gameController.inventoryManager.inventorySlots[index].UpdateItem(updatedItem);
-				Debug.Log("Item exits and quantity should be updated" + index );
 			}
 			Destroy(gameObject);
 		}
@@ -104,6 +103,10 @@ public class EntityItem : Entity {
 				return new Item("Super Health",
 				                "A Super Medkit that restores " + Constants.SuperHealthRepletion + " health points" ,
 				                Resources.Load<Sprite>("Item/blueHealth"), 1, ItemID.SuperHealth, ItemType.Collectible);
+			case GameItem.SPEEDBUFF:
+				return new Item("Speed Buff",
+				                "Increases player speed for certain amount of time " + Constants.SuperHealthRepletion + " health points" ,
+				                Resources.Load<Sprite>("Item/buff"), 1, ItemID.SpeedBuff, ItemType.Buff);
 
 
 

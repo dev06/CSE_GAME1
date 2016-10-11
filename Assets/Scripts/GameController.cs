@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
 	public ControllerProfile controllerProfile;
 	public InventoryManager inventoryManager;
 	public ProjectileManager projectileManager;
+	public BuffManager buffManager;
 	[HideInInspector]
 	public NavMeshController navMeshController;
 	public static ButtonID selectedButtonID;
@@ -57,6 +58,7 @@ public class GameController : MonoBehaviour {
 		TogglePlayerMovement = true;
 		navMeshController = GameObject.FindWithTag("Manager/NavMeshManager").GetComponent<NavMeshController>();
 		projectileManager = GameObject.FindWithTag("Manager/ProjectileManager").GetComponent<ProjectileManager>();
+		buffManager = GameObject.FindWithTag("Manager/BuffManager").GetComponent<BuffManager>();
 		_largeProjectile = (GameObject)Resources.Load("Prefabs/LargeProjectile");
 		_smallProjectile = (GameObject)Resources.Load("Prefabs/SmallProjectile");
 		_smoke = (GameObject)Resources.Load("Prefabs/Particles/Smoke");
@@ -355,6 +357,9 @@ public class GameController : MonoBehaviour {
 							inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
 						}
 					}
+				} else if (_item.itemType == ItemType.Buff)
+				{
+					buffManager.UseBuff(_item);
 				}
 			}
 		}
@@ -400,6 +405,8 @@ public enum GameItem
 	INTERMEDHEALTH,
 	ADVANCEDHEALTH,
 	SUPERHEALTH,
+
+	SPEEDBUFF,
 }
 
 public enum Body
@@ -426,6 +433,7 @@ public enum ButtonID
 
 	PLAY,
 	CREDIT,
+	CONTROL,
 	QUIT,
 
 

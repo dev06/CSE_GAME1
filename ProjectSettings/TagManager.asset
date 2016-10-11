@@ -34,6 +34,9 @@ TagManager:
   - Entity/BasicHealth
   - Entity/InterMedHealth
   - Entity/AdvancedHealth
+  - Environment/Obstacle
+  - Entity/Buff/SpeedBuff
+  - Manager/BuffManager
   layers:
   - Default
   - TransparentFX

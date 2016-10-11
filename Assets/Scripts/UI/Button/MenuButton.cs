@@ -4,15 +4,22 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class MenuButton : ButtonEventHandler {
 
 	private float _speed = 50.0f;
 	private Animation _animation;
-
+	private Animation _rootAnimation;
+	private GameObject _hoverContainer;
+	private Text _hoverContainerText;
 	void Start ()
 	{
 		Init();
-		_animation = GameObject.FindWithTag("UI/MenuCanvas").transform.GetChild(0).GetComponent<Animation>();
+		_rootAnimation = GameObject.FindWithTag("UI/MenuCanvas").transform.GetChild(0).GetComponent<Animation>();
+
+		_animation = transform.parent.FindChild("HoverContainer").GetComponent<Animation>();
+		_hoverContainer = transform.parent.FindChild("HoverContainer").gameObject;
+		_hoverContainerText = _hoverContainer.transform.FindChild("Hover").transform.FindChild("Text").GetComponent<Text>();
 	}
 
 	void Update ()
@@ -23,16 +30,20 @@ public class MenuButton : ButtonEventHandler {
 			transform.GetChild(0).transform.Rotate(new Vector3(0, 0, Time.deltaTime * _speed));
 		}
 
-		if (_animation[_animation.clip.name].speed == -1)
+		if (_rootAnimation != null)
 		{
-			if (_animation.IsPlaying(_animation.clip.name) == false)
+			if (_rootAnimation[_rootAnimation.clip.name].speed == -1)
 			{
-				if (_gameController.menuActive == MenuActive.MENU)
+				if (_rootAnimation.IsPlaying(_rootAnimation.clip.name) == false)
 				{
-					_gameController.EnableMenu(MenuActive.GAME);
+					if (_gameController.menuActive == MenuActive.MENU)
+					{
+						_gameController.EnableMenu(MenuActive.GAME);
+					}
 				}
 			}
 		}
+
 	}
 	/// <summary>
 	/// Overrides the on pointer enter from base class.
@@ -42,20 +53,31 @@ public class MenuButton : ButtonEventHandler {
 	{
 
 		base.OnPointerEnter(data);
-
-		if (_animation.IsPlaying(_animation.clip.name) == false)
+		if (_animation != null)
 		{
+			//	if (_animation.IsPlaying(_animation.clip.name) == false)
+			//	{
+
 			if (buttonID == ButtonID.CREDIT)
 			{
-				if (buttonID == ButtonID.CREDIT)
-				{
-					_animation["MenuBackGround"].time = 0;
-					_animation["MenuBackGround"].speed = 1;
-					_animation.Play("MenuBackGround");
-				}
+				_hoverContainerText.text = "Font - Code Bold\n   \nUnity Standard Assets\n  \nGoogle Images\n  \nDevan Patel" ;
+				_hoverContainerText.fontSize = 125;
+				_animation["MenuBackGround"].time = 0;
+				_animation["MenuBackGround"].speed = 1;
+				_animation.Play("MenuBackGround");
 			}
-		}
 
+
+			if (buttonID == ButtonID.CONTROL)
+			{
+				_hoverContainerText.text = "Controls\n\nE to open inventory \n\nRight click to interact";
+				_hoverContainerText.fontSize = 130;
+				_animation["MenuBackGround"].time = 0;
+				_animation["MenuBackGround"].speed = 1;
+				_animation.Play("MenuBackGround");
+			}
+			//}
+		}
 	}
 	/// <summary>
 	/// Overrides the on pointer exit from base class
@@ -64,11 +86,21 @@ public class MenuButton : ButtonEventHandler {
 	public override void OnPointerExit(PointerEventData data)
 	{
 		base.OnPointerExit(data);
-		if (buttonID == ButtonID.CREDIT)
+		if (_animation != null)
 		{
-			_animation["MenuBackGround"].time = _animation["MenuBackGround"].length;
-			_animation["MenuBackGround"].speed = -1;
-			_animation.Play("MenuBackGround");
+			if (buttonID == ButtonID.CREDIT)
+			{
+				_animation["MenuBackGround"].time = _animation["MenuBackGround"].length;
+				_animation["MenuBackGround"].speed = -1;
+				_animation.Play("MenuBackGround");
+			}
+
+			if (buttonID == ButtonID.CONTROL)
+			{
+				_animation["MenuBackGround"].time = _animation["MenuBackGround"].length;
+				_animation["MenuBackGround"].speed = -1;
+				_animation.Play("MenuBackGround");
+			}
 		}
 	}
 
@@ -78,18 +110,23 @@ public class MenuButton : ButtonEventHandler {
 	/// <param name="data"></param>
 	public override void OnPointerClick(PointerEventData data)
 	{
-		if (buttonID == ButtonID.PLAY)
+		if (_rootAnimation != null)
 		{
-			_animation[_animation.clip.name].time = _animation[_animation.clip.name].length;
-			_animation[_animation.clip.name].speed = -1;
-			_animation.Play(_animation.clip.name);
-		} else if (buttonID == ButtonID.CREDIT)
-		{
+			if (buttonID == ButtonID.PLAY)
+			{
+				_rootAnimation[_rootAnimation.clip.name].time = _rootAnimation[_rootAnimation.clip.name].length;
+				_rootAnimation[_rootAnimation.clip.name].speed = -1;
+				_rootAnimation.Play(_rootAnimation.clip.name);
 
-		} else if (buttonID == ButtonID.QUIT)
-		{
-			Application.Quit();
+			} else if (buttonID == ButtonID.CREDIT)
+			{
+
+			} else if (buttonID == ButtonID.QUIT)
+			{
+				Application.Quit();
+			}
 		}
+
 		base.OnPointerClick(data);
 
 	}
