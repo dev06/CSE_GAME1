@@ -21,11 +21,14 @@ public class Constants  {
 	public const float BotInitalDamage = 5.0f;
 
 	//Patrol Enemy
+
+	public const float PatrolEnemyMaxHealth = 400.0f;
 	public const float PatrolEnemyDamage = 10.0f;
 	public const float PatrolEnemySpeed = 10.0f;
 
 
 	//Guard Enemy
+	public const float GuardEnemyMaxHealth = 500.0f;
 	public const float GuardEnemyShootDelay = 0.75f;
 	public const float GuardEnemySpeed = 7;
 
@@ -84,6 +87,10 @@ public class Constants  {
 
 	public const float BasicHealthRepletion = 5f;
 	public const float InterMedHealthRepletion = 10f;
+	public const float AdvancedHealthRepletion = 15f;
+	public const float SuperHealthRepletion = 75f;
+
+
 
 
 

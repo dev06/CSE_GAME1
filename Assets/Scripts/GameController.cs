@@ -345,6 +345,15 @@ public class GameController : MonoBehaviour {
 							Player.gameObject.SendMessage("RepleteHealth", Constants.InterMedHealthRepletion);
 							inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
 						}
+						else if (_item.itemID == ItemID.AdvancedHealth)
+						{
+							Player.gameObject.SendMessage("RepleteHealth", Constants.AdvancedHealthRepletion);
+							inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
+						} else if (_item.itemID == ItemID.SuperHealth)
+						{
+							Player.gameObject.SendMessage("RepleteHealth", Constants.SuperHealthRepletion);
+							inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
+						}
 					}
 				}
 			}
@@ -389,6 +398,8 @@ public enum GameItem
 	YELLOWBALL,
 	BASICHEALTH,
 	INTERMEDHEALTH,
+	ADVANCEDHEALTH,
+	SUPERHEALTH,
 }
 
 public enum Body

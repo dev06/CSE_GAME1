@@ -33,6 +33,7 @@ TagManager:
   - Entity/Pillar
   - Entity/BasicHealth
   - Entity/InterMedHealth
+  - Entity/AdvancedHealth
   layers:
   - Default
   - TransparentFX

@@ -49,6 +49,8 @@ public enum ItemID
 	YellowBall,
 	BasicHealth,
 	InterMedHealth,
+	AdvancedHealth,
+	SuperHealth,
 	Null,
 }
 

@@ -9,7 +9,7 @@ public class EnemyOne : Mob {
 	void Start ()
 	{
 		Init();
-		MaxHealth = Constants.BotMaxHealth;
+		MaxHealth = Constants.PatrolEnemyMaxHealth;
 		Health = MaxHealth;
 		_hover = transform.FindChild("HoverEffect").gameObject;
 		_speed = Constants.PatrolEnemySpeed;

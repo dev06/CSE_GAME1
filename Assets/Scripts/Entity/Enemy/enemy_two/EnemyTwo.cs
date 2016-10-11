@@ -13,7 +13,7 @@ public class EnemyTwo : Mob {
 	void Start ()
 	{
 		Init();
-		MaxHealth = Constants.BotMaxHealth;
+		MaxHealth = Constants.GuardEnemyMaxHealth;
 		Health = MaxHealth;
 		_hover = transform.FindChild("HoverEffect").gameObject;
 		_bulletRight = transform.FindChild("BulletRight").gameObject;
