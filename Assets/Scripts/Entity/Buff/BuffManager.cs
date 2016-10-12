@@ -18,8 +18,9 @@ public class BuffManager : MonoBehaviour {
 		_gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 		_player = _gameController.Player.GetComponent<PlayerController>();
 	}
-	void Update () {
-
+	void Update ()
+	{
+		_speedBuff.Tick();
 	}
 
 

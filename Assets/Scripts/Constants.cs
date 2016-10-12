@@ -60,9 +60,8 @@ public class Constants  {
 
 
 	//Projectile Members
-	public const float PlayerMovementSpeed = 10.0f;
-	public const float PlayerSprintSpeed = 8.0f;
-	public const float LargeProjectileDamage = 20.0f;
+	public const float DefaultPlayerMovementSpeed = 10.0f;
+	public static float PlayerMovementSpeed = 10.0f;
 
 
 	public const float Character_BlueProjectileDamage = 2.0f;
@@ -90,7 +89,7 @@ public class Constants  {
 	public const float AdvancedHealthRepletion = 15f;
 	public const float SuperHealthRepletion = 75f;
 
-
+	public const float SpeedBuffAmount = 25.0f;
 
 
 

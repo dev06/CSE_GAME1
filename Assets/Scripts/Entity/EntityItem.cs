@@ -65,7 +65,15 @@ public class EntityItem : Entity {
 				Item updatedItem  =  SwithGameItemToItemID(gameItem);
 				_gameController.inventoryManager.inventorySlots[index].UpdateItem(updatedItem);
 			}
-			Destroy(gameObject);
+
+
+
+			Item _item = SwithGameItemToItemID(gameItem);
+
+			if (_item.itemType != ItemType.Buff)
+			{
+				Destroy(gameObject);
+			}
 		}
 	}
 
@@ -107,8 +115,6 @@ public class EntityItem : Entity {
 				return new Item("Speed Buff",
 				                "Increases player speed for certain amount of time " + Constants.SuperHealthRepletion + " health points" ,
 				                Resources.Load<Sprite>("Item/buff"), 1, ItemID.SpeedBuff, ItemType.Buff);
-
-
 
 		}
 		return null;

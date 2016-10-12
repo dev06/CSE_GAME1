@@ -360,6 +360,7 @@ public class GameController : MonoBehaviour {
 				} else if (_item.itemType == ItemType.Buff)
 				{
 					buffManager.UseBuff(_item);
+					inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
 				}
 			}
 		}

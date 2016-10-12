@@ -59,7 +59,6 @@ public class CameraController : MonoBehaviour {
 	void Start ()
 	{
 		Init();
-		CameraMoveSpeed = Constants.PlayerMovementSpeed;
 		recoilAmount = Constants.CameraRecoilAmount + Constants.CameraDistanceFromPlayer;
 
 	}
@@ -80,6 +79,8 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		CameraMoveSpeed = Constants.PlayerMovementSpeed;
+
 		if (_gameSceneManager.menuActive == MenuActive.GAME)
 		{
 			RegisterInput(_gameSceneManager.controllerProfile);
