@@ -56,15 +56,7 @@ public class EntityItem : Entity {
 	{
 		if (col.gameObject.tag == "Player")
 		{
-			int index;
-			if (!_gameController.inventoryManager.DoesItemExits(_gameController.inventoryManager.inventorySlots, SwithGameItemToItemID(gameItem), out index))
-			{
-				_gameController.inventoryManager.AddItem(SwithGameItemToItemID(gameItem));
-			} else
-			{
-				Item updatedItem  =  SwithGameItemToItemID(gameItem);
-				_gameController.inventoryManager.inventorySlots[index].UpdateItem(updatedItem);
-			}
+
 
 
 
@@ -72,8 +64,25 @@ public class EntityItem : Entity {
 
 			if (_item.itemType != ItemType.Buff)
 			{
+				int index;
+				if (!_gameController.inventoryManager.DoesItemExits(_gameController.inventoryManager.inventorySlots, SwithGameItemToItemID(gameItem), out index))
+				{
+					_gameController.inventoryManager.AddItem(SwithGameItemToItemID(gameItem));
+				} else
+				{
+					Item updatedItem  =  SwithGameItemToItemID(gameItem);
+					_gameController.inventoryManager.inventorySlots[index].UpdateItem(updatedItem);
+				}
 				Destroy(gameObject);
+			} else
+			{
+				int index;
+				if (!_gameController.inventoryManager.DoesItemExits(_gameController.inventoryManager.inventorySlots, SwithGameItemToItemID(gameItem), out index))
+				{
+					_gameController.inventoryManager.AddItem(SwithGameItemToItemID(gameItem));
+				}
 			}
+
 		}
 	}
 

@@ -38,7 +38,7 @@ public class ProjectileManager : MonoBehaviour {
 		{
 			if (_gameController.inventoryManager.quickItemSelectedSlot.item != null)
 			{
-				Vector3 _forward = Camera.main.transform.forward;
+				Vector3 _forward = Camera.main.transform.forward + new Vector3(0, 0.1f, 0);
 				switch (_gameController.inventoryManager.quickItemSelectedSlot.item.itemID)
 				{
 					case ItemID.YellowBall:

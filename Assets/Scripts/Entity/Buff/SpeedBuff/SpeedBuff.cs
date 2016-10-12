@@ -4,15 +4,19 @@ using System.Collections;
 public class SpeedBuff : Buff {
 
 	private bool _active;
+	private GameObject _gameObject;
 
 	void Start ()
 	{
 		Init();
+		_gameObject = gameObject;
+
 	}
 
 	public SpeedBuff()
 	{
 		_duration = 5.0f;
+
 	}
 
 
@@ -30,7 +34,7 @@ public class SpeedBuff : Buff {
 		}
 
 		Constants.PlayerMovementSpeed = (_active) ? Constants.SpeedBuffAmount : Constants.DefaultPlayerMovementSpeed;
-
+		Debug.Log(_gameObject);
 	}
 
 
