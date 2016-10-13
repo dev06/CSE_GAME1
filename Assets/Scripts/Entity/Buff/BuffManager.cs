@@ -51,11 +51,10 @@ public class BuffManager : MonoBehaviour {
 			}
 		} else if (item.itemID == ItemID.TeleportationBuff)
 		{
-			if (_teleportBuff._active == false)
-			{
-				_teleportBuff.UseBuff(_gameController);
-				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
-			}
+
+			_teleportBuff.UseBuff(_gameController);
+			_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+
 		} else if (item.itemID == ItemID.ImmortalityBuff)
 		{
 			if (_immortalBuff._active == false)

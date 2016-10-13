@@ -1,28 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class BuffIndicator : BuffContainer {
 
 	public float targetValue;
 	public float targetMaxValue;
 	public bool alive;
+	private Image _maskImage;
 	private RectTransform _rectTransform;
-	private Vector2 _size;
-	private float _sizeX;
-	private float _sizeY;
 	void Start ()
 	{
-		_rectTransform = transform.GetChild(0).transform.GetComponent<RectTransform>();
-		_size = _rectTransform.sizeDelta;
-		_sizeX = _size.x;
-		_sizeY = _size.y;
+		_maskImage = transform.GetChild(0).GetComponent<Image>();
+		_rectTransform = transform.GetComponent<RectTransform>();
+		_rectTransform.localScale = new Vector3(1, 1, 1);
 		alive = true;
 	}
 
 	void Update ()
 	{
-		_size = new Vector2((targetValue * _sizeX) / targetMaxValue, _sizeY);
-		_rectTransform.sizeDelta = _size;
+
+		_maskImage.fillAmount = (targetValue / targetMaxValue);
 
 		if (!alive)
 		{
