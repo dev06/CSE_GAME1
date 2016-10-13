@@ -37,6 +37,7 @@ TagManager:
   - Environment/Obstacle
   - Entity/Buff/SpeedBuff
   - Manager/BuffManager
+  - Entity/TeleportProjectile
   layers:
   - Default
   - TransparentFX

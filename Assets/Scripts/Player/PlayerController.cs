@@ -16,6 +16,7 @@ public class PlayerController : Mob
 
 	#endregion-----/PRIVATE MEMBERS-----
 
+	public bool isImmortal;
 
 	void OnEnable()
 	{
@@ -93,6 +94,14 @@ public class PlayerController : Mob
 				GameObject.Find("RetryCanvas").GetComponent<Animation>().Play(GameObject.Find("RetryCanvas").GetComponent<Animation>().clip.name);
 				_gameController.EnableMenu(MenuActive.RETRY);
 			}
+		}
+	}
+
+	protected override void DoDamage(float damage)
+	{
+		if (isImmortal == false)
+		{
+			base.DoDamage(damage);
 		}
 	}
 

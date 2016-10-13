@@ -120,10 +120,22 @@ public class EntityItem : Entity {
 				return new Item("Super Health",
 				                "A Super Medkit that restores " + Constants.SuperHealthRepletion + " health points" ,
 				                Resources.Load<Sprite>("Item/blueHealth"), 1, ItemID.SuperHealth, ItemType.Collectible);
-			case GameItem.SPEEDBUFF:
+			case GameItem.SPEED_BUFF:
 				return new Item("Speed Buff",
-				                "Increases player speed for certain amount of time " + Constants.SuperHealthRepletion + " health points" ,
+				                "Increases player speed for certain amount of time" ,
 				                Resources.Load<Sprite>("Item/buff"), 1, ItemID.SpeedBuff, ItemType.Buff);
+			case GameItem.SLOWMOTION_BUFF:
+				return new Item("Slow motion Buff",
+				                "Slows down time for certain amount of period." ,
+				                Resources.Load<Sprite>("Item/slowMotion_buff"), 1, ItemID.SlowMotionBuff, ItemType.Buff);
+			case GameItem.TELEPORTATION_BUFF:
+				return new Item("Teleporter",
+				                "Teleports you to certain location" ,
+				                Resources.Load<Sprite>("Item/teleport_buff"), 1, ItemID.TeleportationBuff, ItemType.Buff);
+			case GameItem.IMMORTALITY_BUFF:
+				return new Item("Immortality",
+				                "Makes you immortal for certain period of time." ,
+				                Resources.Load<Sprite>("Item/immortal_buff"), 1, ItemID.ImmortalityBuff, ItemType.Buff);
 
 		}
 		return null;

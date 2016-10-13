@@ -360,7 +360,6 @@ public class GameController : MonoBehaviour {
 				} else if (_item.itemType == ItemType.Buff)
 				{
 					buffManager.UseBuff(_item);
-					inventoryManager.quickItemSelectedSlot.DepleteItem(_item, 1);
 				}
 			}
 		}
@@ -407,7 +406,10 @@ public enum GameItem
 	ADVANCEDHEALTH,
 	SUPERHEALTH,
 
-	SPEEDBUFF,
+	SPEED_BUFF,
+	SLOWMOTION_BUFF,
+	TELEPORTATION_BUFF,
+	IMMORTALITY_BUFF,
 }
 
 public enum Body

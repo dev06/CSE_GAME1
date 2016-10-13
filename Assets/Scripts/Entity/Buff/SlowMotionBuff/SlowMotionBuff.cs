@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class SpeedBuff : Buff {
+public class SlowMotionBuff : Buff {
 
 	private GameObject _gameObject;
 
@@ -12,7 +12,7 @@ public class SpeedBuff : Buff {
 
 	}
 
-	public SpeedBuff()
+	public SlowMotionBuff()
 	{
 		_duration = 5.0f;
 
@@ -35,8 +35,8 @@ public class SpeedBuff : Buff {
 			_buffIndicator.alive = _active;
 		}
 
+		Time.timeScale = (_active) ? 0.5f : 1.0f;
 
-		Constants.PlayerMovementSpeed = (_active) ? Constants.SpeedBuffAmount : Constants.DefaultPlayerMovementSpeed;
 	}
 
 
@@ -44,13 +44,11 @@ public class SpeedBuff : Buff {
 	{
 		_active = true;
 		_buffIcon = Instantiate((GameObject)Resources.Load("Prefabs/UIPrefabs/BuffContainer/BuffIcon"));
-		_buffIcon.transform.GetComponent<Image>().sprite =  Resources.Load<Sprite>("Item/buff");
+		_buffIcon.transform.GetComponent<Image>().sprite =  Resources.Load<Sprite>("Item/slowMotion_buff");
 		_buffIndicator = _buffIcon.GetComponent<BuffIndicator>();
 		GameObject _container = GameObject.Find("BuffContainer");
 		_buffIcon.transform.SetParent(_container.transform);
 		_container.GetComponent<BuffContainer>().currentBuffs.Add(_buffIcon);
-
 	}
-
 
 }

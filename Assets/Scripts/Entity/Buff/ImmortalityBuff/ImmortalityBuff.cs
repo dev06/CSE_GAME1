@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class SpeedBuff : Buff {
+using UnityStandardAssets.ImageEffects;
+public class ImmortalityBuff : Buff {
+
 
 	private GameObject _gameObject;
+	private PlayerController _player;
 
 	void Start ()
 	{
@@ -12,9 +15,9 @@ public class SpeedBuff : Buff {
 
 	}
 
-	public SpeedBuff()
+	public ImmortalityBuff()
 	{
-		_duration = 5.0f;
+		_duration = 20.0f;
 
 	}
 
@@ -35,22 +38,26 @@ public class SpeedBuff : Buff {
 			_buffIndicator.alive = _active;
 		}
 
-
-		Constants.PlayerMovementSpeed = (_active) ? Constants.SpeedBuffAmount : Constants.DefaultPlayerMovementSpeed;
+		if (_player != null)
+		{
+			_player.isImmortal = _active;
+			Camera.main.transform.gameObject.GetComponent<SepiaTone>().enabled = _active;
+		}
 	}
 
 
-	public override void UseBuff()
+	public override void UseBuff(GameController _gameController)
 	{
 		_active = true;
+		_player = _gameController.Player.GetComponent<PlayerController>();
+		_player.isImmortal = true;
 		_buffIcon = Instantiate((GameObject)Resources.Load("Prefabs/UIPrefabs/BuffContainer/BuffIcon"));
-		_buffIcon.transform.GetComponent<Image>().sprite =  Resources.Load<Sprite>("Item/buff");
+		_buffIcon.transform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/immortal_buff");
 		_buffIndicator = _buffIcon.GetComponent<BuffIndicator>();
 		GameObject _container = GameObject.Find("BuffContainer");
 		_buffIcon.transform.SetParent(_container.transform);
 		_container.GetComponent<BuffContainer>().currentBuffs.Add(_buffIcon);
 
 	}
-
 
 }
