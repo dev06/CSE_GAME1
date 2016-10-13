@@ -36,16 +36,33 @@ public class BuffManager : MonoBehaviour {
 	{
 		if (item.itemID == ItemID.SpeedBuff)
 		{
-			_speedBuff.UseBuff();
+			if (_speedBuff._active == false)
+			{
+				_speedBuff.UseBuff();
+				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+			}
+
 		} else if (item.itemID == ItemID.SlowMotionBuff)
 		{
-			_slowMotionBuff.UseBuff();
+			if (_slowMotionBuff._active == false)
+			{
+				_slowMotionBuff.UseBuff();
+				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+			}
 		} else if (item.itemID == ItemID.TeleportationBuff)
 		{
-			_teleportBuff.UseBuff(_gameController);
+			if (_teleportBuff._active == false)
+			{
+				_teleportBuff.UseBuff(_gameController);
+				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+			}
 		} else if (item.itemID == ItemID.ImmortalityBuff)
 		{
-			_immortalBuff.UseBuff(_gameController);
+			if (_immortalBuff._active == false)
+			{
+				_immortalBuff.UseBuff(_gameController);
+				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+			}
 		}
 	}
 

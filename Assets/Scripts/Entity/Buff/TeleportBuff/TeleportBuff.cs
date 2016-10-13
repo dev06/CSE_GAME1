@@ -3,7 +3,6 @@ using System.Collections;
 
 public class TeleportBuff : Buff {
 
-	private bool _active;
 
 	void Start ()
 	{

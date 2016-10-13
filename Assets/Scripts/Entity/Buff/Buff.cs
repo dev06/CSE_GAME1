@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Buff : EntityItem {
 
+	public bool _active;
 	protected float _duration;
 	protected float _currentBuffTime;
+	protected GameObject _buffIcon;
+	protected BuffIndicator _buffIndicator;
 	void Start ()
 	{
 		Init();
