@@ -64,9 +64,13 @@ public class Constants  {
 	public static float PlayerMovementSpeed = 10.0f;
 
 
-	public const float Character_BlueProjectileDamage = 2.0f;
-	public const float Character_YellowProjectileDamage = 5.0f;
-	public const float Character_PurpleProjectileDamage = 15.0f;
+	public const float Character_BlueProjectileDamage_Default = 2.0f;
+	public const float Character_YellowProjectileDamage_Default = 5.0f;
+	public const float Character_PurpleProjectileDamage_Default = 15.0f;
+
+	public static float Character_BlueProjectileDamage = 2.0f;
+	public static float Character_YellowProjectileDamage = 5.0f;
+	public static float Character_PurpleProjectileDamage = 15.0f;
 	public const float GuardEnemy_ProjectileDamage = 2.0f;
 	public const float Droid_ProjectileDamage = 4.0f;
 
@@ -90,6 +94,11 @@ public class Constants  {
 	public const float SuperHealthRepletion = 75f;
 
 	public const float SpeedBuffAmount = 25.0f;
+
+	public const float BlastDamage = 150f;
+	public const float BlastRadius = 40f;
+
+	public const float ProjectilePenetration_Percent = 100f; // does x percent more damage then the default value.
 
 
 
@@ -120,7 +129,7 @@ public class Constants  {
 	public static GameObject Enemy_Two_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Enemy/Enemy_Two/Enemy_Two_Bullet");
 
 	public static GameObject Teleporation_Projectile = (GameObject)Resources.Load("Prefabs/Entity/Buff/TeleportBuff/TeleportProjectile");
-
+	public static GameObject Blast_Buff_Particle = (GameObject)Resources.Load("Prefabs/Particles/BlastBuff");
 
 	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
 }

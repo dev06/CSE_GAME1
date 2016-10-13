@@ -131,28 +131,28 @@ public class GameController : MonoBehaviour {
 
 		switch (_menu)
 		{
-			case MenuActive.GAME:
-				ActivateUICanvas(false, "GameCanvas");
-				GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "", true);
-				menuActive = MenuActive.GAME;
-				break;
-			case MenuActive.MENU:
-				GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "MenuCanvas");
-				menuActive = MenuActive.MENU;
-				break;
-			case MenuActive.RETRY:
-				GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "RetryCanvas");
-				menuActive = MenuActive.RETRY;
-				break;
-			case MenuActive.INVENTORY:
-				GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
-				ActivateUICanvas(false, "InventoryCanvas");
-				ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "QuickItem", false);
-				menuActive = MenuActive.INVENTORY;
-				break;
+		case MenuActive.GAME:
+			ActivateUICanvas(false, "GameCanvas");
+			GameObject.FindGameObjectWithTag("UI/GameCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "", true);
+			menuActive = MenuActive.GAME;
+			break;
+		case MenuActive.MENU:
+			GameObject.FindGameObjectWithTag("UI/MenuCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "MenuCanvas");
+			menuActive = MenuActive.MENU;
+			break;
+		case MenuActive.RETRY:
+			GameObject.FindGameObjectWithTag("UI/RetryCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "RetryCanvas");
+			menuActive = MenuActive.RETRY;
+			break;
+		case MenuActive.INVENTORY:
+			GameObject.FindGameObjectWithTag("UI/InventoryCanvas").GetComponent<Canvas>().enabled = true;
+			ActivateUICanvas(false, "InventoryCanvas");
+			ActivateChild(GameObject.FindWithTag("UI/GameCanvas"), "QuickItem", false);
+			menuActive = MenuActive.INVENTORY;
+			break;
 		}
 	}
 
@@ -162,22 +162,22 @@ public class GameController : MonoBehaviour {
 		GameObject quickItemInventory = GameObject.FindWithTag("ContainerControl/InventoryContainer/QuickItem").gameObject;
 		switch (key)
 		{
-			case KeyCode.Alpha1:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot1").GetComponent<InventorySlot>());
-				qsIndex = 1;
-				break;
-			case KeyCode.Alpha2:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot2").GetComponent<InventorySlot>());
-				qsIndex = 2;
-				break;
-			case KeyCode.Alpha3:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot3").GetComponent<InventorySlot>());
-				qsIndex = 3;
-				break;
-			case KeyCode.Alpha4:
-				inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot4").GetComponent<InventorySlot>());
-				qsIndex = 4;
-				break;
+		case KeyCode.Alpha1:
+			inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot1").GetComponent<InventorySlot>());
+			qsIndex = 1;
+			break;
+		case KeyCode.Alpha2:
+			inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot2").GetComponent<InventorySlot>());
+			qsIndex = 2;
+			break;
+		case KeyCode.Alpha3:
+			inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot3").GetComponent<InventorySlot>());
+			qsIndex = 3;
+			break;
+		case KeyCode.Alpha4:
+			inventoryManager.AddToQuickItem(inventoryManager.hoverItem, quickItemInventory.transform.FindChild("QS_Slot4").GetComponent<InventorySlot>());
+			qsIndex = 4;
+			break;
 
 		}
 	}
@@ -370,6 +370,9 @@ public class GameController : MonoBehaviour {
 	/// </summary>
 	public void Reset()
 	{
+		Constants.Character_BlueProjectileDamage = Constants.Character_BlueProjectileDamage_Default;
+		Constants.Character_YellowProjectileDamage = Constants.Character_YellowProjectileDamage_Default;
+		Constants.Character_PurpleProjectileDamage = Constants.Character_PurpleProjectileDamage_Default;
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Project 1");
 	}
 }
@@ -410,6 +413,8 @@ public enum GameItem
 	SLOWMOTION_BUFF,
 	TELEPORTATION_BUFF,
 	IMMORTALITY_BUFF,
+	BLAST_BUFF,
+	PROJECTILE_PENETRATION_BUFF,
 }
 
 public enum Body
