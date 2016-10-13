@@ -14,4 +14,8 @@ public class Buff : EntityItem {
 	public virtual void Tick() {}
 
 	public virtual void UseBuff() {}
+
+	public virtual void UseBuff(GameController _gameController) {}
+
+
 }

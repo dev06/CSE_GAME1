@@ -16,11 +16,11 @@ public class CameraController : MonoBehaviour {
 	public float hoverFrequency;
 	public float cameraDistance;
 	public float cameraHorizontalOffset;
-	private float recoilAmount;
 	public Vector3 hoverHeight;
 	#endregion---/ PUBLIC MEMBERS---
 
 	#region---PRIVATE MEMBERS----
+	private float recoilAmount;
 	private float _lookInput = 0;
 	private float _headBoxX;
 	private float _headBobY;

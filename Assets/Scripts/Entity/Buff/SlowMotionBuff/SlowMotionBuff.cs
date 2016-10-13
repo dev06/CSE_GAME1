@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpeedBuff : Buff {
+public class SlowMotionBuff : Buff {
 
 	private bool _active;
 	private GameObject _gameObject;
@@ -13,7 +13,7 @@ public class SpeedBuff : Buff {
 
 	}
 
-	public SpeedBuff()
+	public SlowMotionBuff()
 	{
 		_duration = 5.0f;
 
@@ -33,7 +33,8 @@ public class SpeedBuff : Buff {
 			_currentBuffTime = 0;
 		}
 
-		Constants.PlayerMovementSpeed = (_active) ? Constants.SpeedBuffAmount : Constants.DefaultPlayerMovementSpeed;
+		Time.timeScale = (_active) ? 0.5f : 1.0f;
+
 	}
 
 
@@ -41,6 +42,5 @@ public class SpeedBuff : Buff {
 	{
 		_active = true;
 	}
-
 
 }

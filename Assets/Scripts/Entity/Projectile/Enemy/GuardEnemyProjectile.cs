@@ -38,7 +38,6 @@ public class GuardEnemyProjectile : Projectile {
 		} else {
 			GameObject effect_clone = Instantiate(_effect, transform.position, Quaternion.identity) as GameObject;
 			effect_clone.transform.parent = _gameController.activeEntities.transform;
-
 		}
 	}
 }

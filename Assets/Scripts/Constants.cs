@@ -50,8 +50,8 @@ public class Constants  {
 	public const float CameraDistanceFromPlayer = 8.0f;
 	public const float CameraRecoilAmount = 0.5f; // amount is being added to the camera distance from the player.
 
-	public const float PlayerForwardAcc = .5f;
-	public const float PlayerStrafeAcc = .45f;
+	public const float PlayerForwardAcc = .3f;
+	public const float PlayerStrafeAcc = .35f;
 	public const float PlayerRotationVerticalDelay = 8f; // uses lerp
 	public const float PlayerRotationHorizontalDelay = .25f; // uses damp therefore big difference in values.
 
@@ -94,6 +94,8 @@ public class Constants  {
 
 
 
+
+
 	public static Material Character_Blue_Mat = (Material)Resources.Load("Materials/Entity/Character/character_blue_mat/character_blue_mat");
 	public static Material Character_Purple_Mat = (Material)Resources.Load("Materials/Entity/Character/character_purple_mat/character_purple_mat");
 	public static Material Character_Yellow_Mat = (Material)Resources.Load("Materials/Entity/Character/character_yellow_mat/character_yellow_mat");
@@ -117,7 +119,7 @@ public class Constants  {
 
 	public static GameObject Enemy_Two_Bullet = (GameObject)Resources.Load("Prefabs/Projectile/Enemy/Enemy_Two/Enemy_Two_Bullet");
 
-
+	public static GameObject Teleporation_Projectile = (GameObject)Resources.Load("Prefabs/Entity/Buff/TeleportBuff/TeleportProjectile");
 
 
 	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};

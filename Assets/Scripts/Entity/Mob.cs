@@ -70,7 +70,7 @@ public class Mob : MonoBehaviour {
 	/// Does damage to the entity based on the damage
 	/// </summary>
 	/// <param name="damage"></param>
-	protected void DoDamage(float damage)
+	protected virtual void DoDamage(float damage)
 	{
 		if (Health > 0)
 		{

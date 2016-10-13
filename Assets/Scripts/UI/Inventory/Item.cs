@@ -52,6 +52,9 @@ public enum ItemID
 	AdvancedHealth,
 	SuperHealth,
 	SpeedBuff,
+	SlowMotionBuff,
+	TeleportationBuff,
+	ImmortalityBuff,
 	Null,
 }
 
