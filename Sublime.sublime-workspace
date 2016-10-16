@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Game",
+				"GameObject"
+			],
+			[
+				"GAme",
+				"GameObject"
+			],
+			[
 				"_hover",
 				"_hoverContainerText"
 			],
@@ -388,10 +396,6 @@
 				"GameController"
 			],
 			[
-				"Game",
-				"GameController"
-			],
-			[
 				"Gen",
 				"GenerateWallOnTimer"
 			],
@@ -510,23 +514,11 @@
 			[
 				"InputButton",
 				"InputButton.Left"
-			],
-			[
-				"_re",
-				"_rectTransform.localScale"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -573,10 +565,24 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts"
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts"
 	],
 	"file_history":
 	[
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/GameController.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/BuffManager.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/ProjectilePenetration/ProjectilePenetration.cs",
+		"/D/UnityProjects/Projects/AndroidGame/Assets/Scripts/Entity/Collectible/Squares/Squares.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Constants.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/EntityItem.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/UI/Inventory/Item.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/ImmortalityBuff/ImmortalityBuff.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/BlastBuff/BlastBuff.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/SpeedBuff/SpeedBuff.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/UI/Inventory/InventorySlot.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/UI/Inventory/InventoryManager.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Particles/Effect.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/TeleportBuff/TeleportBuff.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/EntityItem.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Projectile/ProjectileManager.cs",
@@ -690,21 +696,7 @@
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/ClientNetworkManager.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/ServerNetworkManager.cs",
 		"/C/Users/Devan/Documents/UnityProjects/AndroidGame/Assets/Scripts/Wall.cs",
-		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/User/UnityC#.sublime-settings",
-		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/README.md",
-		"/C/Users/Devan/Documents/Gov/chapter1.txt",
-		"/C/Users/Devan/Downloads/Textbook (1).pdf",
-		"/C/Users/Devan/Documents/UnityProjects/test/Assets/A.cs",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/Button/RetryButton.cs",
-		"/C/Users/Devan/Documents/UnityProjects/test/Assets/VayLaserPack/Scripts/Laser Scripts/ParticleManager.cs",
-		"/C/Users/Devan/Documents/UnityProjects/test/Assets/VayLaserPack/Scripts/Laser Scripts/LaserParticleManager.cs",
-		"/C/Users/Devan/Downloads/Textbook.pdf",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Particles/Effect.cs",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/ControllerConfiguration.cs",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Projectile.cs",
-		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/Button/CustomRotationButton.cs"
+		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap"
 	],
 	"find":
 	{
@@ -736,6 +728,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ShiftItem",
 			"useitem",
 			"move",
 			"}\n",
@@ -862,8 +855,7 @@
 			"ResetCamera",
 			"tab",
 			"COMPLETE",
-			"        \n",
-			"region"
+			"        \n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -891,43 +883,19 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 95.0
 	},
 	"input":
 	{
@@ -942,11 +910,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.7467775955,
 			1.0
 		],
 		"rows":
@@ -986,6 +961,54 @@
 		"selected_items":
 		[
 			[
+				"imom",
+				"Entity\\Buff\\ImmortalityBuff\\ImmortalityBuff.cs"
+			],
+			[
+				"enit",
+				"Entity\\EntityItem.cs"
+			],
+			[
+				"buffm",
+				"Entity\\Buff\\BuffManager.cs"
+			],
+			[
+				"item",
+				"UI\\Inventory\\Item.cs"
+			],
+			[
+				"invento",
+				"UI\\Inventory\\InventoryManager.cs"
+			],
+			[
+				"entity",
+				"Entity\\EntityItem.cs"
+			],
+			[
+				"co",
+				"Constants.cs"
+			],
+			[
+				"telepor",
+				"Entity\\Buff\\TeleportBuff\\TeleportBuff.cs"
+			],
+			[
+				"immor",
+				"Entity\\Buff\\ImmortalityBuff\\ImmortalityBuff.cs"
+			],
+			[
+				"tepor",
+				"Entity\\Buff\\TeleportBuff\\TeleportBuff.cs"
+			],
+			[
+				"spee",
+				"Entity\\Buff\\SpeedBuff\\SpeedBuff.cs"
+			],
+			[
+				"game",
+				"GameController.cs"
+			],
+			[
 				"proj",
 				"Entity\\Projectile\\ProjectileManager.cs"
 			],
@@ -1006,20 +1029,8 @@
 				"Constants.cs"
 			],
 			[
-				"spee",
-				"Entity\\Buff\\SpeedBuff\\SpeedBuff.cs"
-			],
-			[
 				"entityit",
 				"Entity\\EntityItem.cs"
-			],
-			[
-				"item",
-				"UI\\Inventory\\Item.cs"
-			],
-			[
-				"game",
-				"GameController.cs"
 			],
 			[
 				"enitty",
@@ -1084,10 +1095,6 @@
 			[
 				"invent",
 				"UI\\Inventory\\InventoryManager.cs"
-			],
-			[
-				"entity",
-				"Entity\\EntityItem.cs"
 			],
 			[
 				"inventoryman",
@@ -1322,10 +1329,6 @@
 				"GameScene\\Entity\\EntityMovementHandler.cs"
 			],
 			[
-				"enit",
-				"GameScene\\Entity\\EntityMovementHandler.cs"
-			],
-			[
 				"movm",
 				"GameScene\\PlayerController\\MovementHandler.cs"
 			],
@@ -1468,34 +1471,6 @@
 			[
 				"playercontorller",
 				"ControllerTestScene\\PlayerController.cs"
-			],
-			[
-				"servernet",
-				"Network\\ServerNetworkManager.cs"
-			],
-			[
-				"clientsce",
-				"ClientScene\\ClientSceneManager.cs"
-			],
-			[
-				"serverpalyer",
-				"ControllerTestScene\\ServerPlayerController.cs"
-			],
-			[
-				"clientnter",
-				"Network\\ClientNetworkManager.cs"
-			],
-			[
-				"serverp",
-				"ControllerTestScene\\ServerPlayerController.cs"
-			],
-			[
-				"slide",
-				"Slideshow\\SlideshowController.cs"
-			],
-			[
-				"maserte",
-				"Network\\MasterMessageType.cs"
 			]
 		],
 		"width": 0.0
@@ -1549,8 +1524,8 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 271.0,
+	"side_bar_visible": false,
+	"side_bar_width": 603.0,
 	"status_bar_visible": false,
 	"template_settings":
 	{
