@@ -55,6 +55,8 @@ public enum ItemID
 	SlowMotionBuff,
 	TeleportationBuff,
 	ImmortalityBuff,
+	BlastBuff,
+	ProjectilePenetrationBuff,
 	Null,
 }
 

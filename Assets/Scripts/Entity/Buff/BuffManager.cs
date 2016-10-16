@@ -10,6 +10,8 @@ public class BuffManager : MonoBehaviour {
 	private Buff _slowMotionBuff = new SlowMotionBuff();
 	private Buff _teleportBuff = new TeleportBuff();
 	private Buff _immortalBuff = new ImmortalityBuff();
+	private Buff _blastBuff = new BlastBuff();
+	private Buff _projectilePenetrationBuff = new ProjectilePenetration();
 
 
 
@@ -28,6 +30,7 @@ public class BuffManager : MonoBehaviour {
 		_speedBuff.Tick();
 		_slowMotionBuff.Tick();
 		_teleportBuff.Tick();
+		_projectilePenetrationBuff.Tick();
 		_immortalBuff.Tick();
 	}
 
@@ -51,16 +54,26 @@ public class BuffManager : MonoBehaviour {
 			}
 		} else if (item.itemID == ItemID.TeleportationBuff)
 		{
-			if (_teleportBuff._active == false)
-			{
-				_teleportBuff.UseBuff(_gameController);
-				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
-			}
+
+			_teleportBuff.UseBuff(_gameController);
+			_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+
 		} else if (item.itemID == ItemID.ImmortalityBuff)
 		{
 			if (_immortalBuff._active == false)
 			{
 				_immortalBuff.UseBuff(_gameController);
+				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+			}
+		} else if (item.itemID == ItemID.BlastBuff)
+		{
+			_blastBuff.UseBuff(_gameController);
+			_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
+		} else if (item.itemID == ItemID.ProjectilePenetrationBuff)
+		{
+			if (_projectilePenetrationBuff._active == false)
+			{
+				_projectilePenetrationBuff.UseBuff(_gameController);
 				_gameController.inventoryManager.quickItemSelectedSlot.DepleteItem(item, 1);
 			}
 		}

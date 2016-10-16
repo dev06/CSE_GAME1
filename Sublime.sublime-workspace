@@ -4,8 +4,21 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
 				"_bu",
 				"_buffIcon"
+=======
+				"Game",
+				"GameObject"
+			],
+			[
+				"GAme",
+				"GameObject"
+			],
+			[
+				"_hover",
+				"_hoverContainerText"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			],
 			[
 				"Resource",
@@ -514,11 +527,95 @@
 			[
 				"_wall",
 				"_wallObjects.transform"
+<<<<<<< HEAD
+=======
+			],
+			[
+				"gameObj",
+				"gameObject.name"
+			],
+			[
+				"vEc",
+				"Vector2"
+			],
+			[
+				"_px",
+				"_pixelToUnit"
+			],
+			[
+				"_cur",
+				"_currentWall"
+			],
+			[
+				"VEc",
+				"Vector2"
+			],
+			[
+				"Res",
+				"Resources"
+			],
+			[
+				"_pin",
+				"_pointerUp.x"
+			],
+			[
+				"_p",
+				"_pointerUp"
+			],
+			[
+				"TouchPhas",
+				"TouchPhase.Began"
+			],
+			[
+				"_smo",
+				"_smokeSmall"
+			],
+			[
+				"_smok",
+				"_smokeLarge"
+			],
+			[
+				"deltaTime",
+				"Touch.deltaTime"
+			],
+			[
+				"Wait",
+				"WaitForEndOfFrame"
+			],
+			[
+				"Play",
+				"PlayAnimation"
+			],
+			[
+				"_ser",
+				"_servants.Length"
+			],
+			[
+				"Conter",
+				"ContainerController"
+			],
+			[
+				"FindGamee",
+				"GameObject.FindGameObjectsWithTag(tag)"
+			],
+			[
+				"Cont",
+				"ContainerController"
+			],
+			[
+				"S",
+				"SERVANT"
+			],
+			[
+				"InputButton",
+				"InputButton.Left"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			]
 		]
 	},
 	"buffers":
 	[
+<<<<<<< HEAD
 		{
 			"file": "Assets/Scripts/Entity/Buff/ImmortalityBuff/ImmortalityBuff.cs",
 			"settings":
@@ -617,6 +714,8 @@
 				"line_ending": "Windows"
 			}
 		}
+=======
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -663,6 +762,7 @@
 	},
 	"expanded_folders":
 	[
+<<<<<<< HEAD
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts"
 	],
 	"file_history":
@@ -700,6 +800,26 @@
 		"/E/Unity/Projects/CSE_Game1/CSE_GAME/Assets/Scripts/UI/Container/InventoryContainer.cs",
 		"/E/Unity/Projects/AudioSpectrum/Assets/Scripts/CircleObject.cs",
 		"/E/Unity/Projects/AudioSpectrum/Assets/Scripts/Spectrum.cs",
+=======
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/GameController.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/BuffManager.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/ProjectilePenetration/ProjectilePenetration.cs",
+		"/D/UnityProjects/Projects/AndroidGame/Assets/Scripts/Entity/Collectible/Squares/Squares.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Constants.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/EntityItem.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/UI/Inventory/Item.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/ImmortalityBuff/ImmortalityBuff.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/BlastBuff/BlastBuff.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/SpeedBuff/SpeedBuff.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/UI/Inventory/InventorySlot.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/UI/Inventory/InventoryManager.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Particles/Effect.cs",
+		"/D/UnityProjects/Projects/App_Scripting/Assets/Scripts/Entity/Buff/TeleportBuff/TeleportBuff.cs",
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/GameController.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Enemy/enemy_one/EnemyOne.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingExample/Assets/Player.cs",
@@ -777,6 +897,7 @@
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/ClientNetworkManager.cs",
 		"/C/Users/Devan/Documents/UnityProjects/KSU/NetworkingSolution/KSU_NETWORK_SOLUTION/Assets/Scripts/Network/ServerNetworkManager.cs",
 		"/C/Users/Devan/Documents/UnityProjects/AndroidGame/Assets/Scripts/Wall.cs",
+<<<<<<< HEAD
 		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/User/UnityC#.sublime-settings",
 		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
@@ -795,6 +916,9 @@
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Player/CameraController.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/Entity/Projectile.cs",
 		"/C/Users/Devan/Documents/UnityProjects/CSE_GAME1/Assets/Scripts/UI/Button/CustomRotationButton.cs"
+=======
+		"/C/Users/Devan/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 	],
 	"find":
 	{
@@ -826,7 +950,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
 			"PlayerMovementSpeed",
+=======
+			"ShiftItem",
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			"useitem",
 			"inventorySlots",
 			"}\n",
@@ -953,7 +1081,18 @@
 			"TurnOffButton",
 			"OnValueChange",
 			"Wait",
+<<<<<<< HEAD
 			"Debug.Loger"
+=======
+			"Debug.Loger",
+			"CLIENT_MSG5",
+			"OpenFolderDialog",
+			"WaitAndDisableImage",
+			"ResetCamera",
+			"tab",
+			"COMPLETE",
+			"        \n"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -981,6 +1120,7 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"selected": 5,
 			"sheets":
 			[
@@ -1313,12 +1453,25 @@
 					"stack_index": 10,
 					"type": "text"
 				}
+=======
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			]
 		}
 	],
 	"incremental_find":
 	{
+<<<<<<< HEAD
 		"height": 27.0
+=======
+		"height": 95.0
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 	},
 	"input":
 	{
@@ -1333,11 +1486,24 @@
 				0,
 				1,
 				1
+<<<<<<< HEAD
+=======
+			],
+			[
+				1,
+				0,
+				2,
+				1
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			]
 		],
 		"cols":
 		[
 			0.0,
+<<<<<<< HEAD
+=======
+			0.7467775955,
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			1.0
 		],
 		"rows":
@@ -1377,6 +1543,7 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
 				"game",
 				"GameController.cs"
 			],
@@ -1431,12 +1598,25 @@
 			[
 				"player",
 				"Player\\PlayerController.cs"
+=======
+				"imom",
+				"Entity\\Buff\\ImmortalityBuff\\ImmortalityBuff.cs"
+			],
+			[
+				"enit",
+				"Entity\\EntityItem.cs"
+			],
+			[
+				"buffm",
+				"Entity\\Buff\\BuffManager.cs"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			],
 			[
 				"item",
 				"UI\\Inventory\\Item.cs"
 			],
 			[
+<<<<<<< HEAD
 				"gamecon",
 				"GameController.cs"
 			],
@@ -1459,12 +1639,17 @@
 			[
 				"buffm",
 				"Entity\\Buff\\BuffManager.cs"
+=======
+				"invento",
+				"UI\\Inventory\\InventoryManager.cs"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			],
 			[
 				"entity",
 				"Entity\\EntityItem.cs"
 			],
 			[
+<<<<<<< HEAD
 				"buffmn",
 				"Entity\\Buff\\BuffManager.cs"
 			],
@@ -1494,6 +1679,33 @@
 			],
 			[
 				"projectile",
+=======
+				"co",
+				"Constants.cs"
+			],
+			[
+				"telepor",
+				"Entity\\Buff\\TeleportBuff\\TeleportBuff.cs"
+			],
+			[
+				"immor",
+				"Entity\\Buff\\ImmortalityBuff\\ImmortalityBuff.cs"
+			],
+			[
+				"tepor",
+				"Entity\\Buff\\TeleportBuff\\TeleportBuff.cs"
+			],
+			[
+				"spee",
+				"Entity\\Buff\\SpeedBuff\\SpeedBuff.cs"
+			],
+			[
+				"game",
+				"GameController.cs"
+			],
+			[
+				"proj",
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 				"Entity\\Projectile\\ProjectileManager.cs"
 			],
 			[
@@ -1517,6 +1729,7 @@
 				"Constants.cs"
 			],
 			[
+<<<<<<< HEAD
 				"enemtwo",
 				"Entity\\Enemy\\enemy_two\\EnemyTwo.cs"
 			],
@@ -1546,6 +1759,13 @@
 			],
 			[
 				"entiyitem",
+=======
+				"entityit",
+				"Entity\\EntityItem.cs"
+			],
+			[
+				"enitty",
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 				"Entity\\EntityItem.cs"
 			],
 			[
@@ -1669,6 +1889,7 @@
 				"Controller\\NavMesh\\NavMeshController.cs"
 			],
 			[
+<<<<<<< HEAD
 				"cama",
 				"Player\\CameraController.cs"
 			],
@@ -1689,6 +1910,8 @@
 				"UI\\Inventory\\InventoryManager.cs"
 			],
 			[
+=======
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 				"inventoryman",
 				"UI\\Inventory\\InventoryManager.cs"
 			],
@@ -1887,6 +2110,173 @@
 			[
 				"controlpro",
 				"UI\\Button\\ControllerProfileButton.cs"
+<<<<<<< HEAD
+=======
+			],
+			[
+				"buttoneven",
+				"UI\\ButtonEventHandler.cs"
+			],
+			[
+				"layer",
+				"Player\\PlayerController.cs"
+			],
+			[
+				"heal",
+				"UI\\Health.cs"
+			],
+			[
+				"gam",
+				"GameController.cs"
+			],
+			[
+				"enitytm",
+				"GameScene\\Entity\\EntityMovementHandler.cs"
+			],
+			[
+				"movm",
+				"GameScene\\PlayerController\\MovementHandler.cs"
+			],
+			[
+				"aimov",
+				"GameScene\\Entity\\AIMovementHandler.cs"
+			],
+			[
+				"aimovme",
+				"GameScene\\Entity\\AIMovementHandler.cs"
+			],
+			[
+				"entitym",
+				"GameScene\\Entity\\EntityMovementHandler.cs"
+			],
+			[
+				"bumper",
+				"GameScene\\Entity\\Bumper.cs"
+			],
+			[
+				"entitymo",
+				"GameScene\\Entity\\EntityMovementHandler.cs"
+			],
+			[
+				"custom",
+				"InputManager\\CustomInputManager.cs"
+			],
+			[
+				"logger",
+				"Logger.cs"
+			],
+			[
+				"gamescen",
+				"GameScene\\GameSceneManager.cs"
+			],
+			[
+				"enen",
+				"GameScene\\Entity\\EntityMovementHandler.cs"
+			],
+			[
+				"movme",
+				"GameScene\\PlayerController\\MovementHandler.cs"
+			],
+			[
+				"custominput",
+				"InputManager\\CustomInputManager.cs"
+			],
+			[
+				"serverplayr",
+				"ControllerTestScene\\ServerPlayerController.cs"
+			],
+			[
+				"consta",
+				"Constants.cs"
+			],
+			[
+				"speechcontroller",
+				"ClientScene\\SpeechController.cs"
+			],
+			[
+				"speechontro",
+				"ClientScene\\SpeechController.cs"
+			],
+			[
+				"clientscenman",
+				"ClientScene\\ClientSceneManager.cs"
+			],
+			[
+				"playercontroller",
+				"ControllerTestScene\\PlayerController.cs"
+			],
+			[
+				"reset",
+				"ResetSessionButtonEvent.cs"
+			],
+			[
+				"servernetwork",
+				"Network\\ServerNetworkManager.cs"
+			],
+			[
+				"serverplayer",
+				"ControllerTestScene\\ServerPlayerController.cs"
+			],
+			[
+				"servent",
+				"Network\\ServerNetworkManager.cs"
+			],
+			[
+				"clientm",
+				"ClientManager.cs"
+			],
+			[
+				"headtra",
+				"HeadTracker.cs"
+			],
+			[
+				"import",
+				"IO\\ImportSpeech.cs"
+			],
+			[
+				"palyercontroller",
+				"ControllerTestScene\\PlayerController.cs"
+			],
+			[
+				"modde",
+				"ClientScene\\ModelDoor.cs"
+			],
+			[
+				"aimo",
+				"GameScene\\Entity\\AIMovementHandler.cs"
+			],
+			[
+				"servnet",
+				"Network\\ServerNetworkManager.cs"
+			],
+			[
+				"clientman",
+				"ClientManager.cs"
+			],
+			[
+				"audiomn",
+				"AudioManager.cs"
+			],
+			[
+				"controlmen",
+				"ControlScene\\ControlMenuController.cs"
+			],
+			[
+				"audiom",
+				"AudioManager.cs"
+			],
+			[
+				"head",
+				"HeadTracker.cs"
+			],
+			[
+				"audioma",
+				"AudioManager.cs"
+			],
+			[
+				"playercontorller",
+				"ControllerTestScene\\PlayerController.cs"
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 			]
 		],
 		"width": 0.0
@@ -1941,7 +2331,11 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": false,
+<<<<<<< HEAD
 	"side_bar_width": 271.0,
+=======
+	"side_bar_width": 603.0,
+>>>>>>> 09e82ffc23394b5a95c622650ec09d0de9158fd7
 	"status_bar_visible": false,
 	"template_settings":
 	{
