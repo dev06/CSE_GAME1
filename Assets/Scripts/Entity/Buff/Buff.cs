@@ -8,9 +8,11 @@ public class Buff : EntityItem {
 	protected float _currentBuffTime;
 	protected GameObject _buffIcon;
 	protected BuffIndicator _buffIndicator;
+	protected GameObject _container;
 	void Start ()
 	{
 		Init();
+
 	}
 
 

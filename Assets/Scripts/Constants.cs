@@ -105,6 +105,7 @@ public class Constants  {
 
 
 
+
 	public static Material Character_Blue_Mat = (Material)Resources.Load("Materials/Entity/Character/character_blue_mat/character_blue_mat");
 	public static Material Character_Purple_Mat = (Material)Resources.Load("Materials/Entity/Character/character_purple_mat/character_purple_mat");
 	public static Material Character_Yellow_Mat = (Material)Resources.Load("Materials/Entity/Character/character_yellow_mat/character_yellow_mat");
@@ -130,6 +131,8 @@ public class Constants  {
 
 	public static GameObject Teleporation_Projectile = (GameObject)Resources.Load("Prefabs/Entity/Buff/TeleportBuff/TeleportProjectile");
 	public static GameObject Blast_Buff_Particle = (GameObject)Resources.Load("Prefabs/Particles/BlastBuff");
+
+	public static GameObject PickUpItemNotification = (GameObject)Resources.Load("Prefabs/UIPrefabs/PickUp/PickUpItem_Notificaiton");
 
 	public static KeyCode[] QuickItemKeys = new KeyCode[4] {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
 }

@@ -10,6 +10,7 @@ public class InventoryManager {
 	public List<InventorySlot> quickItemSlots = new List<InventorySlot>();
 	public Item hoverItem; // item that is currently being hovered on.
 	public InventorySlot quickItemSelectedSlot;
+	public bool isInventoryFull;
 	public int inventoryCount;
 
 
@@ -29,7 +30,14 @@ public class InventoryManager {
 			}
 		} else
 		{
-			inventorySlots[GetNextAvailableSlot(inventorySlots)].SetItem(item);
+			int nextSlot = GetNextAvailableSlot(inventorySlots);
+			if (nextSlot != -1)
+			{
+				inventorySlots[nextSlot].SetItem(item);
+			} else {
+				isInventoryFull = true;
+				Debug.Log("inventory is now full");
+			}
 		}
 		inventoryCount = InventorySlotOccupied();
 
@@ -109,12 +117,13 @@ public class InventoryManager {
 
 	public void ShiftItem(List<InventorySlot> collection)
 	{
+
 		for (int i = 0; i < collection.Count; i++)
 		{
 			InventorySlot currentSlot = collection[i];
 			if (currentSlot.item != null)
 			{
-				if (i > 0 && i < collection.Count - 1)
+				if (i > 0 && i < collection.Count)
 				{
 					InventorySlot previousSlot = collection[i - 1];
 					if (previousSlot.item == null)
@@ -243,6 +252,22 @@ public class InventoryManager {
 				continue;
 			} else
 			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public bool isCollectionFull(List<InventorySlot> _collection)
+	{
+		for (int i = 0; i < _collection.Count; i++)
+		{
+			InventorySlot _slot = _collection[i];
+			if (_slot.item != null)
+			{
+				continue;
+			} else {
 				return false;
 			}
 		}

@@ -19,4 +19,8 @@ public class EventManager : MonoBehaviour {
 	public delegate void QuickItemSelected();
 	public static QuickItemSelected OnQuickItemChange;
 
+
+	public delegate void ResetGame();
+	public static ResetGame OnReset;
+
 }

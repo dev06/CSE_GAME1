@@ -38,6 +38,8 @@ TagManager:
   - Entity/Buff/SpeedBuff
   - Manager/BuffManager
   - Entity/TeleportProjectile
+  - Container/BuffContainer
+  - Container/ItemPickUpContainer
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ public class Droid : Mob {
 	private bool _shot;
 	private GameObject[] _enemies;
 	private Transform _enemyTarget;
-
+	private bool _guard;
 	void Start () {
 		Init();
 		MaxHealth = Constants.DroidMaxHealth;
@@ -32,35 +32,44 @@ public class Droid : Mob {
 		_verticalDistance = 0.5f;
 		_shot = true;
 		_enemies = GameObject.FindGameObjectsWithTag("Entity/Enemy");
+		_guard = false;
 	}
 
 	void Update ()
 	{
-		_destionationRight = _target.position + ( _target.right * _horizontalDistance) + ( -_target.forward * _verticalDistance);
-		_destionationLeft =  _target.position + ( -_target.right * _horizontalDistance) + ( -_target.forward * _verticalDistance);
-		ManageHoverEffect();
-		if (_enemyTarget != null)
+		if (Input.GetKeyDown(KeyCode.P))
 		{
-			_bulletLeft.LookAt(_enemyTarget.transform.position);
-			_bulletRight.LookAt(_enemyTarget.transform.position);
-			if (CanShoot())
-			{
-				Shoot();
-				_shot = true;
-			}
-
-			transform.LookAt(_enemyTarget.transform.position);
-		} else
-		{
-			if (_agent.remainingDistance < 2.0f)
-			{
-				transform.rotation = Quaternion.Lerp(transform.rotation,  _target.transform.rotation, Time.deltaTime * _angularVelocity);
-			}
+			_guard = !_guard;
 		}
+		if (_guard == false)
+		{
+			_destionationRight = _target.position + ( _target.right * _horizontalDistance) + ( -_target.forward * _verticalDistance);
+			_destionationLeft =  _target.position + ( -_target.right * _horizontalDistance) + ( -_target.forward * _verticalDistance);
+			ManageHoverEffect();
+			if (_enemyTarget != null)
+			{
+				_bulletLeft.LookAt(_enemyTarget.transform.position);
+				_bulletRight.LookAt(_enemyTarget.transform.position);
+				if (CanShoot())
+				{
+					Shoot();
+					_shot = true;
+				}
 
-		_agent.SetDestination(GetClosestDestination());
+				transform.LookAt(_enemyTarget.transform.position);
+			} else
+			{
+				if (_agent.remainingDistance < 2.0f)
+				{
+					transform.rotation = Quaternion.Lerp(transform.rotation,  _target.transform.rotation, Time.deltaTime * _angularVelocity);
+				}
+			}
 
-		_enemyTarget = EnemyInRange();
+			_agent.SetDestination(GetClosestDestination());
+
+			_enemyTarget = EnemyInRange();
+
+		}
 
 	}
 

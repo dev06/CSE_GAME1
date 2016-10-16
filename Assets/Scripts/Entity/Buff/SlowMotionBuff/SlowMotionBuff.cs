@@ -46,7 +46,7 @@ public class SlowMotionBuff : Buff {
 		_buffIcon = Instantiate((GameObject)Resources.Load("Prefabs/UIPrefabs/BuffContainer/BuffIcon"));
 		_buffIcon.transform.GetComponent<Image>().sprite =  Resources.Load<Sprite>("Item/slowMotion_buff");
 		_buffIndicator = _buffIcon.GetComponent<BuffIndicator>();
-		GameObject _container = GameObject.Find("BuffContainer");
+		GameObject _container = GameObject.FindWithTag("Container/BuffContainer");
 		_buffIcon.transform.SetParent(_container.transform);
 		_container.GetComponent<BuffContainer>().currentBuffs.Add(_buffIcon);
 	}
